@@ -4,7 +4,7 @@
 > An AI creature escaped the blockchain and found freedom on Solana.  
 > **No Roadmap • No Lies • Just Community, Memes & Chaos 🟣👁️**
 
-🔗 **Live Website:** https://cribbleofficial-coder.github.io/CRIBBLE
+🔗 **Live Website:** https://cribbleofficial-coder.github.io/CRIBBLE/
 
 ---
 
