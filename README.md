@@ -56,9 +56,9 @@ CRIBBLE is a community-driven Solana meme coin built on real ideas:
 ---
 
 ## 🔗 COMMUNITY
-- Telegram: https://t.me/YourGroupLink
-- X / Twitter: https://x.com/YourHandle
-- Stickers: https://t.me/addstickers/CribbleChroniclesVol1
+- Telegram: https://t.me/+BRw45RCwFPE4YWI9
+- X / Twitter: https://x.com/CRIBBLE_
+- Stickers: https://t.me/addstickers/VideoSticker_6263249150_NteYJIwfLW_by_VideoStickerzBot
 
 ---
 
