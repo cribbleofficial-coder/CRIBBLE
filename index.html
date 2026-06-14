@@ -39,32 +39,26 @@
 </head>
 <body class="bg-cribDark text-white font-sans">
 
-<!-- NAVIGATION MENU -->
+<!-- NAVIGATION: LOGO LEFT, HAMBURGER MENU TOP RIGHT -->
 <nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/80 backdrop-blur-lg border-b border-cribPurple/20">
     <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
         <h1 class="text-2xl font-bold text-cribLight text-glow">🟣 CRIBBLE</h1>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex gap-6 text-sm font-medium">
-            <a href="#story" class="hover:text-cribGold transition-all duration-300 hover:scale-105">Story</a>
-            <a href="#tokenomics" class="hover:text-cribGold transition-all duration-300 hover:scale-105">Tokenomics</a>
-            <a href="#events" class="hover:text-cribGold transition-all duration-300 hover:scale-105">Events</a>
-            <a href="#details" class="hover:text-cribGold transition-all duration-300 hover:scale-105">Details</a>
-            <a href="#community" class="hover:text-cribGold transition-all duration-300 hover:scale-105">Community</a>
-        </div>
 
-        <!-- Mobile Menu Button -->
-        <button id="menuToggle" class="md:hidden text-cribLight text-2xl">☰</button>
-    </div>
+        <!-- Hamburger Menu Button - Top Right -->
+        <div class="relative">
+            <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors">
+                ☰
+            </button>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-cribCard border-t border-cribPurple/20">
-        <div class="flex flex-col gap-3 p-4 text-center">
-            <a href="#story" class="py-2 hover:text-cribGold transition">Story</a>
-            <a href="#tokenomics" class="py-2 hover:text-cribGold transition">Tokenomics</a>
-            <a href="#events" class="py-2 hover:text-cribGold transition">Events</a>
-            <a href="#details" class="py-2 hover:text-cribGold transition">Details</a>
-            <a href="#community" class="py-2 hover:text-cribGold transition">Community</a>
+            <!-- Dropdown Menu -->
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard border border-cribPurple/30 rounded-lg shadow-xl overflow-hidden">
+                <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">📖 Story</a>
+                <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
+                <a href="#events" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🎉 Events & Rewards</a>
+                <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🚀 Launch Details</a>
+                <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🤝 Community</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -234,9 +228,10 @@
     <p class="mt-3 max-w-xl mx-auto">Disclaimer: $CRIB is a community-driven meme coin. It has no intrinsic value. Invest only what you can afford to lose.</p>
 </footer>
 
-<!-- COUNTDOWN + MOBILE MENU SCRIPT -->
+<!-- SCRIPTS -->
 <script>
-const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
+// Countdown Timer
+const launchDate = new Date("June 20, 2026 15:00 UTC").getTime();
 const countdown = setInterval(() => {
     const now = new Date().getTime();
     const diff = launchDate - now;
@@ -251,16 +246,27 @@ const countdown = setInterval(() => {
     }
 }, 1000);
 
+// Hamburger Menu Toggle
 const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
 menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+    dropdownMenu.classList.toggle('hidden');
 });
 
-// Close mobile menu after clicking a link
-const mobileLinks = mobileMenu.querySelectorAll('a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+// Close menu when clicking a link
+const menuLinks = dropdownMenu.querySelectorAll('a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        dropdownMenu.classList.add('hidden');
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+    }
 });
 </script>
 
