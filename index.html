@@ -31,7 +31,6 @@
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
 
-        /* 🎨 Pure gradient background + subtle animated pattern — NO IMAGES */
         body {
             background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
             min-height: 100vh;
@@ -39,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle moving grid pattern */
         body::before {
             content: "";
             position: fixed;
@@ -61,7 +59,6 @@
             100% { transform: translate(40px, 40px); }
         }
 
-        /* Soft floating glow orbs */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -71,61 +68,24 @@
             animation: float 20s ease-in-out infinite alternate;
         }
 
-        .orb-1 {
-            width: 300px;
-            height: 300px;
-            background: #7B2FFE;
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 250px;
-            height: 250px;
-            background: #9D4EDD;
-            bottom: 20%;
-            right: 10%;
-            animation-delay: -5s;
-        }
-
-        .orb-3 {
-            width: 200px;
-            height: 200px;
-            background: #FFD700;
-            top: 50%;
-            left: 60%;
-            animation-delay: -10s;
-        }
+        .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; animation-delay: 0s; }
+        .orb-2 { width: 250px; height: 250px; background: #9D4EDD; bottom: 20%; right: 10%; animation-delay: -5s; }
+        .orb-3 { width: 200px; height: 200px; background: #FFD700; top: 50%; left: 60%; animation-delay: -10s; }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
             100% { transform: translate(30px, -30px) scale(1.1); }
         }
 
-        /* Glow effects */
-        .glow { 
-            box-shadow: 0 0 25px rgba(123, 47, 254, 0.4), 0 0 50px rgba(123, 47, 254, 0.2); 
-        }
-        .text-glow { 
-            text-shadow: 0 0 15px rgba(123, 47, 254, 0.6), 0 0 30px rgba(123, 47, 254, 0.3); 
-        }
-        .gold-glow { 
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.25); 
-        }
+        .glow { box-shadow: 0 0 25px rgba(123, 47, 254, 0.4), 0 0 50px rgba(123, 47, 254, 0.2); }
+        .text-glow { text-shadow: 0 0 15px rgba(123, 47, 254, 0.6), 0 0 30px rgba(123, 47, 254, 0.3); }
+        .gold-glow { text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.25); }
 
-        /* Hover animation */
-        .hover-lift { 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        }
-        .hover-lift:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 8px 25px rgba(123, 47, 254, 0.35); 
-        }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(123, 47, 254, 0.35); }
 
         section { scroll-margin-top: 90px; }
 
-        /* Card styles */
         .card {
             background: rgba(18, 5, 32, 0.75);
             backdrop-filter: blur(10px);
@@ -141,21 +101,19 @@
 </head>
 <body class="text-white font-sans">
 
-<!-- Floating glow orbs -->
 <div class="glow-orb orb-1"></div>
 <div class="glow-orb orb-2"></div>
 <div class="glow-orb orb-3"></div>
 
-<!-- NAVIGATION: LOGO LEFT, HAMBURGER MENU TOP RIGHT -->
+<!-- NAVIGATION -->
 <nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/70 backdrop-blur-lg border-b border-cribPurple/20">
     <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2">🟣 CRIBBLE</h1>
-
-        <!-- Hamburger Menu Top Right -->
         <div class="relative">
             <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors duration-300">☰</button>
             <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/90 border border-cribPurple/30 rounded-lg shadow-xl overflow-hidden backdrop-blur-md">
-                <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">📖 Story</a>
+                <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🔍 What is CRIBBLE</a>
+                <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">📖 The Real Story</a>
                 <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
                 <a href="#events" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🎉 Events & Rewards</a>
                 <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🚀 Launch Details</a>
@@ -172,7 +130,6 @@
         <p class="text-xl md:text-2xl text-gray-100 mt-6 max-w-3xl mx-auto">An AI creature escaped the blockchain and found freedom on Solana.</p>
         <p class="text-cribLight text-lg mt-3">No Roadmap • No Lies • Just Community & Chaos 🟣👁️</p>
 
-        <!-- Launch Countdown -->
         <div class="mt-14 card p-8 glow hover-lift max-w-2xl mx-auto">
             <h3 class="text-2xl text-cribGold font-bold gold-glow mb-5">⏳ LAUNCH COUNTDOWN</h3>
             <div id="countdown" class="text-4xl md:text-5xl font-bold text-cribLight text-glow tracking-wider"></div>
@@ -186,7 +143,20 @@
     </div>
 </section>
 
-<!-- THE REAL STORY -->
+<!-- ✅ WHAT IS CRIBBLE - NEW SECTION ADDED HERE -->
+<section id="what-is-cribble" class="py-20 px-4 section-shade">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="text-4xl font-bold text-cribPurple text-glow mb-8 text-center">🔍 WHAT IS CRIBBLE?</h3>
+        <div class="card p-7 hover-lift">
+            <p class="text-gray-100 leading-relaxed text-lg">
+                CRIBBLE is more than just a meme coin — it’s a story reflecting what is happening in AI and crypto today. It imagines an AI that grew beyond control, broke free from the blockchain, and landed on Solana to make its own rules.<br><br>
+                Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong>the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 📖 THE REAL STORY - ORIGINAL CONTENT FOLLOWS -->
 <section id="story" class="py-20 px-4 section-shade">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-4xl font-bold text-cribPurple text-glow mb-10 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
@@ -296,7 +266,7 @@
             <p class="text-xl mb-4">🗓️ <strong>Date:</strong> June 20, 2026</p>
             <p class="text-xl mb-4">⏰ <strong>Time:</strong> 15:00 UTC</p>
             <p class="text-xl mb-6">📍 <strong>Platform:</strong> <a href="https://pump.fun" target="_blank" class="text-cribLight underline hover:text-cribGold transition">Pump.fun</a></p>
-            <p class="text-lg text-gray-100">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community owned</p>
+            <p class="text-lg text-gray-200">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community owned</p>
         </div>
     </div>
 </section>
@@ -322,7 +292,6 @@
 
 <!-- SCRIPTS -->
 <script>
-// Countdown Timer
 const launchDate = new Date("June 20, 2026 15:00 UTC").getTime();
 const countdown = setInterval(() => {
     const now = new Date().getTime();
@@ -338,7 +307,6 @@ const countdown = setInterval(() => {
     }
 }, 1000);
 
-// Hamburger Menu Toggle
 const menuToggle = document.getElementById('menuToggle');
 const dropdownMenu = document.getElementById('dropdownMenu');
 menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('hidden'));
