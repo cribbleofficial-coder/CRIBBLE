@@ -19,6 +19,8 @@
                         cribPurple: '#7B2FFE',
                         cribLight: '#9D4EDD',
                         cribGold: '#FFD700',
+                        cribGreen: '#22C55E',
+                        cribGreenLight: '#4ADE80',
                         cribCard: '#120520',
                         cribCardLight: '#1A0B2E'
                     },
@@ -32,8 +34,9 @@
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
 
+        /* ✅ Restored original background */
         body {
-            background: linear-gradient(180deg, #05020F 0%, #0A0418 100%);
+            background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -47,11 +50,35 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(123, 47, 254, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(123, 47, 254, 0.06) 1px, transparent 1px);
-            background-size: 35px 35px;
-            opacity: 0.35;
+                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
             z-index: -1;
+            animation: gridShift 60s linear infinite;
+        }
+
+        @keyframes gridShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite alternate;
+        }
+
+        .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; animation-delay: 0s; }
+        .orb-2 { width: 250px; height: 250px; background: #9D4EDD; bottom: 20%; right: 10%; animation-delay: -5s; }
+        .orb-3 { width: 200px; height: 200px; background: #FFD700; top: 50%; left: 60%; animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -30px) scale(1.1); }
         }
 
         .glow-border {
@@ -93,19 +120,19 @@
             pointer-events: none;
         }
 
-        .section-wrap {
-            background: rgba(5, 2, 15, 0.4);
-            padding: 2rem 0;
+        .section-shade {
+            background: rgba(10, 4, 24, 0.5);
+            backdrop-filter: blur(4px);
         }
 
-        /* ✨ New Tokenomics Styles */
+        /* ✅ Updated percentage badge to GREEN with glow */
         .percent-badge {
-            background: linear-gradient(135deg, #7B2FFE 0%, #9D4EDD 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
+            color: #000;
             font-weight: bold;
             padding: 0.3rem 0.8rem;
             border-radius: 9999px;
-            box-shadow: 0 0 10px rgba(123, 47, 254, 0.4);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
             min-width: 60px;
             text-align: center;
         }
@@ -117,6 +144,10 @@
     </style>
 </head>
 <body class="text-white font-sans">
+
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+<div class="glow-orb orb-3"></div>
 
 <!-- NAVIGATION -->
 <nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
@@ -157,7 +188,7 @@
 </section>
 
 <!-- ✨ WHAT IS CRIBBLE -->
-<section id="what-is-cribble" class="section-wrap px-4">
+<section id="what-is-cribble" class="section-shade px-4">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-5 text-center">🔍 WHAT IS CRIBBLE?</h3>
         <div class="card p-5 glow-border hover-lift">
@@ -170,7 +201,7 @@
 </section>
 
 <!-- 📖 THE REAL STORY -->
-<section id="story" class="section-wrap px-4">
+<section id="story" class="section-shade px-4">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
 
@@ -223,8 +254,8 @@
     </div>
 </section>
 
-<!-- 🟣 TOKENOMICS - UPDATED & ENHANCED -->
-<section id="tokenomics" class="section-wrap px-4">
+<!-- 🟣 TOKENOMICS -->
+<section id="tokenomics" class="py-20 px-4">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🟣 $CRIB TOKENOMICS</h3>
         <div class="card p-8 glow-border hover-lift">
@@ -279,7 +310,7 @@
 </section>
 
 <!-- EVENTS -->
-<section id="events" class="section-wrap px-4">
+<section id="events" class="section-shade px-4 py-20">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🎉 EVENTS & REWARDS</h3>
         <div class="card p-6 glow-border hover-lift">
@@ -298,7 +329,7 @@
 </section>
 
 <!-- LAUNCH DETAILS -->
-<section id="details" class="section-wrap px-4">
+<section id="details" class="py-20 px-4">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🚀 OFFICIAL LAUNCH DETAILS</h3>
         <div class="card p-6 glow-border hover-lift">
@@ -311,7 +342,7 @@
 </section>
 
 <!-- COMMUNITY -->
-<section id="community" class="section-wrap px-4">
+<section id="community" class="section-shade px-4 py-20">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribLight text-glow mb-5">🤝 JOIN THE KINGDOM</h3>
         <p class="text-base mb-8">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
