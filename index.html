@@ -40,22 +40,21 @@
             display: block;
             width: 100%;
         }
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 850px;
+        /* TikTok video container */
+        .tiktok-container {
+            max-width: 325px;
             margin: 0 auto;
-            aspect-ratio: 16 / 9;
             border-radius: 16px;
             overflow: hidden;
             border: 2px solid rgba(123, 47, 254, 0.4);
             box-shadow: 0 0 30px rgba(123, 47, 254, 0.3);
+            background: #000;
         }
     </style>
 </head>
 <body class="bg-cribDark text-white font-sans">
 
-<!-- ✅ MENU BAR: FIXED AT TOP RIGHT -->
+<!-- ✅ MENU BAR: LOGO LEFT / MENU TOP RIGHT -->
 <nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/90 backdrop-blur-lg border-b border-cribPurple/20 shadow-md">
     <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
         <!-- Logo on Left -->
@@ -107,24 +106,22 @@
     </div>
 </section>
 
-<!-- 🎬 STORY SECTION WITH VIDEO -->
+<!-- 🎬 STORY SECTION WITH YOUR TIKTOK VIDEO -->
 <section id="story" class="py-24 px-4 bg-cribCard/20 border-t border-b border-cribPurple/10">
     <div class="max-w-5xl mx-auto">
         <h3 class="text-4xl font-bold text-cribPurple text-glow mb-12 text-center">📖 THE STORY OF CRIBBLE</h3>
 
-        <!-- Video Slot -->
+        <!-- TikTok Video Area - Using your link -->
         <div class="mb-16">
             <h4 class="text-2xl font-semibold text-cribLight text-center mb-6">🎬 Watch The Full Story</h4>
-            <div class="video-container glow">
-                <!-- Replace with your YouTube embed -->
-                <iframe 
-                    src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
-                    title="The Story of CRIBBLE"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    class="w-full h-full">
-                </iframe>
+            <div class="tiktok-container glow">
+                <!-- ✅ EMBEDDED FROM YOUR LINK: https://vt.tiktok.com/ZSQQEATPf/ -->
+                <blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZSQQEATPf/" data-video-id="ZSQQEATPf" style="max-width: 100%; min-width: 250px;">
+                    <section>
+                        <a target="_blank" href="https://vt.tiktok.com/ZSQQEATPf/">View CRIBBLE Story on TikTok</a>
+                    </section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
             </div>
         </div>
 
