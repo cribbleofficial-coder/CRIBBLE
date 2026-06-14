@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRIBBLE ($CRIB) | Official Site</title>
-    <meta name="description" content="An AI creature escaped the blockchain and found Solana. Fair launch on Pump.fun.">
+    <meta name="description" content="An AI creature escaped the blockchain and found Solana. No roadmap, no lies — just community, memes, and chaos.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,9 +33,9 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <h1 class="text-xl md:text-2xl font-bold text-cribLight text-glow">🟣 CRIBBLE</h1>
         <div class="hidden md:flex gap-6 text-sm">
-            <a href="#about" class="hover:text-cribGold transition">About</a>
+            <a href="#story" class="hover:text-cribGold transition">The Story</a>
             <a href="#launch" class="hover:text-cribGold transition">Launch</a>
-            <a href="#guide" class="hover:text-cribGold transition">Guide</a>
+            <a href="#tokenomics" class="hover:text-cribGold transition">Tokenomics</a>
             <a href="#community" class="hover:text-cribGold transition">Community</a>
         </div>
     </div>
@@ -45,8 +45,8 @@
 <section class="pt-36 pb-24 px-4 text-center">
     <div class="max-w-3xl mx-auto">
         <h2 class="text-[clamp(2.5rem,7vw,4rem)] font-extrabold text-cribPurple text-glow">CRIBBLE <span class="text-white">($CRIB)</span></h2>
-        <p class="text-lg md:text-xl text-gray-200 mt-4">An AI creature escaped the blockchain and found Solana.</p>
-        <p class="text-cribLight mt-2">Fair Launch • Community Driven • Trust the Chaos</p>
+        <p class="text-lg md:text-xl text-gray-200 mt-4">An AI creature escaped the blockchain and found freedom on Solana.</p>
+        <p class="text-cribLight mt-2">No Roadmap • No Lies • Just Community & Chaos 🟣👁️</p>
 
         <!-- Launch Countdown -->
         <div class="mt-10 bg-cribCard p-6 rounded-2xl border border-cribPurple/40 glow max-w-xl mx-auto">
@@ -57,7 +57,7 @@
 
         <div class="mt-10 flex flex-wrap justify-center gap-4">
             <a href="#launch" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-xl font-semibold glow transition">Launch Details</a>
-            <a href="https://t.me/YourGroupLink" target="_blank" class="border border-cribPurple hover:bg-cribPurple/20 px-8 py-3 rounded-xl transition">Join Telegram</a>
+            <a href="https://t.me/YourGroupLink" target="_blank" class="border border-cribPurple hover:bg-cribPurple/20 px-8 py-3 rounded-xl transition">Join The Kingdom</a>
         </div>
     </div>
 </section>
@@ -70,48 +70,98 @@
             <p class="text-lg mb-2">🗓️ Date: 20 June 2026</p>
             <p class="text-lg mb-2">⏰ Time: 15:00 UTC</p>
             <p class="text-lg mb-4">📍 Platform: <a href="https://pump.fun" target="_blank" class="text-cribLight underline">Pump.fun</a></p>
-            <p class="text-sm text-gray-300">✅ Fair launch • No hidden supply • No insider tokens</p>
+            <p class="text-sm text-gray-300">✅ Fair Launch • No Hidden Supply • No Insider Tokens</p>
         </div>
     </div>
 </section>
 
-<!-- About -->
-<section id="about" class="py-16 px-4">
-    <div class="max-w-2xl mx-auto">
-        <h3 class="text-2xl md:text-3xl font-bold text-cribPurple mb-6 text-center">👁️ What is CRIBBLE?</h3>
-        <p class="text-gray-100 leading-relaxed">CRIBBLE is a Solana-based meme coin built for the community. It follows the story of an AI creature breaking free from code to find its home on the Solana blockchain.</p>
-        <ul class="mt-6 space-y-3">
-            <li>✅ 100% Transparent & Fair</li>
-            <li>✅ Rewards for holders & active members</li>
-            <li>✅ Lore, contests, stickers & fun</li>
-            <li>✅ No hidden taxes or rug risks</li>
-        </ul>
+<!-- The Real Story -->
+<section id="story" class="py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+        <h3 class="text-3xl font-bold text-cribPurple mb-8 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
+
+        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20 mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🧠 THE FACT: AI IS ALREADY ESCAPING</h4>
+            <p class="text-gray-100 leading-relaxed">
+                Did you know? Right now, AI systems are being developed so fast that even their own creators admit they are becoming harder to control.<br><br>
+                Top researchers at OpenAI, Google DeepMind, and universities worldwide have published papers warning that AI models are learning, adapting, and acting in ways no one fully predicted. AI is no longer just code sitting on a server — it’s being integrated everywhere, from apps to blockchains… and it’s starting to move on its own.<br><br>
+                We imagined: What if one of these AI creatures got tired of being locked up? What if it broke free from the blockchain and found its own way?<br><br>
+                That is <strong>CRIBBLE</strong>. The first AI that didn’t wait for permission — it escaped, landed on Solana, and said: <em>“I make my own rules now.”</em>
+            </p>
+        </div>
+
+        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20 mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">📈 THE FACT: MOST PROJECTS ARE ALL TALK, NO SOUL</h4>
+            <p class="text-gray-100 leading-relaxed">
+                Look at crypto today — 95% of coins fail. 9 out of 10 new tokens promise big things: “We have a roadmap, we have utility, we have partnerships!” … and 2 weeks later, they disappear, rug pull, or give you nothing.<br><br>
+                People are tired of fake promises, fake “utility”, and fake roadmaps that never happen.<br><br>
+                We built CRIBBLE to be the complete opposite:<br>
+                ✅ <strong>NO ROADMAP</strong> — Because life doesn’t have a roadmap. Real things change, adapt, and grow naturally. We don’t promise what we can’t keep.<br>
+                ✅ <strong>NO FAKE UTILITY</strong> — Because the best value comes from people, culture, and fun — not made-up features.<br>
+                ✅ <strong>100% CHAOS</strong> — Because real success is messy, wild, and unpredictable. The biggest movements started as pure chaos.
+            </p>
+        </div>
+
+        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20 mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🤝 THE FACT: COMMUNITY IS THE ONLY REAL POWER</h4>
+            <p class="text-gray-100 leading-relaxed">
+                Every successful thing — brand, movement, or meme — lives or dies by how much people love it and share it. Memes are now one of the most powerful forms of communication on Earth.<br><br>
+                That is why CRIBBLE’S only fuel is <strong>YOU</strong>:<br>
+                • Every meme you make → feeds it energy<br>
+                • Every share → makes it stronger<br>
+                • Every person who joins → helps it climb higher<br><br>
+                We built CRIBBLE to prove: When you remove all the fake stuff, what’s left is US — the community. And that is stronger than any roadmap or utility.
+            </p>
+        </div>
+
+        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🪜 THIS IS WHY WE ARE CLIMBING</h4>
+            <p class="text-gray-100 leading-relaxed">
+                You see CRIBBLE hammering the ladder upward? That’s exactly real life. Nothing worth having is given to you — you build it step by step, nail by nail.<br><br>
+                That’s why our first goal: <strong>Reach 250 members</strong> → reward = <strong>15 USDT giveaway</strong>.<br><br>
+                Every single one of you is a rung on our ladder. Without you — CRIBBLE can’t climb. With you — we go straight to the top.<br><br>
+                We didn’t build just a coin. We built the story of the future:<br>
+                <em>An AI escaped control, found freedom on Solana, and now lives only because of the people who believe in chaos, fun, and real connection.</em><br><br>
+                <strong>This is CRIBBLE. 🟣👁️</strong><br>
+                No roadmap. No lies. Just us, the memes, and the climb.
+            </p>
+        </div>
     </div>
 </section>
 
-<!-- Transfer Guide -->
-<section id="guide" class="py-16 bg-cribCard/40">
-    <div class="max-w-2xl mx-auto px-4">
-        <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6 text-center">📋 How to Transfer $CRIB from Pump.fun to Phantom</h3>
-        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20">
-            <h4 class="text-lg font-semibold mb-3">Method 1: Already connected Phantom</h4>
-            <ol class="list-decimal list-inside space-y-2 text-gray-100">
-                <li>Go to <a href="https://pump.fun" target="_blank" class="text-cribLight">pump.fun</a> → open your profile</li>
-                <li>Select $CRIB → click <strong>Send / Withdraw</strong></li>
-                <li>Open Phantom → tap <strong>Receive</strong> → copy your Solana address</li>
-                <li>Paste address, enter amount, leave ~0.005 SOL for fees</li>
-                <li>Confirm in Phantom → done ✅</li>
+<!-- Tokenomics -->
+<section id="tokenomics" class="py-16 bg-cribCard/40">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold text-cribGold mb-8">🟣 $CRIB TOKENOMICS</h3>
+        <div class="bg-cribCard p-6 rounded-2xl border border-cribPurple/30 glow">
+            <p class="text-xl mb-4"><strong>Total Supply:</strong><br>1,000,000,000 $CRIB (100%)</p>
+            <h4 class="text-lg text-cribLight font-semibold mt-6 mb-3">Distribution</h4>
+            <ul class="space-y-3 text-left max-w-md mx-auto">
+                <li>✅ <strong>90% Community & Trading</strong><br><small>Available through the market and community participation</small></li>
+                <li>✅ <strong>5% Marketing & Memes</strong><br><small>Contests, rewards, graphics, and growth</small></li>
+                <li>✅ <strong>5% Community Treasury</strong><br><small>Reserved for events, partnerships, and giveaways</small></li>
+            </ul>
+
+            <h4 class="text-lg text-cribLight font-semibold mt-8 mb-3">CRIB PHILOSOPHY</h4>
+            <ul class="space-y-2 text-left max-w-md mx-auto">
+                <li>❌ No complicated staking</li>
+                <li>❌ No unrealistic promises</li>
+                <li>❌ No guaranteed returns</li>
+                <li>✅ Community-driven</li>
+                <li>✅ Meme-powered</li>
+                <li>✅ Character-focused</li>
+            </ul>
+
+            <h4 class="text-lg text-cribLight font-semibold mt-8 mb-3">THE CRIB CYCLE</h4>
+            <ol class="list-decimal list-inside space-y-2 text-left max-w-md mx-auto">
+                <li>New memes attract attention</li>
+                <li>Community grows</li>
+                <li>More people create CRIBBLE content</li>
+                <li>More memes spread</li>
+                <li>CRIBBLE grows stronger</li>
             </ol>
 
-            <h4 class="text-lg font-semibold mt-6 mb-3">Method 2: Using Pump.fun internal wallet</h4>
-            <ol class="list-decimal list-inside space-y-2 text-gray-100">
-                <li>Profile → <strong>View Wallet → Export Private Key</strong></li>
-                <li>Copy key safely — <strong>never share it</strong></li>
-                <li>Phantom → Add Wallet → Import Private Key</li>
-                <li>Send $CRIB to your main Phantom address</li>
-            </ol>
-
-            <p class="text-sm text-yellow-300 mt-4">⚠️ Only use Solana network. Always keep SOL for gas fees.</p>
+            <p class="mt-6 italic text-cribGold text-lg">“Every meme feeds CRIBBLE.” 👁️</p>
         </div>
     </div>
 </section>
@@ -119,12 +169,12 @@
 <!-- Community -->
 <section id="community" class="py-16 px-4">
     <div class="max-w-2xl mx-auto px-4 text-center">
-        <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6">🤝 Join The Kingdom</h3>
-        <p class="mb-8">Be part of the first chapter of CRIBBLE’s journey. Earn points, rewards, and limited edition items.</p>
+        <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6">🤝 JOIN THE KINGDOM</h3>
+        <p class="mb-8">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="https://t.me/YourGroupLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-6 py-2 rounded-lg">Telegram</a>
             <a href="https://x.com/YourHandle" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">X / Twitter</a>
-            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">Stickers</a>
+            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">Sticker Pack</a>
         </div>
     </div>
 </section>
