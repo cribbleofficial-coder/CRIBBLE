@@ -5,76 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRIBBLE ($CRIB) | Official</title>
     <meta name="description" content="An AI escaped the blockchain — Solana fair launch.">
-    <!-- Fix cache issues -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: Arial, sans-serif;
-            background: #0A0418;
-            color: #fff;
-            line-height: 1.6;
-        }
-        nav {
-            position: fixed;
-            width: 100%;
-            top:0;
-            background: #120520;
-            border-bottom: 1px solid #7B2FFE40;
-            padding: 1rem 5%;
-            z-index: 999;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            color: #9D4EDD;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .nav-links a {
-            color: #fff;
-            margin-left: 1.5rem;
-            text-decoration: none;
-        }
+        body { font-family: Arial, sans-serif; background: #0A0418; color: #fff; line-height: 1.6; }
+        nav { position: fixed; width: 100%; top: 0; background: #120520; border-bottom: 1px solid #7B2FFE40; padding: 1rem 5%; z-index: 999; }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #9D4EDD; font-size: 1.5rem; font-weight: bold; }
+        .nav-links a { color: #fff; margin-left: 1.2rem; text-decoration: none; font-size: 0.95rem; }
         .nav-links a:hover { color: #FFD700; }
-        section {
-            padding: 6rem 5% 4rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            scroll-margin-top: 80px;
-        }
-        h1, h2, h3 {
-            color: #7B2FFE;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
+        section { padding: 6rem 5% 3rem; max-width: 1000px; margin: 0 auto; scroll-margin-top: 70px; }
+        h1 { font-size: 2.5rem; color: #7B2FFE; text-align: center; margin-bottom: 1rem; }
+        h2 { font-size: 1.8rem; color: #7B2FFE; text-align: center; margin: 2rem 0 1.2rem; }
         .gold { color: #FFD700; }
-        .card {
-            background: #120520;
-            border: 1px solid #7B2FFE40;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 5%;
-            color: #999;
-            font-size: 0.9rem;
-        }
+        .card { background: #120520; border: 1px solid #7B2FFE40; border-radius: 10px; padding: 1.5rem; margin: 1rem 0; }
+        .center { text-align: center; }
+        footer { text-align: center; padding: 1.5rem 5%; color: #999; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-<!-- MENU -->
+<!-- Menu -->
 <nav>
     <div class="nav-container">
         <div class="logo">🟣 CRIBBLE</div>
@@ -88,33 +42,33 @@
     </div>
 </nav>
 
-<!-- HERO -->
-<section id="top">
+<!-- Hero -->
+<section id="top" class="center">
     <h1>CRIBBLE <span style="color:#fff">($CRIB)</span></h1>
-    <p style="text-align:center; font-size:1.2rem; margin-bottom:2rem;">
+    <p style="font-size:1.1rem; margin-bottom:1.5rem;">
         An AI creature escaped the blockchain and found freedom on Solana.<br>
         <span class="gold">No Roadmap • No Lies • Just Community & Chaos 🟣👁️</span>
     </p>
-    <div class="card" style="text-align:center;">
+    <div class="card">
         <h3 class="gold">⏳ LAUNCH: 20 June 2026 | 15:00 UTC</h3>
         <p>Platform: Pump.fun</p>
     </div>
 </section>
 
-<!-- STORY -->
+<!-- Story -->
 <section id="story">
     <h2>📖 THE REAL STORY</h2>
     <div class="card">
-        <h3>🧠 AI IS ALREADY ESCAPING</h3>
+        <h3 class="gold">🧠 AI IS ALREADY ESCAPING</h3>
         <p>AI systems are evolving faster than their creators can fully control. We imagined: what if one broke free from code and found its own path? That is CRIBBLE — no permission asked, just freedom on Solana.</p>
     </div>
     <div class="card">
-        <h3>📈 NO FAKE PROMISES</h3>
+        <h3 class="gold">📈 NO FAKE PROMISES</h3>
         <p>95% of crypto projects fail from empty roadmaps and fake utility. We do the opposite: <strong>No roadmap, no made‑up features, just real community and fun.</strong></p>
     </div>
 </section>
 
-<!-- TOKENOMICS -->
+<!-- Tokenomics -->
 <section id="tokenomics">
     <h2>🟣 TOKENOMICS</h2>
     <div class="card">
@@ -124,11 +78,11 @@
             <li>✅ 5% — Marketing & Memes</li>
             <li>✅ 5% — Community Treasury</li>
         </ul>
-        <p style="margin-top:1rem;"><em>“Every meme feeds CRIBBLE.”</em></p>
+        <p style="margin-top:1rem; font-style:italic;">“Every meme feeds CRIBBLE.”</p>
     </div>
 </section>
 
-<!-- EVENTS -->
+<!-- Events -->
 <section id="events">
     <h2>🎉 EVENTS & REWARDS</h2>
     <div class="card">
@@ -137,7 +91,7 @@
     </div>
 </section>
 
-<!-- DETAILS -->
+<!-- Launch Details -->
 <section id="details">
     <h2>🚀 LAUNCH DETAILS</h2>
     <div class="card">
@@ -149,10 +103,10 @@
     </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- Community -->
 <section id="community">
     <h2>🤝 JOIN THE KINGDOM</h2>
-    <div class="card" style="text-align:center;">
+    <div class="card center">
         <p>Be part of the story — help CRIBBLE grow, earn rewards, and build something real.</p>
         <p style="margin-top:1rem;">
             <a href="https://t.me/YourGroupLink" target="_blank" style="color:#9D4EDD; margin:0 0.8rem;">Telegram</a>
