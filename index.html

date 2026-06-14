@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRIBBLE ($CRIB) | Official Site</title>
+    <meta name="description" content="An AI creature escaped the blockchain and found Solana. Fair launch on Pump.fun.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cribDark: '#0A0418',
+                        cribPurple: '#7B2FFE',
+                        cribLight: '#9D4EDD',
+                        cribGold: '#FFD700',
+                        cribCard: '#120520'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow { box-shadow: 0 0 20px rgba(123, 47, 254, 0.35); }
+        .text-glow { text-shadow: 0 0 12px rgba(123, 47, 254, 0.5); }
+    </style>
+</head>
+<body class="bg-cribDark text-white font-sans">
+
+<nav class="bg-cribCard/80 backdrop-blur-md fixed w-full z-50 border-b border-cribPurple/20">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-bold text-cribLight text-glow">🟣 CRIBBLE</h1>
+        <div class="hidden md:flex gap-6 text-sm">
+            <a href="#about" class="hover:text-cribGold transition">About</a>
+            <a href="#launch" class="hover:text-cribGold transition">Launch</a>
+            <a href="#community" class="hover:text-cribGold transition">Community</a>
+        </div>
+    </div>
+</nav>
+
+<section class="pt-36 pb-24 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-[clamp(2.5rem,7vw,4rem)] font-extrabold text-cribPurple text-glow">CRIBBLE <span class="text-white">($CRIB)</span></h2>
+        <p class="text-lg md:text-xl text-gray-200 mt-4">An AI creature escaped the blockchain and found Solana.</p>
+        <p class="text-cribLight mt-2">Fair Launch • Community Driven • Trust the Chaos</p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <a href="#launch" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-xl font-semibold glow transition">Launch Details</a>
+            <a href="https://t.me/YourTelegramLink" target="_blank" class="border border-cribPurple hover:bg-cribPurple/20 px-8 py-3 rounded-xl transition">Join Telegram</a>
+        </div>
+    </div>
+</section>
+
+<section id="launch" class="py-16 bg-cribCard/40">
+    <div class="max-w-xl mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold text-cribGold mb-6">🚀 OFFICIAL LAUNCH</h3>
+        <div class="bg-cribCard p-6 rounded-2xl border border-cribPurple/30 glow">
+            <p class="text-lg mb-2">🗓️ Date: 20 June 2026</p>
+            <p class="text-lg mb-2">⏰ Time: 15:00 UTC</p>
+            <p class="text-lg mb-4">📍 Platform: <a href="https://pump.fun" target="_blank" class="text-cribLight underline">Pump.fun</a></p>
+            <p class="text-sm text-gray-300">✅ Fair launch • No hidden supply • No insider tokens</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-16 px-4">
+    <div class="max-w-2xl mx-auto">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribPurple mb-6 text-center">👁️ What is CRIBBLE?</h3>
+        <p class="text-gray-100 leading-relaxed">CRIBBLE is a Solana-based meme coin built for the community. It follows the story of an AI creature breaking free from code to find its home on the Solana blockchain.</p>
+        <ul class="mt-6 space-y-3">
+            <li>✅ 100% Transparent & Fair</li>
+            <li>✅ Rewards for holders & active members</li>
+            <li>✅ Lore, contests, stickers & fun</li>
+            <li>✅ No hidden taxes or rug risks</li>
+        </ul>
+    </div>
+</section>
+
+<section id="community" class="py-16 bg-cribCard/40">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6">🤝 Join The Kingdom</h3>
+        <p class="mb-8">Be part of the first chapter of CRIBBLE’s journey. Earn points, rewards, and limited edition items.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://t.me/YourTelegramLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-6 py-2 rounded-lg">Telegram</a>
+            <a href="https://x.com/YourHandle" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">X / Twitter</a>
+            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">Stickers</a>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-cribCard border-t border-cribPurple/20 py-6 text-center text-sm text-gray-400">
+    <p>© 2026 CRIBBLE ($CRIB) | Solana</p>
+    <p class="mt-2">Disclaimer: Meme coin — invest only what you can afford to lose.</p>
+</footer>
+
+</body>
+</html>
