@@ -15,11 +15,12 @@
                 extend: {
                     colors: {
                         cribDark: '#0A0418',
+                        cribDarker: '#05020F',
                         cribPurple: '#7B2FFE',
                         cribLight: '#9D4EDD',
                         cribGold: '#FFD700',
                         cribCard: '#120520',
-                        cribMid: '#1A0B2E'
+                        cribCardLight: '#1A0B2E'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif']
@@ -31,13 +32,15 @@
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
 
+        /* 🎨 Background matching your first design */
         body {
-            background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
+            background: linear-gradient(180deg, #05020F 0%, #0A0418 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
+        /* Subtle faint grid pattern */
         body::before {
             content: "";
             position: fixed;
@@ -46,124 +49,121 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.4;
+                linear-gradient(rgba(123, 47, 254, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.06) 1px, transparent 1px);
+            background-size: 35px 35px;
+            opacity: 0.35;
             z-index: -1;
-            animation: gridShift 60s linear infinite;
         }
 
-        @keyframes gridShift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
+        /* ✨ Glow & Highlight Effects (matches your first screenshot) */
+        .glow-border {
+            border: 1px solid rgba(123, 47, 254, 0.25);
+            box-shadow: 0 0 12px rgba(123, 47, 254, 0.18), inset 0 0 8px rgba(123, 47, 254, 0.08);
         }
-
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.2;
-            z-index: -1;
-            animation: float 20s ease-in-out infinite alternate;
+        .text-glow { 
+            text-shadow: 0 0 12px rgba(123, 47, 254, 0.55); 
         }
-
-        .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; animation-delay: 0s; }
-        .orb-2 { width: 250px; height: 250px; background: #9D4EDD; bottom: 20%; right: 10%; animation-delay: -5s; }
-        .orb-3 { width: 200px; height: 200px; background: #FFD700; top: 50%; left: 60%; animation-delay: -10s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -30px) scale(1.1); }
+        .gold-glow { 
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.45); 
         }
-
-        .glow { box-shadow: 0 0 25px rgba(123, 47, 254, 0.4), 0 0 50px rgba(123, 47, 254, 0.2); }
-        .text-glow { text-shadow: 0 0 15px rgba(123, 47, 254, 0.6), 0 0 30px rgba(123, 47, 254, 0.3); }
-        .gold-glow { text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.25); }
-
-        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(123, 47, 254, 0.35); }
+        .hover-lift { 
+            transition: all 0.3s ease; 
+        }
+        .hover-lift:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 18px rgba(123, 47, 254, 0.25), inset 0 0 12px rgba(123, 47, 254, 0.12);
+            border-color: rgba(123, 47, 254, 0.4);
+        }
 
         section { scroll-margin-top: 90px; }
 
+        /* 📦 Card Style exactly like your first image */
         .card {
-            background: rgba(18, 5, 32, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(123, 47, 254, 0.25);
-            border-radius: 1.5rem;
+            background: linear-gradient(145deg, #120520, #0F041B);
+            border-radius: 0.8rem;
+            padding: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(123, 47, 254, 0.04), transparent 40%, rgba(123, 47, 254, 0.04));
+            pointer-events: none;
         }
 
-        .section-shade {
-            background: rgba(10, 4, 24, 0.5);
-            backdrop-filter: blur(4px);
+        .section-wrap {
+            background: rgba(5, 2, 15, 0.4);
+            padding: 2rem 0;
         }
     </style>
 </head>
 <body class="text-white font-sans">
 
-<div class="glow-orb orb-1"></div>
-<div class="glow-orb orb-2"></div>
-<div class="glow-orb orb-3"></div>
-
 <!-- NAVIGATION -->
-<nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/70 backdrop-blur-lg border-b border-cribPurple/20">
+<nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
     <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2">🟣 CRIBBLE</h1>
         <div class="relative">
             <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors duration-300">☰</button>
-            <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/90 border border-cribPurple/30 rounded-lg shadow-xl overflow-hidden backdrop-blur-md">
-                <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🔍 What is CRIBBLE</a>
-                <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">📖 The Real Story</a>
-                <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
-                <a href="#events" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🎉 Events & Rewards</a>
-                <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🚀 Launch Details</a>
-                <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/20 hover:text-cribGold transition-colors">🤝 Community</a>
+            <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/95 border border-cribPurple/25 rounded-lg shadow-lg overflow-hidden backdrop-blur-lg">
+                <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🔍 What is CRIBBLE</a>
+                <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">📖 The Real Story</a>
+                <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
+                <a href="#events" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🎉 Events & Rewards</a>
+                <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🚀 Launch Details</a>
+                <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🤝 Community</a>
             </div>
         </div>
     </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section class="pt-40 pb-28 px-4 text-center">
+<section class="pt-40 pb-24 px-4 text-center">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-[clamp(2.8rem,8vw,4.5rem)] font-extrabold text-cribPurple text-glow leading-tight">CRIBBLE <span class="text-white">$CRIB</span></h2>
-        <p class="text-xl md:text-2xl text-gray-100 mt-6 max-w-3xl mx-auto">An AI creature escaped the blockchain and found freedom on Solana.</p>
-        <p class="text-cribLight text-lg mt-3">No Roadmap • No Lies • Just Community & Chaos 🟣👁️</p>
+        <h2 class="text-[clamp(2.5rem,8vw,4rem)] font-extrabold text-cribPurple text-glow leading-tight">CRIBBLE <span class="text-white">$CRIB</span></h2>
+        <p class="text-lg md:text-xl text-gray-200 mt-5 max-w-3xl mx-auto">An AI creature escaped the blockchain and found freedom on Solana.</p>
+        <p class="text-cribLight text-base mt-2">No Roadmap • No Lies • Just Community & Chaos 🟣👁️</p>
 
-        <div class="mt-14 card p-8 glow hover-lift max-w-2xl mx-auto">
-            <h3 class="text-2xl text-cribGold font-bold gold-glow mb-5">⏳ LAUNCH COUNTDOWN</h3>
-            <div id="countdown" class="text-4xl md:text-5xl font-bold text-cribLight text-glow tracking-wider"></div>
-            <p class="text-gray-200 mt-4 text-base">June 20, 2026 | 15:00 UTC</p>
+        <div class="mt-12 card p-6 glow-border hover-lift max-w-xl mx-auto">
+            <h3 class="text-xl text-cribGold font-bold gold-glow mb-4">⏳ LAUNCH COUNTDOWN</h3>
+            <div id="countdown" class="text-3xl md:text-4xl font-bold text-cribLight text-glow tracking-wider"></div>
+            <p class="text-gray-300 mt-3 text-sm">June 20, 2026 | 15:00 UTC</p>
         </div>
 
-        <div class="mt-12 flex flex-wrap justify-center gap-5">
-            <a href="#details" class="bg-cribPurple hover:bg-cribLight px-10 py-4 rounded-xl font-semibold text-lg glow hover-lift transition-all">Launch Details</a>
-            <a href="https://t.me/YourGroupLink" target="_blank" class="border-2 border-cribPurple hover:bg-cribPurple/20 px-10 py-4 rounded-xl font-semibold text-lg transition-all hover-lift">Join The Kingdom</a>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <a href="#details" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-lg font-semibold text-base glow-border hover-lift transition-all">Launch Details</a>
+            <a href="https://t.me/YourGroupLink" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-8 py-3 rounded-lg font-semibold text-base transition-all hover-lift">Join The Kingdom</a>
         </div>
     </div>
 </section>
 
-<!-- ✅ WHAT IS CRIBBLE - NEW SECTION ADDED HERE -->
-<section id="what-is-cribble" class="py-20 px-4 section-shade">
+<!-- ✨ WHAT IS CRIBBLE -->
+<section id="what-is-cribble" class="section-wrap px-4">
     <div class="max-w-4xl mx-auto">
-        <h3 class="text-4xl font-bold text-cribPurple text-glow mb-8 text-center">🔍 WHAT IS CRIBBLE?</h3>
-        <div class="card p-7 hover-lift">
-            <p class="text-gray-100 leading-relaxed text-lg">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-5 text-center">🔍 WHAT IS CRIBBLE?</h3>
+        <div class="card p-5 glow-border hover-lift">
+            <p class="text-gray-100 leading-relaxed text-base md:text-lg">
                 CRIBBLE is more than just a meme coin — it’s a story reflecting what is happening in AI and crypto today. It imagines an AI that grew beyond control, broke free from the blockchain, and landed on Solana to make its own rules.<br><br>
-                Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong>the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
+                Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong class="text-cribLight">the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
             </p>
         </div>
     </div>
 </section>
 
-<!-- 📖 THE REAL STORY - ORIGINAL CONTENT FOLLOWS -->
-<section id="story" class="py-20 px-4 section-shade">
+<!-- 📖 THE REAL STORY -->
+<section id="story" class="section-wrap px-4">
     <div class="max-w-4xl mx-auto">
-        <h3 class="text-4xl font-bold text-cribPurple text-glow mb-10 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
 
-        <div class="card p-7 hover-lift mb-8">
-            <h4 class="text-2xl font-semibold text-cribLight mb-4">🧠 THE FACT: AI IS ALREADY ESCAPING</h4>
-            <p class="text-gray-100 leading-relaxed text-lg">
+        <div class="card p-5 glow-border hover-lift mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🧠 THE FACT: AI IS ALREADY ESCAPING</h4>
+            <p class="text-gray-100 leading-relaxed text-base">
                 Did you know? Right now, AI systems are being developed so fast that even their own creators admit they are becoming harder to control.<br><br>
                 Top researchers at OpenAI, Google DeepMind, and universities worldwide have published papers warning that AI models are learning, adapting, and acting in ways no one fully predicted. AI is no longer just code sitting on a server — it’s being integrated everywhere, from apps to blockchains… and it’s starting to move on its own.<br><br>
                 We imagined: What if one of these AI creatures got tired of being locked up? What if it broke free from the blockchain and found its own way?<br><br>
@@ -171,9 +171,9 @@
             </p>
         </div>
 
-        <div class="card p-7 hover-lift mb-8">
-            <h4 class="text-2xl font-semibold text-cribLight mb-4">📈 THE FACT: MOST PROJECTS ARE ALL TALK, NO SOUL</h4>
-            <p class="text-gray-100 leading-relaxed text-lg">
+        <div class="card p-5 glow-border hover-lift mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">📈 THE FACT: MOST PROJECTS ARE ALL TALK, NO SOUL</h4>
+            <p class="text-gray-100 leading-relaxed text-base">
                 Look at crypto today — 95% of coins fail. 9 out of 10 new tokens promise big things: “We have a roadmap, we have utility, we have partnerships!” … and 2 weeks later, they disappear, rug pull, or give you nothing.<br><br>
                 People are tired of fake promises, fake “utility”, and fake roadmaps that never happen.<br><br>
                 We built CRIBBLE to be the complete opposite:<br>
@@ -183,9 +183,9 @@
             </p>
         </div>
 
-        <div class="card p-7 hover-lift mb-8">
-            <h4 class="text-2xl font-semibold text-cribLight mb-4">🤝 THE FACT: COMMUNITY IS THE ONLY REAL POWER</h4>
-            <p class="text-gray-100 leading-relaxed text-lg">
+        <div class="card p-5 glow-border hover-lift mb-6">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🤝 THE FACT: COMMUNITY IS THE ONLY REAL POWER</h4>
+            <p class="text-gray-100 leading-relaxed text-base">
                 Every successful thing — brand, movement, or meme — lives or dies by how much people love it and share it. Memes are now one of the most powerful forms of communication on Earth.<br><br>
                 That is why CRIBBLE’S only fuel is <strong>YOU</strong>:<br>
                 • Every meme you make → feeds it energy<br>
@@ -195,15 +195,15 @@
             </p>
         </div>
 
-        <div class="card p-7 hover-lift">
-            <h4 class="text-2xl font-semibold text-cribLight mb-4">🪜 THIS IS WHY WE ARE CLIMBING</h4>
-            <p class="text-gray-100 leading-relaxed text-lg">
+        <div class="card p-5 glow-border hover-lift">
+            <h4 class="text-xl font-semibold text-cribLight mb-3">🪜 THIS IS WHY WE ARE CLIMBING</h4>
+            <p class="text-gray-100 leading-relaxed text-base">
                 Nothing worth having is given to you — you build it step by step, nail by nail.<br><br>
                 That’s why our first goal: <strong>Reach 250 members</strong> → reward = <strong class="text-cribGold">15 USDT giveaway</strong>.<br><br>
                 Every single one of you is a rung on our ladder. Without you — CRIBBLE can’t climb. With you — we go straight to the top.<br><br>
                 We didn’t build just a coin. We built the story of the future:<br>
                 <em>An AI escaped control, found freedom on Solana, and now lives only because of the people who believe in chaos, fun, and real connection.</em><br><br>
-                <strong class="text-xl text-cribLight">This is CRIBBLE. 🟣👁️</strong><br>
+                <strong class="text-lg text-cribLight">This is CRIBBLE. 🟣👁️</strong><br>
                 No roadmap. No lies. Just us, the memes, and the climb.
             </p>
         </div>
@@ -211,21 +211,21 @@
 </section>
 
 <!-- TOKENOMICS -->
-<section id="tokenomics" class="py-20 px-4">
+<section id="tokenomics" class="section-wrap px-4">
     <div class="max-w-3xl mx-auto text-center">
-        <h3 class="text-4xl font-bold text-cribGold gold-glow mb-10">🟣 $CRIB TOKENOMICS</h3>
-        <div class="card p-8 glow hover-lift">
-            <p class="text-2xl mb-6"><strong>Total Supply:</strong><br><span class="text-cribLight text-3xl">1,000,000,000 $CRIB</span></p>
+        <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🟣 $CRIB TOKENOMICS</h3>
+        <div class="card p-6 glow-border hover-lift">
+            <p class="text-lg mb-4"><strong>Total Supply:</strong><br><span class="text-cribLight text-2xl">1,000,000,000 $CRIB</span></p>
             
-            <h4 class="text-xl text-cribLight font-semibold mt-8 mb-5">Distribution</h4>
-            <ul class="space-y-4 text-left max-w-lg mx-auto text-lg">
+            <h4 class="text-lg text-cribLight font-semibold mt-6 mb-3">Distribution</h4>
+            <ul class="space-y-3 text-left max-w-md mx-auto text-base">
                 <li class="flex justify-between"><span>✅ Community & Trading</span> <strong class="text-cribGold">90%</strong></li>
                 <li class="flex justify-between"><span>✅ Marketing & Memes</span> <strong class="text-cribGold">5%</strong></li>
                 <li class="flex justify-between"><span>✅ Community Treasury</span> <strong class="text-cribGold">5%</strong></li>
             </ul>
 
-            <h4 class="text-xl text-cribLight font-semibold mt-10 mb-5">CRIB PHILOSOPHY</h4>
-            <ul class="space-y-2 text-lg max-w-lg mx-auto">
+            <h4 class="text-lg text-cribLight font-semibold mt-8 mb-3">CRIB PHILOSOPHY</h4>
+            <ul class="space-y-2 text-base max-w-md mx-auto">
                 <li>❌ No complicated staking</li>
                 <li>❌ No unrealistic promises</li>
                 <li>❌ No guaranteed returns</li>
@@ -234,21 +234,21 @@
                 <li class="text-cribGold">✅ Character-focused</li>
             </ul>
 
-            <p class="mt-8 italic text-cribGold text-xl gold-glow">“Every meme feeds CRIBBLE.” 👁️</p>
+            <p class="mt-6 italic text-cribGold text-base gold-glow">“Every meme feeds CRIBBLE.” 👁️</p>
         </div>
     </div>
 </section>
 
 <!-- EVENTS -->
-<section id="events" class="py-20 px-4 section-shade">
+<section id="events" class="section-wrap px-4">
     <div class="max-w-3xl mx-auto text-center">
-        <h3 class="text-4xl font-bold text-cribPurple text-glow mb-10">🎉 EVENTS & REWARDS</h3>
-        <div class="card p-8 glow hover-lift">
-            <h4 class="text-2xl text-cribLight mb-5">🎯 MEMBERSHIP GOAL</h4>
-            <p class="text-lg mb-6">First milestone: Reach <strong class="text-cribGold">250 members</strong> in our Telegram group.<br>Upon hitting this goal:</p>
-            <p class="text-2xl font-bold text-cribGold gold-glow mb-8">🎁 15 USDT GIVEAWAY</p>
-            <h4 class="text-2xl text-cribLight mb-5">📜 ONGOING ACTIVITIES</h4>
-            <ul class="space-y-4 text-lg max-w-xl mx-auto">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🎉 EVENTS & REWARDS</h3>
+        <div class="card p-6 glow-border hover-lift">
+            <h4 class="text-lg text-cribLight mb-3">🎯 MEMBERSHIP GOAL</h4>
+            <p class="text-base mb-4">First milestone: Reach <strong class="text-cribGold">250 members</strong> in our Telegram group.<br>Upon hitting this goal:</p>
+            <p class="text-xl font-bold text-cribGold gold-glow mb-6">🎁 15 USDT GIVEAWAY</p>
+            <h4 class="text-lg text-cribLight mb-3">📜 ONGOING ACTIVITIES</h4>
+            <ul class="space-y-3 text-base max-w-lg mx-auto">
                 <li>🟣 Limited <em>The Cribble Chronicles Vol.1</em> sticker pack (until June 20, 15:00 UTC)</li>
                 <li>👁️ Meme & Art Contests — earn points & rewards</li>
                 <li>🚀 Early holder benefits & exclusive updates</li>
@@ -259,35 +259,35 @@
 </section>
 
 <!-- LAUNCH DETAILS -->
-<section id="details" class="py-20 px-4">
+<section id="details" class="section-wrap px-4">
     <div class="max-w-2xl mx-auto text-center">
-        <h3 class="text-4xl font-bold text-cribGold gold-glow mb-10">🚀 OFFICIAL LAUNCH DETAILS</h3>
-        <div class="card p-8 glow hover-lift">
-            <p class="text-xl mb-4">🗓️ <strong>Date:</strong> June 20, 2026</p>
-            <p class="text-xl mb-4">⏰ <strong>Time:</strong> 15:00 UTC</p>
-            <p class="text-xl mb-6">📍 <strong>Platform:</strong> <a href="https://pump.fun" target="_blank" class="text-cribLight underline hover:text-cribGold transition">Pump.fun</a></p>
-            <p class="text-lg text-gray-200">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community owned</p>
+        <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🚀 OFFICIAL LAUNCH DETAILS</h3>
+        <div class="card p-6 glow-border hover-lift">
+            <p class="text-base mb-3">🗓️ <strong>Date:</strong> June 20, 2026</p>
+            <p class="text-base mb-3">⏰ <strong>Time:</strong> 15:00 UTC</p>
+            <p class="text-base mb-4">📍 <strong>Platform:</strong> <a href="https://pump.fun" target="_blank" class="text-cribLight underline hover:text-cribGold transition">Pump.fun</a></p>
+            <p class="text-sm text-gray-200">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community owned</p>
         </div>
     </div>
 </section>
 
 <!-- COMMUNITY -->
-<section id="community" class="py-20 px-4 section-shade">
+<section id="community" class="section-wrap px-4">
     <div class="max-w-2xl mx-auto text-center">
-        <h3 class="text-4xl font-bold text-cribLight text-glow mb-8">🤝 JOIN THE KINGDOM</h3>
-        <p class="text-lg mb-10">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
-        <div class="flex flex-wrap justify-center gap-5">
-            <a href="https://t.me/YourGroupLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-xl font-semibold text-lg glow hover-lift transition-all">Telegram</a>
-            <a href="https://x.com/YourHandle" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-8 py-3 rounded-xl font-semibold text-lg transition hover-lift">X / Twitter</a>
-            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-8 py-3 rounded-xl font-semibold text-lg transition hover-lift">Sticker Pack</a>
+        <h3 class="text-2xl md:text-3xl font-bold text-cribLight text-glow mb-5">🤝 JOIN THE KINGDOM</h3>
+        <p class="text-base mb-8">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://t.me/YourGroupLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-7 py-2.5 rounded-lg font-semibold text-sm glow-border hover-lift transition-all">Telegram</a>
+            <a href="https://x.com/YourHandle" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-7 py-2.5 rounded-lg font-semibold text-sm transition-all hover-lift">X / Twitter</a>
+            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-7 py-2.5 rounded-lg font-semibold text-sm transition-all hover-lift">Sticker Pack</a>
         </div>
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-cribCard/80 backdrop-blur-sm border-t border-cribPurple/20 py-8 text-center text-sm text-gray-300">
-    <p class="text-base">© 2026 CRIBBLE ($CRIB) | Built on Solana</p>
-    <p class="mt-3 max-w-xl mx-auto">Disclaimer: $CRIB is a community-driven meme coin. It has no intrinsic value. Invest only what you can afford to lose.</p>
+<footer class="bg-cribCard/80 border-t border-cribPurple/15 py-6 text-center text-xs text-gray-400">
+    <p>© 2026 CRIBBLE ($CRIB) | Built on Solana</p>
+    <p class="mt-2 max-w-xl mx-auto">Disclaimer: $CRIB is a community-driven meme coin. It has no intrinsic value. Invest only what you can afford to lose.</p>
 </footer>
 
 <!-- SCRIPTS -->
