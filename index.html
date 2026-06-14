@@ -34,7 +34,6 @@
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
 
-        /* ✅ Original cosmic gradient background */
         body {
             background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
             min-height: 100vh;
@@ -125,7 +124,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* ✅ Green glowing percentage badges */
         .percent-badge {
             background: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
             color: #000;
@@ -144,7 +142,6 @@
             margin: 1.2rem 0;
         }
 
-        /* ✅ Accordion / Toggle Styles */
         .token-item {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -279,7 +276,7 @@
     </div>
 </section>
 
-<!-- 🟣 TOKENOMICS - UPDATED WITH TOGGLE DETAILS -->
+<!-- 🟣 TOKENOMICS -->
 <section id="tokenomics" class="py-20 px-4">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🟣 $CRIB Tokenomics</h3>
@@ -291,7 +288,6 @@
 
             <h4 class="text-xl text-cribLight font-semibold mb-5">📊 Token Distribution</h4>
             <ul class="space-y-4 text-left max-w-lg mx-auto">
-                <!-- 90% Community & Trading -->
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail1')">
                     <div class="flex justify-between items-center">
                         <span class="flex items-center gap-2">🤝 Community & Trading</span>
@@ -301,8 +297,6 @@
                         Available through the market and community participation. This is the largest portion, ensuring fair access, liquidity, and free trading for all holders.
                     </div>
                 </li>
-
-                <!-- 5% Marketing & Memes -->
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail2')">
                     <div class="flex justify-between items-center">
                         <span class="flex items-center gap-2">📣 Marketing & Memes</span>
@@ -312,8 +306,6 @@
                         Used for contests, meme rewards, graphics creation, social media promotion, and all activities that help grow and strengthen the community.
                     </div>
                 </li>
-
-                <!-- 5% Community Treasury -->
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail3')">
                     <div class="flex justify-between items-center">
                         <span class="flex items-center gap-2">🏦 Community Treasury</span>
@@ -349,13 +341,54 @@
                 </div>
             </div>
 
-            <h4 class="text-xl text-cribLight font-semibold mb-4">🔄 The CRIB Cycle</h4>
-            <ol class="list-decimal list-inside space-y-2 text-gray-200 max-w-md mx-auto text-left">
-                <li>New memes attract attention.</li>
-                <li>Community grows.</li>
-                <li>More people create CRIBBLE content.</li>
-                <li>More memes spread.</li>
-                <li>CRIBBLE grows stronger.</li>
+            <!-- ✅ Updated Expandable Crib Cycle -->
+            <h4 class="text-xl text-cribLight font-semibold mb-5">🔄 The CRIB Cycle</h4>
+            <ol class="space-y-3 text-left max-w-lg mx-auto">
+                <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle1')">
+                    <div class="flex justify-between items-center font-medium">
+                        <span>1. New memes attract attention</span>
+                        <span class="text-cribLight">+</span>
+                    </div>
+                    <div id="cycle1" class="token-details text-gray-200 text-sm leading-relaxed">
+                        Every meme, artwork, or funny post about CRIBBLE acts like a beacon. It catches the eye of people scrolling through social media, making them curious about the story behind the coin.
+                    </div>
+                </li>
+                <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle2')">
+                    <div class="flex justify-between items-center font-medium">
+                        <span>2. Community grows</span>
+                        <span class="text-cribLight">+</span>
+                    </div>
+                    <div id="cycle2" class="token-details text-gray-200 text-sm leading-relaxed">
+                        Curious people join our Telegram and follow us on X. As more people come in, we get more energy, more ideas, and a stronger group ready to support each other.
+                    </div>
+                </li>
+                <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle3')">
+                    <div class="flex justify-between items-center font-medium">
+                        <span>3. More people create CRIBBLE content</span>
+                        <span class="text-cribLight">+</span>
+                    </div>
+                    <div id="cycle3" class="token-details text-gray-200 text-sm leading-relaxed">
+                        When people feel part of something fun, they start making their own memes, stickers, fan art, and posts. This isn’t forced — it comes naturally from being part of the story.
+                    </div>
+                </li>
+                <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle4')">
+                    <div class="flex justify-between items-center font-medium">
+                        <span>4. More memes spread</span>
+                        <span class="text-cribLight">+</span>
+                    </div>
+                    <div id="cycle4" class="token-details text-gray-200 text-sm leading-relaxed">
+                        Each new creation gets shared across groups, feeds, and timelines. The story of CRIBBLE travels further, reaching even more people who haven’t heard of us yet.
+                    </div>
+                </li>
+                <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle5')">
+                    <div class="flex justify-between items-center font-medium">
+                        <span>5. CRIBBLE grows stronger</span>
+                        <span class="text-cribLight">+</span>
+                    </div>
+                    <div id="cycle5" class="token-details text-gray-200 text-sm leading-relaxed">
+                        More attention → more holders → more activity. CRIBBLE becomes more resilient, more visible, and more valuable to everyone who believes in it. This cycle never stops.
+                    </div>
+                </li>
             </ol>
 
             <p class="mt-8 italic text-cribGold text-lg gold-glow">> Every meme feeds CRIBBLE. 👁️</p>
@@ -416,7 +449,6 @@
 
 <!-- SCRIPTS -->
 <script>
-// Countdown Timer
 const launchDate = new Date("June 20, 2026 15:00 UTC").getTime();
 const countdown = setInterval(() => {
     const now = new Date().getTime();
@@ -432,7 +464,6 @@ const countdown = setInterval(() => {
     }
 }, 1000);
 
-// Mobile Menu Toggle
 const menuToggle = document.getElementById('menuToggle');
 const dropdownMenu = document.getElementById('dropdownMenu');
 menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('hidden'));
@@ -441,7 +472,6 @@ document.addEventListener('click', e => {
     if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) dropdownMenu.classList.add('hidden');
 });
 
-// ✅ Token Details Toggle Function
 function toggleDetails(id) {
     const element = document.getElementById(id);
     element.classList.toggle('open');
