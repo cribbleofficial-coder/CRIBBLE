@@ -119,19 +119,15 @@
             pointer-events: none;
         }
 
-        .section-shade {
-            background: rgba(10, 4, 24, 0.5);
-            backdrop-filter: blur(4px);
-        }
-
-        /* ✅ New Section Divider Style */
+        /* ✅ PURPLE SECTION DIVIDERS */
         .section-divider {
-            width: 90%;
-            max-width: 800px;
+            width: 92%;
+            max-width: 850px;
             height: 1px;
-            margin: 3rem auto;
-            background: linear-gradient(90deg, transparent, rgba(123, 47, 254, 0.5), transparent);
-            box-shadow: 0 0 8px rgba(123, 47, 254, 0.25);
+            margin: 3.5rem auto;
+            background: linear-gradient(90deg, transparent, #7B2FFE 40%, #9D4EDD 60%, transparent);
+            box-shadow: 0 0 10px rgba(123, 47, 254, 0.35);
+            border-radius: 50%;
         }
 
         .percent-badge {
@@ -189,6 +185,23 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        /* ✅ UNIFORM PURPLE BUTTON STYLE */
+        .btn-purple {
+            background: linear-gradient(135deg, #7B2FFE, #9D4EDD);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(123, 47, 254, 0.2);
+        }
+        .btn-purple:hover {
+            background: linear-gradient(135deg, #9D4EDD, #B168FF);
+            box-shadow: 0 0 15px rgba(123, 47, 254, 0.4);
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body class="text-white font-sans">
@@ -229,8 +242,8 @@
         </div>
 
         <div class="mt-10 flex flex-wrap justify-center gap-4">
-            <a href="#details" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-lg font-semibold text-base glow-border hover-lift transition-all">Launch Details</a>
-            <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-8 py-3 rounded-lg font-semibold text-base transition-all hover-lift">Join The Kingdom</a>
+            <a href="#details" class="btn-purple">Launch Details</a>
+            <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Join The Kingdom</a>
         </div>
     </div>
 </section>
@@ -248,7 +261,7 @@
     </div>
 </section>
 
-<!-- ✅ DIVIDER -->
+<!-- DIVIDER -->
 <div class="section-divider"></div>
 
 <!-- 📖 THE REAL STORY -->
@@ -273,8 +286,7 @@
                 People are tired of fake promises, fake “utility”, and fake roadmaps that never happen.<br><br>
                 We built CRIBBLE to be the complete opposite:<br>
                 ✅ <strong>NO ROADMAP</strong> — Because life doesn’t have a roadmap. Real things change, adapt, and grow naturally. We don’t promise what we can’t keep.<br>
-                ✅ <strong>NO FAKE UTILITY</strong> — Because the best value comes from people, culture, and fun — not made-up features.<br>
-                ✅ <strong>100% CHAOS</strong> — Because real success is messy, wild, and unpredictable. The biggest movements started as pure chaos.
+                ✅ <strong>NO FAKE UTILITY</strong> — Because the best value comes from people, culture, and fun — not made-up features.
             </p>
         </div>
 
@@ -305,7 +317,7 @@
     </div>
 </section>
 
-<!-- ✅ DIVIDER -->
+<!-- DIVIDER -->
 <div class="section-divider"></div>
 
 <!-- 🟣 TOKENOMICS -->
@@ -325,7 +337,7 @@
                         <span class="flex items-center gap-2">🤝 Community & Trading</span>
                         <span class="percent-badge">90%</span>
                     </div>
-                    <div id="detail1" class="token-details text-gray-200 text-sm leading-relaxed">
+                    <div id="detail1" class="token-details">
                         Available through the market and community participation. This is the largest portion, ensuring fair access, liquidity, and free trading for all holders.
                     </div>
                 </li>
@@ -334,7 +346,7 @@
                         <span class="flex items-center gap-2">📣 Marketing & Memes</span>
                         <span class="percent-badge">5%</span>
                     </div>
-                    <div id="detail2" class="token-details text-gray-200 text-sm leading-relaxed">
+                    <div id="detail2" class="token-details">
                         Used for contests, meme rewards, graphics creation, social media promotion, and all activities that help grow and strengthen the community.
                     </div>
                 </li>
@@ -343,7 +355,7 @@
                         <span class="flex items-center gap-2">🏦 Community Treasury</span>
                         <span class="percent-badge">5%</span>
                     </div>
-                    <div id="detail3" class="token-details text-gray-200 text-sm leading-relaxed">
+                    <div id="detail3" class="token-details">
                         Reserved for future events, strategic partnerships, community giveaways, and supporting long-term growth initiatives decided by the community.
                     </div>
                 </li>
@@ -380,8 +392,8 @@
                         <span>1. New memes attract attention</span>
                         <span class="text-cribLight">+</span>
                     </div>
-                    <div id="cycle1" class="token-details text-gray-200 text-sm leading-relaxed">
-                        Every meme, artwork, or funny post about CRIBBLE acts like a beacon. It catches the eye of people scrolling through social media, making them curious about the story behind the coin.
+                    <div id="cycle1" class="token-details">
+                        Every meme, artwork, or funny post about CRIBBLE acts like a beacon, bringing new eyes and people to the project.
                     </div>
                 </li>
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle2')">
@@ -389,8 +401,8 @@
                         <span>2. Community grows</span>
                         <span class="text-cribLight">+</span>
                     </div>
-                    <div id="cycle2" class="token-details text-gray-200 text-sm leading-relaxed">
-                        Curious people join our Telegram and follow us on X. As more people come in, we get more energy, more ideas, and a stronger group ready to support each other.
+                    <div id="cycle2" class="token-details">
+                        Interested people join our Telegram and social channels, bringing new energy, ideas, and members.
                     </div>
                 </li>
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle3')">
@@ -398,17 +410,17 @@
                         <span>3. More people create CRIBBLE content</span>
                         <span class="text-cribLight">+</span>
                     </div>
-                    <div id="cycle3" class="token-details text-gray-200 text-sm leading-relaxed">
-                        When people feel part of something fun, they start making their own memes, stickers, fan art, and posts. This isn’t forced — it comes naturally from being part of the story.
+                    <div id="cycle3" class="token-details">
+                        As the community grows, more people share their own memes, stories, and art, expanding our reach naturally.
                     </div>
                 </li>
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle4')">
                     <div class="flex justify-between items-center font-medium">
-                        <span>4. More memes spread</span>
+                        <span>4. Content spreads further</span>
                         <span class="text-cribLight">+</span>
                     </div>
-                    <div id="cycle4" class="token-details text-gray-200 text-sm leading-relaxed">
-                        Each new creation gets shared across groups, feeds, and timelines. The story of CRIBBLE travels further, reaching even more people who haven’t heard of us yet.
+                    <div id="cycle4" class="token-details">
+                        High-quality content gets shared across platforms, reaching new audiences and building brand recognition.
                     </div>
                 </li>
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle5')">
@@ -416,8 +428,8 @@
                         <span>5. CRIBBLE grows stronger</span>
                         <span class="text-cribLight">+</span>
                     </div>
-                    <div id="cycle5" class="token-details text-gray-200 text-sm leading-relaxed">
-                        More attention → more holders → more activity. CRIBBLE becomes more resilient, more visible, and more valuable to everyone who believes in it. This cycle never stops.
+                    <div id="cycle5" class="token-details">
+                        More visibility = more holders = more value. This cycle repeats and grows as long as we stay active together.
                     </div>
                 </li>
             </ol>
@@ -427,10 +439,10 @@
     </div>
 </section>
 
-<!-- ✅ DIVIDER -->
+<!-- DIVIDER -->
 <div class="section-divider"></div>
 
-<!-- EVENTS -->
+<!-- 🎉 EVENTS & REWARDS -->
 <section id="events" class="px-4">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🎉 EVENTS & REWARDS</h3>
@@ -449,34 +461,34 @@
     </div>
 </section>
 
-<!-- ✅ DIVIDER -->
+<!-- DIVIDER -->
 <div class="section-divider"></div>
 
-<!-- LAUNCH DETAILS -->
+<!-- 🚀 LAUNCH DETAILS -->
 <section id="details" class="px-4">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🚀 OFFICIAL LAUNCH DETAILS</h3>
         <div class="card p-6 glow-border hover-lift">
             <p class="text-base mb-3">🗓️ <strong>Date:</strong> June 20, 2026</p>
             <p class="text-base mb-3">⏰ <strong>Time:</strong> 15:00 UTC</p>
-            <p class="text-base mb-4">📍 <strong>Platform:</strong> <a href="https://pump.fun" target="_blank" class="text-cribLight underline hover:text-cribGold transition">Pump.fun</a></p>
-            <p class="text-sm text-gray-200">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community owned</p>
+            <p class="text-base mb-4">📍 <strong>Platform:</strong> <a href="https://pump.fun" target="_blank" class="text-cribLight underline hover:text-cribGold transition-colors">Pump.fun</a></p>
+            <p class="text-sm text-gray-200">✅ 100% Fair Launch<br>✅ No hidden supply<br>✅ No insider tokens<br>✅ Fully community-owned</p>
         </div>
     </div>
 </section>
 
-<!-- ✅ DIVIDER -->
+<!-- DIVIDER -->
 <div class="section-divider"></div>
 
-<!-- COMMUNITY -->
+<!-- 🤝 COMMUNITY -->
 <section id="community" class="px-4 pb-20">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribLight text-glow mb-5">🤝 JOIN THE KINGDOM</h3>
         <p class="text-base mb-8">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="bg-cribPurple hover:bg-cribLight px-7 py-2.5 rounded-lg font-semibold text-sm glow-border hover-lift transition-all">Telegram</a>
-            <a href="https://x.com/CRIBBLE_" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-7 py-2.5 rounded-lg font-semibold text-sm transition-all hover-lift">X / Twitter</a>
-            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="border border-cribPurple/40 hover:bg-cribPurple/15 px-7 py-2.5 rounded-lg font-semibold text-sm transition-all hover-lift">Sticker Pack</a>
+            <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple min-w-[120px]">Telegram</a>
+            <a href="https://x.com/CRIBBLE_Coin" target="_blank" class="btn-purple min-w-[120px]">X / Twitter</a>
+            <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="btn-purple min-w-[160px]">Sticker Pack</a>
         </div>
     </div>
 </section>
@@ -489,32 +501,34 @@
 
 <!-- SCRIPTS -->
 <script>
-const launchDate = new Date("June 20, 2026 15:00 UTC").getTime();
+const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
 const countdown = setInterval(() => {
     const now = new Date().getTime();
     const diff = launchDate - now;
+    if (diff <= 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").textContent = "LAUNCHED! 🚀";
+        return;
+    }
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById("countdown").innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-    if (diff < 0) {
-        clearInterval(countdown);
-        document.getElementById("countdown").innerHTML = "LAUNCHED! 🚀";
-    }
+    document.getElementById("countdown").textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
 }, 1000);
 
 const menuToggle = document.getElementById('menuToggle');
 const dropdownMenu = document.getElementById('dropdownMenu');
 menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('hidden'));
-dropdownMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => dropdownMenu.classList.add('hidden')));
-document.addEventListener('click', e => {
-    if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) dropdownMenu.classList.add('hidden');
+document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+    }
 });
 
 function toggleDetails(id) {
-    const element = document.getElementById(id);
-    element.classList.toggle('open');
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
 }
 </script>
 
