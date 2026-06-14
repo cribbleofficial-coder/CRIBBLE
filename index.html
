@@ -28,29 +28,41 @@
 </head>
 <body class="bg-cribDark text-white font-sans">
 
+<!-- Navbar -->
 <nav class="bg-cribCard/80 backdrop-blur-md fixed w-full z-50 border-b border-cribPurple/20">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <h1 class="text-xl md:text-2xl font-bold text-cribLight text-glow">🟣 CRIBBLE</h1>
         <div class="hidden md:flex gap-6 text-sm">
             <a href="#about" class="hover:text-cribGold transition">About</a>
             <a href="#launch" class="hover:text-cribGold transition">Launch</a>
+            <a href="#guide" class="hover:text-cribGold transition">Guide</a>
             <a href="#community" class="hover:text-cribGold transition">Community</a>
         </div>
     </div>
 </nav>
 
+<!-- Hero Section -->
 <section class="pt-36 pb-24 px-4 text-center">
     <div class="max-w-3xl mx-auto">
         <h2 class="text-[clamp(2.5rem,7vw,4rem)] font-extrabold text-cribPurple text-glow">CRIBBLE <span class="text-white">($CRIB)</span></h2>
         <p class="text-lg md:text-xl text-gray-200 mt-4">An AI creature escaped the blockchain and found Solana.</p>
         <p class="text-cribLight mt-2">Fair Launch • Community Driven • Trust the Chaos</p>
+
+        <!-- Launch Countdown -->
+        <div class="mt-10 bg-cribCard p-6 rounded-2xl border border-cribPurple/40 glow max-w-xl mx-auto">
+            <h3 class="text-xl text-cribGold font-bold mb-4">⏳ LAUNCH COUNTDOWN</h3>
+            <div id="countdown" class="text-3xl md:text-4xl font-bold text-cribLight"></div>
+            <p class="text-sm text-gray-300 mt-2">June 20, 2026 | 15:00 UTC</p>
+        </div>
+
         <div class="mt-10 flex flex-wrap justify-center gap-4">
             <a href="#launch" class="bg-cribPurple hover:bg-cribLight px-8 py-3 rounded-xl font-semibold glow transition">Launch Details</a>
-            <a href="https://t.me/YourTelegramLink" target="_blank" class="border border-cribPurple hover:bg-cribPurple/20 px-8 py-3 rounded-xl transition">Join Telegram</a>
+            <a href="https://t.me/YourGroupLink" target="_blank" class="border border-cribPurple hover:bg-cribPurple/20 px-8 py-3 rounded-xl transition">Join Telegram</a>
         </div>
     </div>
 </section>
 
+<!-- Launch Info -->
 <section id="launch" class="py-16 bg-cribCard/40">
     <div class="max-w-xl mx-auto px-4 text-center">
         <h3 class="text-3xl font-bold text-cribGold mb-6">🚀 OFFICIAL LAUNCH</h3>
@@ -63,6 +75,7 @@
     </div>
 </section>
 
+<!-- About -->
 <section id="about" class="py-16 px-4">
     <div class="max-w-2xl mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple mb-6 text-center">👁️ What is CRIBBLE?</h3>
@@ -76,22 +89,69 @@
     </div>
 </section>
 
-<section id="community" class="py-16 bg-cribCard/40">
+<!-- Transfer Guide -->
+<section id="guide" class="py-16 bg-cribCard/40">
+    <div class="max-w-2xl mx-auto px-4">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6 text-center">📋 How to Transfer $CRIB from Pump.fun to Phantom</h3>
+        <div class="bg-cribCard p-6 rounded-xl border border-cribPurple/20">
+            <h4 class="text-lg font-semibold mb-3">Method 1: Already connected Phantom</h4>
+            <ol class="list-decimal list-inside space-y-2 text-gray-100">
+                <li>Go to <a href="https://pump.fun" target="_blank" class="text-cribLight">pump.fun</a> → open your profile</li>
+                <li>Select $CRIB → click <strong>Send / Withdraw</strong></li>
+                <li>Open Phantom → tap <strong>Receive</strong> → copy your Solana address</li>
+                <li>Paste address, enter amount, leave ~0.005 SOL for fees</li>
+                <li>Confirm in Phantom → done ✅</li>
+            </ol>
+
+            <h4 class="text-lg font-semibold mt-6 mb-3">Method 2: Using Pump.fun internal wallet</h4>
+            <ol class="list-decimal list-inside space-y-2 text-gray-100">
+                <li>Profile → <strong>View Wallet → Export Private Key</strong></li>
+                <li>Copy key safely — <strong>never share it</strong></li>
+                <li>Phantom → Add Wallet → Import Private Key</li>
+                <li>Send $CRIB to your main Phantom address</li>
+            </ol>
+
+            <p class="text-sm text-yellow-300 mt-4">⚠️ Only use Solana network. Always keep SOL for gas fees.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Community -->
+<section id="community" class="py-16 px-4">
     <div class="max-w-2xl mx-auto px-4 text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribLight mb-6">🤝 Join The Kingdom</h3>
         <p class="mb-8">Be part of the first chapter of CRIBBLE’s journey. Earn points, rewards, and limited edition items.</p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://t.me/YourTelegramLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-6 py-2 rounded-lg">Telegram</a>
+            <a href="https://t.me/YourGroupLink" target="_blank" class="bg-cribPurple hover:bg-cribLight px-6 py-2 rounded-lg">Telegram</a>
             <a href="https://x.com/YourHandle" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">X / Twitter</a>
             <a href="https://t.me/addstickers/CribbleChroniclesVol1" target="_blank" class="bg-cribPurple/80 hover:bg-cribPurple px-6 py-2 rounded-lg">Stickers</a>
         </div>
     </div>
 </section>
 
+<!-- Footer -->
 <footer class="bg-cribCard border-t border-cribPurple/20 py-6 text-center text-sm text-gray-400">
     <p>© 2026 CRIBBLE ($CRIB) | Solana</p>
     <p class="mt-2">Disclaimer: Meme coin — invest only what you can afford to lose.</p>
 </footer>
+
+<!-- Countdown Script -->
+<script>
+const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
+const countdown = setInterval(() => {
+    const now = new Date().getTime();
+    const diff = launchDate - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if (diff < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "LAUNCHED! 🚀";
+    }
+}, 1000);
+</script>
 
 </body>
 </html>
