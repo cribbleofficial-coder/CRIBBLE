@@ -163,6 +163,23 @@
             padding: 0.8rem 1rem;
             margin-top: 0.6rem;
         }
+
+        /* ✅ Improved Nav Alignment */
+        nav {
+            width: 100%;
+            left: 0;
+            right: 0;
+            padding: 0 !important;
+        }
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body class="text-white font-sans">
@@ -171,12 +188,12 @@
 <div class="glow-orb orb-2"></div>
 <div class="glow-orb orb-3"></div>
 
-<!-- NAVIGATION -->
-<nav class="fixed w-full top-0 left-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
-    <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2">🟣 CRIBBLE</h1>
+<!-- ✅ FIXED NAVIGATION -->
+<nav class="fixed w-full top-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
+    <div class="nav-container">
+        <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2 m-0">🟣 CRIBBLE</h1>
         <div class="relative">
-            <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors duration-300">☰</button>
+            <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors duration-300 p-2">☰</button>
             <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/95 border border-cribPurple/25 rounded-lg shadow-lg overflow-hidden backdrop-blur-lg">
                 <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🔍 What is CRIBBLE</a>
                 <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">📖 The Real Story</a>
@@ -341,7 +358,7 @@
                 </div>
             </div>
 
-            <!-- ✅ Updated Expandable Crib Cycle -->
+            <!-- ✅ Expandable Crib Cycle -->
             <h4 class="text-xl text-cribLight font-semibold mb-5">🔄 The CRIB Cycle</h4>
             <ol class="space-y-3 text-left max-w-lg mx-auto">
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle1')">
