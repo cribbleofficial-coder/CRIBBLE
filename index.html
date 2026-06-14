@@ -124,6 +124,16 @@
             backdrop-filter: blur(4px);
         }
 
+        /* ✅ New Section Divider Style */
+        .section-divider {
+            width: 90%;
+            max-width: 800px;
+            height: 1px;
+            margin: 3rem auto;
+            background: linear-gradient(90deg, transparent, rgba(123, 47, 254, 0.5), transparent);
+            box-shadow: 0 0 8px rgba(123, 47, 254, 0.25);
+        }
+
         .percent-badge {
             background: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
             color: #000;
@@ -164,7 +174,6 @@
             margin-top: 0.6rem;
         }
 
-        /* ✅ Improved Nav Alignment */
         nav {
             width: 100%;
             left: 0;
@@ -188,7 +197,7 @@
 <div class="glow-orb orb-2"></div>
 <div class="glow-orb orb-3"></div>
 
-<!-- ✅ FIXED NAVIGATION -->
+<!-- NAVIGATION -->
 <nav class="fixed w-full top-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
     <div class="nav-container">
         <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2 m-0">🟣 CRIBBLE</h1>
@@ -227,7 +236,7 @@
 </section>
 
 <!-- ✨ WHAT IS CRIBBLE -->
-<section id="what-is-cribble" class="section-shade px-4">
+<section id="what-is-cribble" class="px-4">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-5 text-center">🔍 WHAT IS CRIBBLE?</h3>
         <div class="card p-5 glow-border hover-lift">
@@ -239,8 +248,11 @@
     </div>
 </section>
 
+<!-- ✅ DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- 📖 THE REAL STORY -->
-<section id="story" class="section-shade px-4">
+<section id="story" class="px-4">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
 
@@ -293,8 +305,11 @@
     </div>
 </section>
 
+<!-- ✅ DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- 🟣 TOKENOMICS -->
-<section id="tokenomics" class="py-20 px-4">
+<section id="tokenomics" class="px-4">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🟣 $CRIB Tokenomics</h3>
         <div class="card p-8 glow-border hover-lift">
@@ -358,7 +373,6 @@
                 </div>
             </div>
 
-            <!-- ✅ Expandable Crib Cycle -->
             <h4 class="text-xl text-cribLight font-semibold mb-5">🔄 The CRIB Cycle</h4>
             <ol class="space-y-3 text-left max-w-lg mx-auto">
                 <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('cycle1')">
@@ -413,8 +427,11 @@
     </div>
 </section>
 
+<!-- ✅ DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- EVENTS -->
-<section id="events" class="section-shade px-4 py-20">
+<section id="events" class="px-4">
     <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🎉 EVENTS & REWARDS</h3>
         <div class="card p-6 glow-border hover-lift">
@@ -432,8 +449,11 @@
     </div>
 </section>
 
+<!-- ✅ DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- LAUNCH DETAILS -->
-<section id="details" class="py-20 px-4">
+<section id="details" class="px-4">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🚀 OFFICIAL LAUNCH DETAILS</h3>
         <div class="card p-6 glow-border hover-lift">
@@ -445,8 +465,11 @@
     </div>
 </section>
 
+<!-- ✅ DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- COMMUNITY -->
-<section id="community" class="section-shade px-4 py-20">
+<section id="community" class="px-4 pb-20">
     <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-cribLight text-glow mb-5">🤝 JOIN THE KINGDOM</h3>
         <p class="text-base mb-8">Be part of the story. Help CRIBBLE climb, earn rewards, and build something real together.</p>
