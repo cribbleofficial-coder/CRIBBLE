@@ -33,84 +33,79 @@
     </script>
     <style type="text/tailwindcss">
         html { scroll-behavior: smooth; }
+        body { margin: 0; min-height: 100vh; overflow-x: hidden; background: #05020F; }
 
-        body {
-            background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            margin: 0;
-        }
-
-        /* 🚀 FAST LOADING SCREEN - SHOWS FIRST */
+        /* 🚀 FAST LOADING SCREEN - EXACT MATCH TO YOUR SCREENSHOT */
         #loading-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
+            inset: 0;
             background: #05020F;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         #loading-screen.hidden {
             opacity: 0;
             visibility: hidden;
         }
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(123, 47, 254, 0.15);
-            border-top: 3px solid #7B2FFE;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
+            background: conic-gradient(#7B2FFE 0%, #7B2FFE 25%, transparent 25%, transparent 100%);
+            mask: radial-gradient(transparent 55%, black 55%);
+            -webkit-mask: radial-gradient(transparent 55%, black 55%);
             animation: spin 1s linear infinite;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 0 15px rgba(123, 47, 254, 0.3);
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 12px rgba(123, 47, 254, 0.5));
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         .loading-text {
-            font-size: 1.1rem;
-            color: #E9D5FF;
-            text-align: center;
-            max-width: 320px;
-            animation: pulse 1.5s ease-in-out infinite alternate;
-            padding: 0 1rem;
+            font-size: 1.15rem;
+            color: #D8B4FE;
+            margin-bottom: 1rem;
+            animation: pulse 1.4s ease-in-out infinite alternate;
         }
         @keyframes pulse {
             0% { opacity: 0.7; }
             100% { opacity: 1; }
         }
-        .loading-sub {
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
+        .loading-brand {
+            font-size: 1rem;
             color: #FFD700;
-            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .loading-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #7B2FFE;
+            box-shadow: 0 0 8px rgba(123, 47, 254, 0.6);
         }
 
         /* Main content hidden until ready */
         #main-content {
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.3s ease;
+            background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
         }
         #main-content.visible {
             opacity: 1;
         }
 
-        /* Rest of styles unchanged */
+        /* Rest of your styles */
         body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-image: 
                 linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
@@ -131,7 +126,7 @@
             z-index: -1;
             animation: float 20s ease-in-out infinite alternate;
         }
-        .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; animation-delay: 0s; }
+        .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; }
         .orb-2 { width: 250px; height: 250px; background: #9D4EDD; bottom: 20%; right: 10%; animation-delay: -5s; }
         .orb-3 { width: 200px; height: 200px; background: #FFD700; top: 50%; left: 60%; animation-delay: -10s; }
         @keyframes float {
@@ -161,10 +156,7 @@
         .card::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: linear-gradient(90deg, rgba(123, 47, 254, 0.04), transparent 40%, rgba(123, 47, 254, 0.04));
             pointer-events: none;
         }
@@ -186,7 +178,6 @@
             box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
             min-width: 60px;
             text-align: center;
-            transition: all 0.3s ease;
         }
         .divider-line {
             height: 1px;
@@ -212,7 +203,7 @@
             padding: 0.8rem 1rem;
             margin-top: 0.6rem;
         }
-        nav { width: 100%; left: 0; right: 0; padding: 0 !important; }
+        nav { width: 100%; position: fixed; top: 0; left: 0; z-index: 50; background: rgba(18, 5, 32, 0.75); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(123, 47, 254, 0.15); }
         .nav-container {
             width: 100%;
             max-width: 1200px;
@@ -250,8 +241,6 @@
             padding: 1.2rem;
             text-align: center;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         .meme-card:hover {
             border-color: #7B2FFE;
@@ -267,9 +256,9 @@
             padding: 0.2rem 0.6rem;
             border-radius: 9999px;
         }
-        .common { background: #4ade8033; color: #4ADE80; border: 1px solid #4ade8066; }
-        .rare { background: #fbbf2433; color: #FBBF24; border: 1px solid #fbbf2466; }
-        .legendary { background: #ef444433; color: #EF4444; border: 1px solid #ef444466; }
+        .common { background: rgba(74, 222, 128, 0.2); color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.4); }
+        .rare { background: rgba(251, 191, 36, 0.2); color: #FBBF24; border: 1px solid rgba(251, 191, 36, 0.4); }
+        .legendary { background: rgba(239, 68, 68, 0.2); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.4); }
         .game-container {
             background: #0F041B;
             border: 1px solid rgba(123, 47, 254, 0.3);
@@ -301,7 +290,6 @@
             color: #E9D5FF;
             min-height: 30px;
             text-align: center;
-            max-width: 100%;
         }
         .share-buttons {
             margin-top: 1rem;
@@ -318,21 +306,23 @@
             font-size: 0.85rem;
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.2s ease;
         }
         .btn-share.telegram { background: #0088cc; color: white; }
         .btn-share.telegram:hover { background: #0077b3; box-shadow: 0 0 8px rgba(0,136,204,0.4); }
-        .btn-share.x { background: #000000; color: white; border: 1px solid #333; }
+        .btn-share.x { background: #000; color: white; border: 1px solid #333; }
         .btn-share.x:hover { background: #1a1a1a; box-shadow: 0 0 8px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body class="text-white font-sans">
 
-<!-- 🚀 LOADING SCREEN - FIRST THING TO APPEAR -->
+<!-- 🚀 LOADING SCREEN - EXACT MATCH + FAST -->
 <div id="loading-screen">
     <div class="loading-spinner"></div>
     <div class="loading-text" id="loading-message">Escaping the blockchain...</div>
-    <div class="loading-sub">🟣 CRIBBLE $CRIB</div>
+    <div class="loading-brand">
+        <span class="loading-dot"></span>
+        CRIBBLE $CRIB
+    </div>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -342,20 +332,20 @@
     <div class="glow-orb orb-3"></div>
 
     <!-- NAVIGATION -->
-    <nav class="fixed w-full top-0 z-50 bg-cribCard/75 backdrop-blur-md border-b border-cribPurple/15">
+    <nav>
         <div class="nav-container">
-            <h1 class="text-2xl font-bold text-cribLight text-glow flex items-center gap-2 m-0">🟣 CRIBBLE</h1>
+            <h1 class="text-2xl font-bold text-cribLight text-glow m-0">🟣 CRIBBLE</h1>
             <div class="relative">
-                <button id="menuToggle" class="text-cribLight text-2xl focus:outline-none hover:text-cribGold transition-colors duration-300 p-2">☰</button>
-                <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/95 border border-cribPurple/25 rounded-lg shadow-lg overflow-hidden backdrop-blur-lg">
-                    <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🔍 What is CRIBBLE</a>
-                    <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">📖 The Real Story</a>
-                    <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
-                    <a href="#hold-contest" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🎁 Hold Contest</a>
-                    <a href="#meme-cards" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🃏 Meme Cards</a>
-                    <a href="#meme-games" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🎮 Meme Games</a>
-                    <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🚀 Launch Details</a>
-                    <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🤝 Community</a>
+                <button id="menuToggle" class="text-cribLight text-2xl hover:text-cribGold transition-colors p-2">☰</button>
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-3 w-56 bg-cribCard/95 border border-cribPurple/25 rounded-lg shadow-lg backdrop-blur-lg">
+                    <a href="#what-is-cribble" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🔍 What is CRIBBLE</a>
+                    <a href="#story" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">📖 The Real Story</a>
+                    <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🟣 Tokenomics</a>
+                    <a href="#hold-contest" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🎁 Hold Contest</a>
+                    <a href="#meme-cards" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🃏 Meme Cards</a>
+                    <a href="#meme-games" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🎮 Meme Games</a>
+                    <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🚀 Launch Details</a>
+                    <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold">🤝 Community</a>
                 </div>
             </div>
         </div>
@@ -394,7 +384,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 📖 THE REAL STORY -->
@@ -446,7 +435,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🟣 TOKENOMICS -->
@@ -495,7 +483,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🎁 HOLD CONTEST -->
@@ -530,7 +517,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🃏 MEME CARDS -->
@@ -541,21 +527,21 @@
                 <h4 class="text-xl text-cribLight font-semibold mb-4">Collect • Flex • Trade — Only with $CRIB</h4>
                 <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-6">No fake utility — just pure collectible meme art tied to the CRIBBLE lore. Buy, sell, or trade them using only $CRIB. Show off your rarest cards to the community!</p>
                 <div class="card-grid">
-                    <div class="meme-card">
+                    <div class="meme-card relative">
                         <span class="rarity-badge common">COMMON</span>
                         <div class="h-32 flex items-center justify-center text-4xl mb-4">🟣</div>
                         <h5 class="font-bold text-lg">Basic Cribble</h5>
                         <p class="text-gray-300 text-sm mt-2">10,000 supply</p>
                         <p class="text-cribGold font-semibold mt-3">Cost: $3 $CRIB</p>
                     </div>
-                    <div class="meme-card">
+                    <div class="meme-card relative">
                         <span class="rarity-badge rare">RARE</span>
                         <div class="h-32 flex items-center justify-center text-4xl mb-4">👁️✨</div>
                         <h5 class="font-bold text-lg">Escaped Version</h5>
                         <p class="text-gray-300 text-sm mt-2">2,500 supply</p>
                         <p class="text-cribGold font-semibold mt-3">Cost: $8 $CRIB</p>
                     </div>
-                    <div class="meme-card">
+                    <div class="meme-card relative">
                         <span class="rarity-badge legendary">LEGENDARY</span>
                         <div class="h-32 flex items-center justify-center text-4xl mb-4">👑🟣</div>
                         <h5 class="font-bold text-lg">King of Memes</h5>
@@ -569,7 +555,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🎮 MEME GAMES -->
@@ -613,7 +598,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🚀 LAUNCH DETAILS -->
@@ -645,7 +629,6 @@
         </div>
     </section>
 
-    <!-- DIVIDER -->
     <div class="section-divider"></div>
 
     <!-- 🤝 COMMUNITY -->
@@ -664,7 +647,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="border-t border-cribPurple/20 py-6 text-center text-gray-400 text-sm">
         <p>© 2026 CRIBBLE | $CRIB — Pure Memes, No Lies</p>
         <p class="mt-2">Not financial advice. Just for fun. 🟣</p>
@@ -673,7 +655,7 @@
 
 <!-- SCRIPTS -->
 <script>
-    // 🚀 LOADING SCREEN - FAST & WORKS ON OPEN + REFRESH
+    // 🚀 FAST LOADING SCREEN - NO DELAYS
     const loadingMessages = [
         "Escaping the blockchain...",
         "Hacking the server...",
@@ -687,18 +669,18 @@
     let msgIndex = 0;
     const loadingTextEl = document.getElementById("loading-message");
 
-    // Cycle funny messages
+    // Cycle messages every 1.2s
     setInterval(() => {
         msgIndex = (msgIndex + 1) % loadingMessages.length;
         loadingTextEl.textContent = loadingMessages[msgIndex];
-    }, 1500);
+    }, 1200);
 
-    // Hide loading screen instantly when ready
+    // Hide loading screen IMMEDIATELY when ready
     window.addEventListener('load', () => {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             document.getElementById('loading-screen').classList.add('hidden');
             document.getElementById('main-content').classList.add('visible');
-        }, 400); // Short delay only for smooth transition
+        });
     });
 
     // Mobile Menu
@@ -714,7 +696,7 @@
         document.getElementById(id).classList.toggle('open');
     }
 
-    // Countdown
+    // Countdown Timer
     const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
     const countdownEl = document.getElementById("countdown");
     setInterval(() => {
@@ -742,7 +724,7 @@
         shareDiv.classList.add('active');
     }
 
-    // Games
+    // Game Functions
     function feedCribble() {
         const arr = ["🍟 Meme Fries — Cribble grows stronger!","🍕 Solana Pizza — Escapes another server!","🍔 Chaos Burger — Now even more unpredictable!","🍫 Viral Chocolate — Spreads faster than memes!","🥤 Crypto Soda — Energy level OVER 9000!","🌮 Magic Taco — Gains 100 new followers instantly!"];
         const res = arr[Math.floor(Math.random() * arr.length)];
@@ -761,4 +743,5 @@
         document.getElementById("levelResult").textContent = res;
         buildShareLinks(res, "levelShare");
     }
-    function flipCrib()
+    function flipCrib() {
+        const arr = ["
