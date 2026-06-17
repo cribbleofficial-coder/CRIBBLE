@@ -225,7 +225,7 @@
 
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
-                <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Join The Kingdom</a>
+                <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
             </div>
         </div>
     </section>
@@ -468,8 +468,8 @@
             <div class="card glow-border hover-lift">
                 <p style="margin-bottom: 1.2rem; color: #ddd;">Everything runs on you — memes, shares, and fun build this coin.</p>
                 <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Telegram</a>
-                    <a href="#" target="_blank" class="btn-purple">X / Twitter</a>
+                    <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Telegram</a>
+                    <a href="https://x.com/CRIBBLE_" target="_blank" class="btn-purple">X / Twitter</a>
                     <a href="#" target="_blank" class="btn-purple">Pump.fun</a>
                     <a href="#" target="_blank" class="btn-purple">Birdeye</a>
                 </div>
@@ -552,12 +552,12 @@
             }, 1000);
         }
 
-        // Share Links Helper
+        // Share Links Helper — uses your official links
         function buildShare(text, shareId) {
             const base = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
             const url = encodeURIComponent(window.location.href);
             const tg = `https://t.me/share/url?url=${url}&text=${base}`;
-            const x = `https://twitter.com/intent/tweet?text=${base}&url=${url}`;
+            const x = `https://x.com/intent/tweet?text=${base}&url=${url}`;
             const div = document.getElementById(shareId);
             if (div) {
                 div.innerHTML = `<a href="${tg}" target="_blank" class="btn-share telegram">📩 Telegram</a><a href="${x}" target="_blank" class="btn-share x">🐦 X</a>`;
