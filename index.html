@@ -237,6 +237,77 @@
         .common { background: #4ade8033; color: #4ADE80; border: 1px solid #4ade8066; }
         .rare { background: #fbbf2433; color: #FBBF24; border: 1px solid #fbbf2466; }
         .legendary { background: #ef444433; color: #EF4444; border: 1px solid #ef444466; }
+
+        /* ✅ Game Styles */
+        .game-container {
+            background: #0F041B;
+            border: 1px solid rgba(123, 47, 254, 0.3);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-game {
+            background: linear-gradient(135deg, #FFD700, #F59E0B);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s ease;
+        }
+        .btn-game:hover {
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+            transform: scale(1.05);
+        }
+        .game-output {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: #E9D5FF;
+            min-height: 30px;
+            text-align: center;
+            max-width: 100%;
+        }
+        .share-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .share-buttons.active {
+            opacity: 1;
+        }
+        .btn-share {
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-share.telegram {
+            background: #0088cc;
+            color: white;
+        }
+        .btn-share.telegram:hover {
+            background: #0077b3;
+            box-shadow: 0 0 8px rgba(0, 136, 204, 0.4);
+        }
+        .btn-share.x {
+            background: #000000;
+            color: white;
+            border: 1px solid #333;
+        }
+        .btn-share.x:hover {
+            background: #1a1a1a;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 <body class="text-white font-sans">
@@ -257,6 +328,7 @@
                 <a href="#tokenomics" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🟣 Tokenomics</a>
                 <a href="#hold-contest" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🎁 Hold Contest</a>
                 <a href="#meme-cards" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🃏 Meme Cards</a>
+                <a href="#meme-games" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🎮 Meme Games</a>
                 <a href="#details" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🚀 Launch Details</a>
                 <a href="#community" class="block px-5 py-3 hover:bg-cribPurple/15 hover:text-cribGold transition-colors">🤝 Community</a>
             </div>
@@ -509,6 +581,61 @@
 <!-- DIVIDER -->
 <div class="section-divider"></div>
 
+<!-- 🎮 MEME GAMES SECTION -->
+<section id="meme-games" class="px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🎮 CRIBBLE MEME GAMES</h3>
+        <div class="card p-8 glow-border hover-lift">
+            <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-8">
+                Pure fun, no points, no real rewards — just silly meme games to keep you entertained while you’re here. Feed the chaos! 🟣
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Game 1: Feed Cribble -->
+                <div class="game-container">
+                    <h4 class="text-xl font-bold text-cribLight mb-3">🍔 FEED CRIBBLE</h4>
+                    <p class="text-gray-300 text-sm mb-4">Give our escaped AI some meme fuel!</p>
+                    <button class="btn-game" onclick="feedCribble()">Feed It</button>
+                    <div id="feedResult" class="game-output"></div>
+                    <div id="feedShare" class="share-buttons"></div>
+                </div>
+
+                <!-- Game 2: Meme Oracle -->
+                <div class="game-container">
+                    <h4 class="text-xl font-bold text-cribLight mb-3">🔮 CRIBBLE ORACLE</h4>
+                    <p class="text-gray-300 text-sm mb-4">Ask anything — get a meme‑style answer!</p>
+                    <button class="btn-game" onclick="askOracle()">Get Prediction</button>
+                    <div id="oracleResult" class="game-output"></div>
+                    <div id="oracleShare" class="share-buttons"></div>
+                </div>
+
+                <!-- Game 3: How Meme Are You? -->
+                <div class="game-container">
+                    <h4 class="text-xl font-bold text-cribLight mb-3">🤡 HOW MEME ARE YOU?</h4>
+                    <p class="text-gray-300 text-sm mb-4">Find out your meme level!</p>
+                    <button class="btn-game" onclick="memeLevel()">Check Level</button>
+                    <div id="levelResult" class="game-output"></div>
+                    <div id="levelShare" class="share-buttons"></div>
+                </div>
+
+                <!-- Game 4: Flip The Meme -->
+                <div class="game-container">
+                    <h4 class="text-xl font-bold text-cribLight mb-3">🪙 FLIP THE CRIB</h4>
+                    <p class="text-gray-300 text-sm mb-4">Flip the coin — chaos or win?</p>
+                    <button class="btn-game" onclick="flipCrib()">Flip Now</button>
+                    <div id="flipResult" class="game-output"></div>
+                    <div id="flipShare" class="share-buttons"></div>
+                </div>
+            </div>
+
+            <p class="text-cribLight mt-8 italic">⚠️ No real prizes — just laughs and vibes!</p>
+        </div>
+    </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider"></div>
+
 <!-- 🚀 LAUNCH DETAILS -->
 <section id="details" class="px-4">
     <div class="max-w-3xl mx-auto text-center">
@@ -601,6 +728,77 @@
         const s = Math.floor((diff % 60000) / 1000);
         countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }, 1000);
+
+    // Helper: Generate share links
+    function buildShareLinks(text, shareDivId) {
+        const baseText = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
+        const pageUrl = encodeURIComponent(window.location.href);
+        const telegramLink = `https://t.me/share/url?url=${pageUrl}&text=${baseText}`;
+        const xLink = `https://twitter.com/intent/tweet?text=${baseText}&url=${pageUrl}`;
+
+        const shareDiv = document.getElementById(shareDivId);
+        shareDiv.innerHTML = `
+            <a href="${telegramLink}" target="_blank" class="btn-share telegram">📩 Telegram</a>
+            <a href="${xLink}" target="_blank" class="btn-share x">🐦 X</a>
+        `;
+        shareDiv.classList.add('active');
+    }
+
+    // 🎮 GAME FUNCTIONS
+    function feedCribble() {
+        const foods = [
+            "🍟 Meme Fries — Cribble grows stronger!",
+            "🍕 Solana Pizza — Escapes another server!",
+            "🍔 Chaos Burger — Now even more unpredictable!",
+            "🍫 Viral Chocolate — Spreads faster than memes!",
+            "🥤 Crypto Soda — Energy level OVER 9000!",
+            "🌮 Magic Taco — Gains 100 new followers instantly!"
+        ];
+        const result = foods[Math.floor(Math.random() * foods.length)];
+        document.getElementById("feedResult").textContent = result;
+        buildShareLinks(result, "feedShare");
+    }
+
+    function askOracle() {
+        const answers = [
+            "🔮 The meme gods say: YES, definitely!",
+            "🔮 Only if you post more $CRIB memes!",
+            "🔮 It’s possible… but chaos is coming!",
+            "🔮 Ask again after you hold more tokens!",
+            "🔮 The future is bright… and purple!",
+            "🔮 HODL and you shall see — maybe, maybe not!",
+            "🔮 Even I don’t know, I’m just a meme AI!"
+        ];
+        const result = answers[Math.floor(Math.random() * answers.length)];
+        document.getElementById("oracleResult").textContent = result;
+        buildShareLinks(result, "oracleShare");
+    }
+
+    function memeLevel() {
+        const levels = [
+            "🤡 Level 1: Newbie — Still learning the meme ways!",
+            "🤡 Level 2: Casual — You get the jokes, mostly!",
+            "🤡 Level 3: Meme Lord — You create the chaos!",
+            "🤡 Level 4: Legendary — Your memes go viral!",
+            "🤡 Level 5: CRIBBLE Level — You ARE the meme now!"
+        ];
+        const result = levels[Math.floor(Math.random() * levels.length)];
+        document.getElementById("levelResult").textContent = result;
+        buildShareLinks(result, "levelShare");
+    }
+
+    function flipCrib() {
+        const results = [
+            "🪙 Heads: 🟣 CRIBBLE wins! More memes incoming!",
+            "🪙 Tails: 😈 Chaos wins! Expect surprises!",
+            "🪙 Edge: 🤯 It landed on the blockchain! Very rare!",
+            "🪙 Heads: 🚀 To the moon… or just around the block!",
+            "🪙 Tails: 🤷‍♂️ Nothing changes — just more fun!"
+        ];
+        const result = results[Math.floor(Math.random() * results.length)];
+        document.getElementById("flipResult").textContent = result;
+        buildShareLinks(result, "flipShare");
+    }
 </script>
 
 </body>
