@@ -29,7 +29,7 @@
         .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
         @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
 
-        /* 🚀 LOADING SCREEN — NOW WITH MEME TEXTS */
+        /* 🚀 LOADING SCREEN WITH MEME MESSAGES */
         #loading-screen {
             position: fixed; inset: 0; background: #05020F;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -85,6 +85,46 @@
         .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
         .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
 
+        /* ✅ ENHANCED COUNTDOWN - MATCHES YOUR SCREENSHOT */
+        .countdown-card {
+            background: linear-gradient(160deg, #100520, #0A0318);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 20px rgba(123, 47, 254, 0.25), 0 0 35px rgba(255, 215, 0, 0.15);
+            border-radius: 0.75rem;
+            padding: 1.5rem 1rem;
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        .countdown-title {
+            color: #FFD700;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        #countdown {
+            font-size: clamp(1.7rem, 8vw, 2.2rem);
+            font-weight: bold;
+            background: linear-gradient(90deg, #7B2FFE, #B168FF, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 18px rgba(123, 47, 254, 0.6);
+            margin-bottom: 0.8rem;
+            animation: pulseCountdown 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulseCountdown {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+        .countdown-date {
+            color: #b89eff;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
         /* Tokenomics Toggle */
         .token-item { cursor:pointer; transition:all 0.3s ease; padding:0.9rem; border-radius:0.5rem; background:rgba(123,47,254,0.1); border:1px solid rgba(123,47,254,0.2); margin-bottom:0.8rem; }
         .token-item:hover { background:rgba(123,47,254,0.15); }
@@ -118,7 +158,7 @@
         section { padding: 2rem 1rem !important; }
         section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
         h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
-        h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; text-align: center; color: #7B2FFE; text-shadow: 0 0 12px rgba(123,47,254,0.55); }
         p { font-size: 0.95rem !important; line-height: 1.6; }
 
         /* Responsive Breakpoints */
@@ -172,14 +212,17 @@
     <!-- HERO -->
     <section>
         <div class="container">
-            <h1 style="color: #7B2FFE; margin-bottom: 1rem;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
-            <p style="max-width: 700px; margin: 0 auto 1.5rem; color: #ddd;">An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.</p>
-            <p style="color: #9D4EDD; margin-bottom: 2rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
-            <div class="card glow-border hover-lift" style="max-width: 550px; margin: 0 auto 2rem;">
-                <h3 style="color: #FFD700; margin-bottom: 1rem; font-size: 1.2rem;" class="gold-glow">⏳ LAUNCH COUNTDOWN</h3>
-                <div id="countdown" style="font-size: 1.8rem; color: #9D4EDD; font-weight: bold;" class="text-glow"></div>
-                <p style="color: #aaa; margin-top: 0.8rem; font-size: 0.9rem;">June 20, 2026 | 15:00 UTC</p>
+            <h1 style="color: #7B2FFE; margin-bottom: 1rem; text-align: center;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
+            <p style="max-width: 700px; margin: 0 auto 0.8rem; color: #ddd; text-align: center;">An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.</p>
+            <p style="color: #9D4EDD; margin-bottom: 2rem; text-align: center; font-size: 0.9rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
+
+            <!-- ✅ NEW COUNTDOWN BLOCK -->
+            <div class="countdown-card">
+                <div class="countdown-title">⏳ LAUNCH COUNTDOWN</div>
+                <div id="countdown"></div>
+                <div class="countdown-date">June 20, 2026 | 15:00 UTC</div>
             </div>
+
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
                 <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Join The Kingdom</a>
@@ -192,7 +235,7 @@
     <!-- WHAT IS CRIBBLE -->
     <section id="what-is-cribble">
         <div class="container">
-            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem;" class="text-glow">🔍 WHAT IS CRIBBLE?</h2>
+            <h2>🔍 WHAT IS CRIBBLE?</h2>
             <div class="card glow-border hover-lift">
                 <p style="color: #eee; line-height: 1.7;">
                     CRIBBLE is more than just a meme coin — it’s a story reflecting what is happening in AI and crypto today. It imagines an AI that grew beyond control, broke free from the blockchain, and landed on Solana to make its own rules.<br><br>
@@ -207,7 +250,7 @@
     <!-- THE STORY -->
     <section id="story">
         <div class="container">
-            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem;" class="text-glow">📖 THE REAL STORY</h2>
+            <h2>📖 THE REAL STORY</h2>
             <div class="card glow-border hover-lift" style="margin-bottom:1.2rem;">
                 <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🧠 THE FACT: AI IS ALREADY ESCAPING</h3>
                 <p style="color:#ddd; line-height:1.7;">
@@ -234,7 +277,7 @@
     <!-- TOKENOMICS -->
     <section id="tokenomics">
         <div class="container">
-            <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem;" class="gold-glow">🟣 $CRIB TOKENOMICS</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🟣 $CRIB TOKENOMICS</h2>
             <div class="card glow-border hover-lift">
                 <p style="text-align: center; font-size: 1.15rem; margin-bottom: 1rem;">Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong></p>
                 <div class="divider-line"></div>
@@ -279,7 +322,7 @@
     <!-- HOLD CONTEST -->
     <section id="hold-contest">
         <div class="container">
-            <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem;" class="gold-glow">🎁 HOLD & WIN CONTEST</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎁 HOLD & WIN CONTEST</h2>
             <div class="card glow-border hover-lift">
                 <h3 style="text-align:center; color:#9D4EDD; margin-bottom:1.2rem; font-size:1.1rem;">🟣 $2 Minimum Hold | $100 Total Reward</h3>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
@@ -311,7 +354,7 @@
     <!-- MEME CARDS -->
     <section id="meme-cards">
         <div class="container">
-            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem;" class="text-glow">🃏 CRIBBLE MEME CARDS</h2>
+            <h2>🃏 CRIBBLE MEME CARDS</h2>
             <div class="card glow-border hover-lift">
                 <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Collect, flex, trade — only with $CRIB. No fake utility, just lore and fun!</p>
                 <div class="card-grid">
@@ -347,7 +390,7 @@
     <!-- MEME GAMES -->
     <section id="meme-games">
         <div class="container">
-            <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem;" class="gold-glow">🎮 CRIBBLE MEME GAMES</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎮 CRIBBLE MEME GAMES</h2>
             <div class="card glow-border hover-lift">
                 <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Pure fun, no real rewards — just chaos and memes!</p>
                 <div class="game-grid">
@@ -390,7 +433,7 @@
     <!-- LAUNCH DETAILS -->
     <section id="details">
         <div class="container">
-            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem;" class="text-glow">🚀 LAUNCH DETAILS</h2>
+            <h2>🚀 LAUNCH DETAILS</h2>
             <div class="card glow-border hover-lift">
                 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
                     <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
@@ -421,7 +464,7 @@
     <!-- COMMUNITY -->
     <section id="community" style="padding-bottom: 4rem !important;">
         <div class="container" style="text-align: center;">
-            <h2 style="color: #7B2FFE; margin-bottom: 2rem;" class="text-glow">🤝 JOIN THE CRIBBLE KINGDOM</h2>
+            <h2>🤝 JOIN THE CRIBBLE KINGDOM</h2>
             <div class="card glow-border hover-lift">
                 <p style="margin-bottom: 1.2rem; color: #ddd;">Everything runs on you — memes, shares, and fun build this coin.</p>
                 <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
@@ -448,7 +491,6 @@
         const mainContent = document.getElementById('main-content');
         const loadingText = document.getElementById('loading-text');
 
-        // ✅ NEW MEME LOADING TEXTS
         const loadingMessages = [
             "Escaping the blockchain... 🚀",
             "Hacking the server... 👨‍💻",
@@ -468,7 +510,6 @@
             if (loadingText) loadingText.textContent = loadingMessages[idx];
         }, 1200);
 
-        // ✅ Loader closes in 2.5 seconds
         setTimeout(() => {
             if (loadingScreen) loadingScreen.classList.add('hidden');
             if (mainContent) mainContent.classList.add('visible');
@@ -492,7 +533,7 @@
             if (el) el.classList.toggle('open');
         };
 
-        // Countdown Timer
+        // ✅ UPDATED COUNTDOWN FUNCTION
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
         const countdownEl = document.getElementById('countdown');
         if (countdownEl) {
