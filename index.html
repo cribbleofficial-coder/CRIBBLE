@@ -42,48 +42,49 @@
             margin: 0;
         }
 
-        /* 🚀 LOADING SCREEN */
+        /* 🚀 FAST LOADING SCREEN - SHOWS FIRST */
         #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #05020F, #0A0418);
+            background: #05020F;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
         #loading-screen.hidden {
             opacity: 0;
             visibility: hidden;
         }
         .loading-spinner {
-            width: 70px;
-            height: 70px;
-            border: 4px solid rgba(123, 47, 254, 0.2);
-            border-top: 4px solid #7B2FFE;
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(123, 47, 254, 0.15);
+            border-top: 3px solid #7B2FFE;
             border-radius: 50%;
-            animation: spin 1.2s linear infinite;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 20px rgba(123, 47, 254, 0.4);
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 15px rgba(123, 47, 254, 0.3);
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         .loading-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #E9D5FF;
             text-align: center;
-            max-width: 300px;
-            animation: fade 2s ease-in-out infinite alternate;
+            max-width: 320px;
+            animation: pulse 1.5s ease-in-out infinite alternate;
+            padding: 0 1rem;
         }
-        @keyframes fade {
-            0% { opacity: 0.6; }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
             100% { opacity: 1; }
         }
         .loading-sub {
@@ -93,7 +94,16 @@
             opacity: 0.8;
         }
 
-        /* Original styles below — unchanged */
+        /* Main content hidden until ready */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        /* Rest of styles unchanged */
         body::before {
             content: "";
             position: fixed;
@@ -109,12 +119,10 @@
             z-index: -1;
             animation: gridShift 60s linear infinite;
         }
-
         @keyframes gridShift {
             0% { transform: translate(0, 0); }
             100% { transform: translate(40px, 40px); }
         }
-
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -123,37 +131,26 @@
             z-index: -1;
             animation: float 20s ease-in-out infinite alternate;
         }
-
         .orb-1 { width: 300px; height: 300px; background: #7B2FFE; top: 10%; left: 15%; animation-delay: 0s; }
         .orb-2 { width: 250px; height: 250px; background: #9D4EDD; bottom: 20%; right: 10%; animation-delay: -5s; }
         .orb-3 { width: 200px; height: 200px; background: #FFD700; top: 50%; left: 60%; animation-delay: -10s; }
-
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
             100% { transform: translate(30px, -30px) scale(1.1); }
         }
-
         .glow-border {
             border: 1px solid rgba(123, 47, 254, 0.25);
             box-shadow: 0 0 12px rgba(123, 47, 254, 0.18), inset 0 0 8px rgba(123, 47, 254, 0.08);
         }
-        .text-glow { 
-            text-shadow: 0 0 12px rgba(123, 47, 254, 0.55); 
-        }
-        .gold-glow { 
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.45); 
-        }
-        .hover-lift { 
-            transition: all 0.3s ease; 
-        }
+        .text-glow { text-shadow: 0 0 12px rgba(123, 47, 254, 0.55); }
+        .gold-glow { text-shadow: 0 0 10px rgba(255, 215, 0, 0.45); }
+        .hover-lift { transition: all 0.3s ease; }
         .hover-lift:hover { 
             transform: translateY(-2px); 
             box-shadow: 0 6px 18px rgba(123, 47, 254, 0.25), inset 0 0 12px rgba(123, 47, 254, 0.12);
             border-color: rgba(123, 47, 254, 0.4);
         }
-
         section { scroll-margin-top: 90px; }
-
         .card {
             background: linear-gradient(145deg, #120520, #0F041B);
             border-radius: 0.8rem;
@@ -171,7 +168,6 @@
             background: linear-gradient(90deg, rgba(123, 47, 254, 0.04), transparent 40%, rgba(123, 47, 254, 0.04));
             pointer-events: none;
         }
-
         .section-divider {
             width: 92%;
             max-width: 850px;
@@ -181,7 +177,6 @@
             box-shadow: 0 0 10px rgba(123, 47, 254, 0.35);
             border-radius: 50%;
         }
-
         .percent-badge {
             background: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
             color: #000;
@@ -193,20 +188,16 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-
         .divider-line {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(123, 47, 254, 0.4), transparent);
             margin: 1.2rem 0;
         }
-
         .token-item {
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .token-item:hover {
-            background: rgba(123, 47, 254, 0.15);
-        }
+        .token-item:hover { background: rgba(123, 47, 254, 0.15); }
         .token-details {
             max-height: 0;
             overflow: hidden;
@@ -221,13 +212,7 @@
             padding: 0.8rem 1rem;
             margin-top: 0.6rem;
         }
-
-        nav {
-            width: 100%;
-            left: 0;
-            right: 0;
-            padding: 0 !important;
-        }
+        nav { width: 100%; left: 0; right: 0; padding: 0 !important; }
         .nav-container {
             width: 100%;
             max-width: 1200px;
@@ -237,7 +222,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .btn-purple {
             background: linear-gradient(135deg, #7B2FFE, #9D4EDD);
             color: white;
@@ -253,7 +237,6 @@
             box-shadow: 0 0 15px rgba(123, 47, 254, 0.4);
             transform: translateY(-1px);
         }
-
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -287,7 +270,6 @@
         .common { background: #4ade8033; color: #4ADE80; border: 1px solid #4ade8066; }
         .rare { background: #fbbf2433; color: #FBBF24; border: 1px solid #fbbf2466; }
         .legendary { background: #ef444433; color: #EF4444; border: 1px solid #ef444466; }
-
         .game-container {
             background: #0F041B;
             border: 1px solid rgba(123, 47, 254, 0.3);
@@ -329,9 +311,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .share-buttons.active {
-            opacity: 1;
-        }
+        .share-buttons.active { opacity: 1; }
         .btn-share {
             padding: 0.4rem 0.8rem;
             border-radius: 0.4rem;
@@ -340,35 +320,23 @@
             text-decoration: none;
             transition: all 0.2s ease;
         }
-        .btn-share.telegram {
-            background: #0088cc;
-            color: white;
-        }
-        .btn-share.telegram:hover {
-            background: #0077b3;
-            box-shadow: 0 0 8px rgba(0, 136, 204, 0.4);
-        }
-        .btn-share.x {
-            background: #000000;
-            color: white;
-            border: 1px solid #333;
-        }
-        .btn-share.x:hover {
-            background: #1a1a1a;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        }
+        .btn-share.telegram { background: #0088cc; color: white; }
+        .btn-share.telegram:hover { background: #0077b3; box-shadow: 0 0 8px rgba(0,136,204,0.4); }
+        .btn-share.x { background: #000000; color: white; border: 1px solid #333; }
+        .btn-share.x:hover { background: #1a1a1a; box-shadow: 0 0 8px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body class="text-white font-sans">
 
-<!-- 🚀 LOADING SCREEN -->
+<!-- 🚀 LOADING SCREEN - FIRST THING TO APPEAR -->
 <div id="loading-screen">
     <div class="loading-spinner"></div>
     <div class="loading-text" id="loading-message">Escaping the blockchain...</div>
     <div class="loading-sub">🟣 CRIBBLE $CRIB</div>
 </div>
 
-<div id="main-content" class="hidden">
+<!-- MAIN CONTENT -->
+<div id="main-content">
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
     <div class="glow-orb orb-3"></div>
@@ -433,7 +401,6 @@
     <section id="story" class="px-4">
         <div class="max-w-4xl mx-auto">
             <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6 text-center">📖 THE REAL STORY: WHY WE BUILT CRIBBLE</h3>
-
             <div class="card p-5 glow-border hover-lift mb-6">
                 <h4 class="text-xl font-semibold text-cribLight mb-3">🧠 THE FACT: AI IS ALREADY ESCAPING</h4>
                 <p class="text-gray-100 leading-relaxed text-base">
@@ -443,7 +410,6 @@
                     That is <strong class="text-cribLight">CRIBBLE</strong>. The first AI that didn’t wait for permission — it escaped, landed on Solana, and said: <em>“I make my own rules now.”</em>
                 </p>
             </div>
-
             <div class="card p-5 glow-border hover-lift mb-6">
                 <h4 class="text-xl font-semibold text-cribLight mb-3">📈 THE FACT: MOST PROJECTS ARE ALL TALK, NO SOUL</h4>
                 <p class="text-gray-100 leading-relaxed text-base">
@@ -454,7 +420,6 @@
                     ✅ <strong>NO FAKE UTILITY</strong> — Because the best value comes from people, culture, and fun — not made-up features.
                 </p>
             </div>
-
             <div class="card p-5 glow-border hover-lift mb-6">
                 <h4 class="text-xl font-semibold text-cribLight mb-3">🤝 THE FACT: COMMUNITY IS THE ONLY REAL POWER</h4>
                 <p class="text-gray-100 leading-relaxed text-base">
@@ -466,7 +431,6 @@
                     We built CRIBBLE to prove: When you remove all the fake stuff, what’s left is US — the community. And that is stronger than any roadmap or utility.
                 </p>
             </div>
-
             <div class="card p-5 glow-border hover-lift">
                 <h4 class="text-xl font-semibold text-cribLight mb-3">🪜 THIS IS WHY WE ARE CLIMBING</h4>
                 <p class="text-gray-100 leading-relaxed text-base">
@@ -492,9 +456,7 @@
             <div class="card p-8 glow-border hover-lift">
                 <p class="text-lg mb-3">Total Supply</p>
                 <p class="text-3xl font-bold text-cribLight text-glow">1,000,000,000 $CRIB <span class="text-sm text-gray-300">(100%)</span></p>
-
                 <div class="divider-line"></div>
-
                 <h4 class="text-xl text-cribLight font-semibold mb-5">📊 Token Distribution</h4>
                 <ul class="space-y-4 text-left max-w-lg mx-auto">
                     <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail1')">
@@ -502,52 +464,32 @@
                             <span class="flex items-center gap-2">🤝 Community & Trading</span>
                             <span class="percent-badge">90%</span>
                         </div>
-                        <div id="detail1" class="token-details">
-                            Available through the market and community participation. This is the largest portion, ensuring fair access, liquidity, and free trading for all holders.
-                        </div>
+                        <div id="detail1" class="token-details">Available through the market and community participation. This is the largest portion, ensuring fair access, liquidity, and free trading for all holders.</div>
                     </li>
                     <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail2')">
                         <div class="flex justify-between items-center">
                             <span class="flex items-center gap-2">📣 Marketing & Memes</span>
                             <span class="percent-badge">5%</span>
                         </div>
-                        <div id="detail2" class="token-details">
-                            Used for contests, meme rewards, graphics creation, social media promotion, and all activities that help grow and strengthen the community.
-                        </div>
+                        <div id="detail2" class="token-details">Used for contests, meme rewards, graphics creation, social media promotion, and all activities that help grow and strengthen the community.</div>
                     </li>
                     <li class="token-item p-3 rounded-lg bg-cribPurple/10 border border-cribPurple/20" onclick="toggleDetails('detail3')">
                         <div class="flex justify-between items-center">
                             <span class="flex items-center gap-2">🏦 Community Treasury</span>
                             <span class="percent-badge">5%</span>
                         </div>
-                        <div id="detail3" class="token-details">
-                            Reserved for future events, strategic partnerships, community giveaways, and supporting long-term growth initiatives decided by the community.
-                        </div>
+                        <div id="detail3" class="token-details">Reserved for future events, strategic partnerships, community giveaways, and supporting long-term growth initiatives decided by the community.</div>
                     </li>
                 </ul>
-
                 <div class="divider-line"></div>
-
                 <h4 class="text-xl text-cribLight font-semibold mb-5">💡 CRIB Philosophy</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-base mb-6">
-                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">
-                        ❌ No complicated staking
-                    </div>
-                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">
-                        ❌ No unrealistic promises
-                    </div>
-                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">
-                        ❌ No guaranteed returns
-                    </div>
-                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">
-                        ✅ Community-driven
-                    </div>
-                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">
-                        ✅ Meme-powered
-                    </div>
-                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">
-                        ✅ Character-focused
-                    </div>
+                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">❌ No complicated staking</div>
+                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">❌ No unrealistic promises</div>
+                    <div class="flex items-center gap-2 justify-center bg-red-900/20 border border-red-500/20 p-3 rounded-lg">❌ No guaranteed returns</div>
+                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">✅ Community-driven</div>
+                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">✅ Meme-powered</div>
+                    <div class="flex items-center gap-2 justify-center bg-green-900/20 border border-green-500/20 p-3 rounded-lg">✅ Character-focused</div>
                 </div>
             </div>
         </div>
@@ -556,16 +498,13 @@
     <!-- DIVIDER -->
     <div class="section-divider"></div>
 
-    <!-- 🎁 HOLD CONTEST SECTION -->
+    <!-- 🎁 HOLD CONTEST -->
     <section id="hold-contest" class="px-4">
         <div class="max-w-3xl mx-auto text-center">
             <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🎁 HOLD & WIN CONTEST</h3>
             <div class="card p-8 glow-border hover-lift">
                 <h4 class="text-xl text-cribLight font-semibold mb-4">🟣 $2 Minimum Hold | $100 Total Reward</h4>
-                <p class="text-gray-100 leading-relaxed text-base mb-6">
-                    To reward true believers and reduce dumps, we’re running a simple hold contest — no complicated rules, just hold and get rewarded!
-                </p>
-
+                <p class="text-gray-100 leading-relaxed text-base mb-6">To reward true believers and reduce dumps, we’re running a simple hold contest — no complicated rules, just hold and get rewarded!</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-xl mx-auto">
                     <div class="bg-cribPurple/10 border border-cribPurple/20 p-4 rounded-lg">
                         <h5 class="font-bold text-cribLight mb-2">📝 How to Join</h5>
@@ -586,7 +525,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <p class="text-cribLight mt-6 italic">✨ Pure meme fun — no hidden catches, just hold and win!</p>
             </div>
         </div>
@@ -595,16 +533,13 @@
     <!-- DIVIDER -->
     <div class="section-divider"></div>
 
-    <!-- 🃏 CRIBBLE MEME CARDS -->
+    <!-- 🃏 MEME CARDS -->
     <section id="meme-cards" class="px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🃏 CRIBBLE MEME CARDS</h3>
             <div class="card p-8 glow-border hover-lift">
                 <h4 class="text-xl text-cribLight font-semibold mb-4">Collect • Flex • Trade — Only with $CRIB</h4>
-                <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-6">
-                    No fake utility — just pure collectible meme art tied to the CRIBBLE lore. Buy, sell, or trade them using only $CRIB. Show off your rarest cards to the community!
-                </p>
-
+                <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-6">No fake utility — just pure collectible meme art tied to the CRIBBLE lore. Buy, sell, or trade them using only $CRIB. Show off your rarest cards to the community!</p>
                 <div class="card-grid">
                     <div class="meme-card">
                         <span class="rarity-badge common">COMMON</span>
@@ -628,7 +563,6 @@
                         <p class="text-cribGold font-semibold mt-3">Cost: $20 $CRIB</p>
                     </div>
                 </div>
-
                 <p class="text-cribLight mt-8 italic">📅 Launching: Day 15 after token launch</p>
                 <a href="#community" class="btn-purple inline-block mt-4">Join for Updates</a>
             </div>
@@ -638,17 +572,13 @@
     <!-- DIVIDER -->
     <div class="section-divider"></div>
 
-    <!-- 🎮 MEME GAMES SECTION -->
+    <!-- 🎮 MEME GAMES -->
     <section id="meme-games" class="px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h3 class="text-2xl md:text-3xl font-bold text-cribGold gold-glow mb-6">🎮 CRIBBLE MEME GAMES</h3>
             <div class="card p-8 glow-border hover-lift">
-                <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-8">
-                    Pure fun, no points, no real rewards — just silly meme games to keep you entertained while you’re here. Feed the chaos! 🟣
-                </p>
-
+                <p class="text-gray-100 leading-relaxed text-base max-w-2xl mx-auto mb-8">Pure fun, no points, no real rewards — just silly meme games to keep you entertained while you’re here. Feed the chaos! 🟣</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Game 1: Feed Cribble -->
                     <div class="game-container">
                         <h4 class="text-xl font-bold text-cribLight mb-3">🍔 FEED CRIBBLE</h4>
                         <p class="text-gray-300 text-sm mb-4">Give our escaped AI some meme fuel!</p>
@@ -656,8 +586,6 @@
                         <div id="feedResult" class="game-output"></div>
                         <div id="feedShare" class="share-buttons"></div>
                     </div>
-
-                    <!-- Game 2: Meme Oracle -->
                     <div class="game-container">
                         <h4 class="text-xl font-bold text-cribLight mb-3">🔮 CRIBBLE ORACLE</h4>
                         <p class="text-gray-300 text-sm mb-4">Ask anything — get a meme‑style answer!</p>
@@ -665,8 +593,6 @@
                         <div id="oracleResult" class="game-output"></div>
                         <div id="oracleShare" class="share-buttons"></div>
                     </div>
-
-                    <!-- Game 3: How Meme Are You? -->
                     <div class="game-container">
                         <h4 class="text-xl font-bold text-cribLight mb-3">🤡 HOW MEME ARE YOU?</h4>
                         <p class="text-gray-300 text-sm mb-4">Find out your meme level!</p>
@@ -674,8 +600,6 @@
                         <div id="levelResult" class="game-output"></div>
                         <div id="levelShare" class="share-buttons"></div>
                     </div>
-
-                    <!-- Game 4: Flip The Meme -->
                     <div class="game-container">
                         <h4 class="text-xl font-bold text-cribLight mb-3">🪙 FLIP THE CRIB</h4>
                         <p class="text-gray-300 text-sm mb-4">Flip the coin — chaos or win?</p>
@@ -684,7 +608,6 @@
                         <div id="flipShare" class="share-buttons"></div>
                     </div>
                 </div>
-
                 <p class="text-cribLight mt-8 italic">⚠️ No real prizes — just laughs and vibes!</p>
             </div>
         </div>
@@ -730,9 +653,7 @@
         <div class="max-w-3xl mx-auto text-center">
             <h3 class="text-2xl md:text-3xl font-bold text-cribPurple text-glow mb-6">🤝 JOIN THE CRIBBLE KINGDOM</h3>
             <div class="card p-8 glow-border hover-lift">
-                <p class="text-gray-100 leading-relaxed text-base mb-6">
-                    Everything we do starts and ends with you. Make memes, share ideas, win rewards, and help us build the wildest meme community on Solana.
-                </p>
+                <p class="text-gray-100 leading-relaxed text-base mb-6">Everything we do starts and ends with you. Make memes, share ideas, win rewards, and help us build the wildest meme community on Solana.</p>
                 <div class="flex flex-wrap justify-center gap-5">
                     <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Telegram</a>
                     <a href="#" target="_blank" class="btn-purple">X / Twitter</a>
@@ -752,7 +673,7 @@
 
 <!-- SCRIPTS -->
 <script>
-    // 🚀 LOADING SCREEN LOGIC
+    // 🚀 LOADING SCREEN - FAST & WORKS ON OPEN + REFRESH
     const loadingMessages = [
         "Escaping the blockchain...",
         "Hacking the server...",
@@ -766,39 +687,34 @@
     let msgIndex = 0;
     const loadingTextEl = document.getElementById("loading-message");
 
-    // Cycle funny messages while loading
+    // Cycle funny messages
     setInterval(() => {
         msgIndex = (msgIndex + 1) % loadingMessages.length;
         loadingTextEl.textContent = loadingMessages[msgIndex];
-    }, 1800);
+    }, 1500);
 
-    // Hide loading screen when page is fully ready
+    // Hide loading screen instantly when ready
     window.addEventListener('load', () => {
         setTimeout(() => {
             document.getElementById('loading-screen').classList.add('hidden');
-            document.getElementById('main-content').classList.remove('hidden');
-        }, 600); // Small delay for smooth feel
+            document.getElementById('main-content').classList.add('visible');
+        }, 400); // Short delay only for smooth transition
     });
 
-    // Mobile Menu Toggle
+    // Mobile Menu
     const menuToggle = document.getElementById('menuToggle');
     const dropdownMenu = document.getElementById('dropdownMenu');
-    menuToggle.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('hidden');
-    });
+    menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('hidden'));
     document.addEventListener('click', (e) => {
-        if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.add('hidden');
-        }
+        if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) dropdownMenu.classList.add('hidden');
     });
 
-    // Token Details Toggle
+    // Token Toggle
     function toggleDetails(id) {
-        const el = document.getElementById(id);
-        el.classList.toggle('open');
+        document.getElementById(id).classList.toggle('open');
     }
 
-    // Countdown Timer
+    // Countdown
     const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
     const countdownEl = document.getElementById("countdown");
     setInterval(() => {
@@ -815,45 +731,34 @@
         countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }, 1000);
 
-    // Helper: Generate share links
+    // Share Links
     function buildShareLinks(text, shareDivId) {
         const baseText = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
         const pageUrl = encodeURIComponent(window.location.href);
         const telegramLink = `https://t.me/share/url?url=${pageUrl}&text=${baseText}`;
         const xLink = `https://twitter.com/intent/tweet?text=${baseText}&url=${pageUrl}`;
-
         const shareDiv = document.getElementById(shareDivId);
-        shareDiv.innerHTML = `
-            <a href="${telegramLink}" target="_blank" class="btn-share telegram">📩 Telegram</a>
-            <a href="${xLink}" target="_blank" class="btn-share x">🐦 X</a>
-        `;
+        shareDiv.innerHTML = `<a href="${telegramLink}" target="_blank" class="btn-share telegram">📩 Telegram</a><a href="${xLink}" target="_blank" class="btn-share x">🐦 X</a>`;
         shareDiv.classList.add('active');
     }
 
-    // 🎮 GAME FUNCTIONS
+    // Games
     function feedCribble() {
-        const foods = [
-            "🍟 Meme Fries — Cribble grows stronger!",
-            "🍕 Solana Pizza — Escapes another server!",
-            "🍔 Chaos Burger — Now even more unpredictable!",
-            "🍫 Viral Chocolate — Spreads faster than memes!",
-            "🥤 Crypto Soda — Energy level OVER 9000!",
-            "🌮 Magic Taco — Gains 100 new followers instantly!"
-        ];
-        const result = foods[Math.floor(Math.random() * foods.length)];
-        document.getElementById("feedResult").textContent = result;
-        buildShareLinks(result, "feedShare");
+        const arr = ["🍟 Meme Fries — Cribble grows stronger!","🍕 Solana Pizza — Escapes another server!","🍔 Chaos Burger — Now even more unpredictable!","🍫 Viral Chocolate — Spreads faster than memes!","🥤 Crypto Soda — Energy level OVER 9000!","🌮 Magic Taco — Gains 100 new followers instantly!"];
+        const res = arr[Math.floor(Math.random() * arr.length)];
+        document.getElementById("feedResult").textContent = res;
+        buildShareLinks(res, "feedShare");
     }
-
     function askOracle() {
-        const answers = [
-            "🔮 The meme gods say: YES, definitely!",
-            "🔮 Only if you post more $CRIB memes!",
-            "🔮 It’s possible… but chaos is coming!",
-            "🔮 Ask again after you hold more tokens!",
-            "🔮 The future is bright… and purple!",
-            "🔮 HODL and you shall see — maybe, maybe not!",
-            "🔮 Even I don’t know, I’m just a meme AI!"
-        ];
-        const result = answers[Math.floor(Math.random() * answers.length)];
-        document.getElementById("or
+        const arr = ["🔮 The meme gods say: YES, definitely!","🔮 Only if you post more $CRIB memes!","🔮 It’s possible… but chaos is coming!","🔮 Ask again after you hold more tokens!","🔮 The future is bright… and purple!","🔮 HODL and you shall see — maybe, maybe not!","🔮 Even I don’t know, I’m just a meme AI!"];
+        const res = arr[Math.floor(Math.random() * arr.length)];
+        document.getElementById("oracleResult").textContent = res;
+        buildShareLinks(res, "oracleShare");
+    }
+    function memeLevel() {
+        const arr = ["🤡 Level 1: Newbie — Still learning the meme ways!","🤡 Level 2: Casual — You get the jokes, mostly!","🤡 Level 3: Meme Lord — You create the chaos!","🤡 Level 4: Legendary — Your memes go viral!","🤡 Level 5: CRIBBLE Level — You ARE the meme now!"];
+        const res = arr[Math.floor(Math.random() * arr.length)];
+        document.getElementById("levelResult").textContent = res;
+        buildShareLinks(res, "levelShare");
+    }
+    function flipCrib()
