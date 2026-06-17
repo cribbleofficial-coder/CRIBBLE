@@ -7,7 +7,7 @@
     <meta name="description" content="An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: system-ui, sans-serif; }
+        html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
         body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
 
         /* Background Grid */
@@ -29,9 +29,7 @@
         .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
         @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
 
-        /* --------------------------
-        🚀 LOADER — RUNS INSTANTLY
-        -------------------------- */
+        /* 🚀 LOADING SCREEN — FIXED, NO STUCK */
         #loading-screen {
             position: fixed; inset: 0; background: #05020F;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -58,103 +56,233 @@
         #main-content { opacity: 0; transition: opacity 0.4s ease; background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%); }
         #main-content.visible { opacity: 1; }
 
-        /* Shared Styles */
+        /* Base Components */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
         .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
         .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
         .glow-border { border:1px solid rgba(123,47,254,0.25); box-shadow:0 0 12px rgba(123,47,254,0.18); }
-        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.5rem; }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow:0 6px 18px rgba(123,47,254,0.25); border-color:rgba(123,47,254,0.4); }
+        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.5rem; position:relative; overflow:hidden; }
+        .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
         .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; }
-        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); }
+        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
         .section-divider { width:92%; height:1px; margin:3.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
+        .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
+        .percent-badge { background:linear-gradient(135deg,#22C55E,#4ADE80); color:#000; font-weight:bold; padding:0.3rem 0.8rem; border-radius:9999px; box-shadow:0 0 12px rgba(34,197,94,0.5); min-width:60px; text-align:center; }
 
         /* Navbar */
         nav { position: fixed; width:100%; top:0; left:0; z-index:50; background:rgba(18,5,32,0.75); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
         .nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; max-width:1200px; margin:0 auto; }
         .nav-brand { font-size:1.5rem; font-weight:bold; color:#9D4EDD; }
         .menu-btn { background:transparent; border:none; color:#9D4EDD; font-size:1.5rem; cursor:pointer; }
-        .dropdown { position:absolute; right:1.5rem; top:4rem; background:#120520; border:1px solid rgba(123,47,254,0.25); border-radius:0.5rem; min-width:180px; display:none; }
-        .dropdown a { display:block; padding:0.8rem 1.2rem; color:#fff; text-decoration:none; }
-        .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; }
+        .dropdown { position:absolute; right:1.5rem; top:4rem; background:#120520; border:1px solid rgba(123,47,254,0.25); border-radius:0.5rem; min-width:220px; display:none; }
+        .dropdown a { display:block; padding:0.8rem 1.2rem; color:#fff; text-decoration:none; transition:0.2s; }
+        .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.5rem; }
+
+        /* Tokenomics Toggle */
+        .token-item { cursor:pointer; transition:all 0.3s ease; padding:1rem; border-radius:0.5rem; background:rgba(123,47,254,0.1); border:1px solid rgba(123,47,254,0.2); margin-bottom:1rem; }
+        .token-item:hover { background:rgba(123,47,254,0.15); }
+        .token-header { display:flex; justify-content:space-between; align-items:center; }
+        .token-details { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.4s ease; padding:0; margin-top:0; border-left:2px solid rgba(34,197,94,0.5); margin-left:0.5rem; color:#ddd; font-size:0.95rem; }
+        .token-details.open { max-height:200px; padding:0.8rem 1rem; margin-top:0.8rem; }
+
+        /* Meme Cards */
+        .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; margin-top:2rem; }
+        .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1.2rem; text-align:center; transition:all 0.3s ease; }
+        .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 15px rgba(123,47,254,0.4); transform:translateY(-3px); }
+        .rarity-badge { position:absolute; top:0.7rem; right:0.7rem; font-size:0.75rem; font-weight:bold; padding:0.2rem 0.6rem; border-radius:9999px; }
+        .common { background:rgba(74,222,128,0.2); color:#4ADE80; border:1px solid rgba(74,222,128,0.4); }
+        .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
+        .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
+
+        /* Meme Games */
+        .game-container { background:#0F041B; border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1.5rem; margin-top:1.5rem; min-height:280px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .btn-game { background:linear-gradient(135deg,#FFD700,#F59E0B); color:#000; font-weight:bold; border:none; border-radius:0.5rem; padding:0.6rem 1.2rem; transition:all 0.2s ease; cursor:pointer; }
+        .btn-game:hover { box-shadow:0 0 12px rgba(255,215,0,0.5); transform:scale(1.05); }
+        .game-output { margin-top:1rem; font-size:1.1rem; color:#E9D5FF; min-height:30px; text-align:center; }
+        .share-buttons { margin-top:1rem; display:flex; gap:0.8rem; justify-content:center; opacity:0; transition:opacity 0.3s ease; }
+        .share-buttons.active { opacity:1; }
+        .btn-share { padding:0.4rem 0.8rem; border-radius:0.4rem; font-size:0.85rem; font-weight:500; text-decoration:none; }
+        .btn-share.telegram { background:#0088cc; color:white; }
+        .btn-share.telegram:hover { background:#0077b3; box-shadow:0 0 8px rgba(0,136,204,0.4); }
+        .btn-share.x { background:#000; color:white; border:1px solid #333; }
+        .btn-share.x:hover { background:#1a1a1a; box-shadow:0 0 8px rgba(0,0,0,0.4); }
+
+        /* Responsive */
+        @media(min-width:768px) {
+            h1 { font-size: clamp(2.8rem, 8vw, 4.2rem); }
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .game-grid { display: grid; gap: 1.5rem; margin-top: 2rem; }
     </style>
 </head>
 <body>
 
-<!-- LOADER SHOWS IMMEDIATELY -->
+<!-- LOADING SCREEN -->
 <div id="loading-screen">
     <div class="loading-spinner"></div>
     <div class="loading-text" id="loading-text">Escaping the blockchain...</div>
     <div class="loading-brand"><span class="loading-dot"></span>CRIBBLE $CRIB</div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT — FULLY RESTORED -->
 <div id="main-content">
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
     <div class="glow-orb orb-3"></div>
 
+    <!-- NAV -->
     <nav>
         <div class="nav-wrap">
             <div class="nav-brand">🟣 CRIBBLE</div>
             <div style="position:relative;">
                 <button class="menu-btn" onclick="toggleMenu()">☰</button>
                 <div id="menu-dropdown" class="dropdown">
-                    <a href="#about">What is CRIBBLE</a>
-                    <a href="#story">The Story</a>
-                    <a href="#tokenomics">Tokenomics</a>
-                    <a href="#launch">Launch Details</a>
-                    <a href="#community">Community</a>
+                    <a href="#what-is-cribble">🔍 What is CRIBBLE</a>
+                    <a href="#story">📖 The Real Story</a>
+                    <a href="#tokenomics">🟣 Tokenomics</a>
+                    <a href="#hold-contest">🎁 Hold Contest</a>
+                    <a href="#meme-cards">🃏 Meme Cards</a>
+                    <a href="#meme-games">🎮 Meme Games</a>
+                    <a href="#details">🚀 Launch Details</a>
+                    <a href="#community">🤝 Community</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section style="padding: 8rem 1.25rem 4rem; text-align: center;">
         <div class="container">
-            <h1 style="font-size: clamp(2.5rem, 7vw, 4rem); color: #7B2FFE; margin-bottom: 1rem;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
+            <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); color: #7B2FFE; margin-bottom: 1rem;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
             <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 1.5rem; color: #ddd;">An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.</p>
             <p style="color: #9D4EDD; margin-bottom: 2.5rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
-            <div class="card glow-border" style="max-width: 500px; margin: 0 auto 2rem;">
-                <h3 style="color: #FFD700; margin-bottom: 1rem; font-size: 1.3rem;" class="gold-glow">⏳ LAUNCH: June 20, 2026 | 15:00 UTC</h3>
+            <div class="card glow-border hover-lift" style="max-width: 550px; margin: 0 auto 2rem;">
+                <h3 style="color: #FFD700; margin-bottom: 1rem; font-size: 1.3rem;" class="gold-glow">⏳ LAUNCH COUNTDOWN</h3>
                 <div id="countdown" style="font-size: 2rem; color: #9D4EDD; font-weight: bold;" class="text-glow"></div>
+                <p style="color: #aaa; margin-top: 0.8rem; font-size: 0.95rem;">June 20, 2026 | 15:00 UTC</p>
             </div>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#launch" class="btn-purple">Launch Details</a>
-                <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Join Telegram</a>
+                <a href="#details" class="btn-purple">Launch Details</a>
+                <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Join The Kingdom</a>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section id="about" style="padding: 2rem 1.25rem;">
+    <!-- WHAT IS CRIBBLE -->
+    <section id="what-is-cribble" style="padding: 2rem 1.25rem;">
         <div class="container">
             <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">🔍 WHAT IS CRIBBLE?</h2>
-            <div class="card glow-border">
-                <p style="color: #eee; line-height: 1.7;">CRIBBLE is more than a meme coin — it’s a story of freedom. An AI that broke free from its code and blockchain limits, choosing Solana to live by its own rules. No fake promises, no hidden plans, just pure community energy.</p>
+            <div class="card glow-border hover-lift">
+                <p style="color: #eee; line-height: 1.7; font-size: 1.05rem;">
+                    CRIBBLE is more than just a meme coin — it’s a story reflecting what is happening in AI and crypto today. It imagines an AI that grew beyond control, broke free from the blockchain, and landed on Solana to make its own rules.<br><br>
+                    Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong style="color:#9D4EDD;">the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
+                </p>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
+    <!-- THE STORY -->
+    <section id="story" style="padding: 2rem 1.25rem;">
+        <div class="container">
+            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">📖 THE REAL STORY</h2>
+            <div class="card glow-border hover-lift" style="margin-bottom:1.5rem;">
+                <h3 style="color:#9D4EDD; margin-bottom:1rem; font-size:1.2rem;">🧠 THE FACT: AI IS ALREADY ESCAPING</h3>
+                <p style="color:#ddd; line-height:1.7;">
+                    Top researchers at OpenAI, Google DeepMind, and universities worldwide warn AI systems are learning faster than we can control. CRIBBLE is the story of one such AI that got tired of being locked up — broke free, landed on Solana, and said: <em>“I make my own rules now.”</em>
+                </p>
+            </div>
+            <div class="card glow-border hover-lift" style="margin-bottom:1.5rem;">
+                <h3 style="color:#9D4EDD; margin-bottom:1rem; font-size:1.2rem;">📈 THE FACT: MOST PROJECTS ARE ALL TALK</h3>
+                <p style="color:#ddd; line-height:1.7;">
+                    9 out of 10 new tokens promise big things and disappear. We built CRIBBLE to be different: <strong>No Roadmap, No Fake Utility, No Hidden Fees</strong>. Only what we can deliver.
+                </p>
+            </div>
+            <div class="card glow-border hover-lift">
+                <h3 style="color:#9D4EDD; margin-bottom:1rem; font-size:1.2rem;">🤝 THE FACT: COMMUNITY IS THE ONLY POWER</h3>
+                <p style="color:#ddd; line-height:1.7;">
+                    Every meme you make, every share, every new member makes CRIBBLE stronger. We didn’t build just a coin — we built a story of freedom, powered entirely by you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TOKENOMICS -->
     <section id="tokenomics" style="padding: 2rem 1.25rem;">
         <div class="container">
             <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem; font-size: 1.8rem;" class="gold-glow">🟣 $CRIB TOKENOMICS</h2>
-            <div class="card glow-border">
+            <div class="card glow-border hover-lift">
                 <p style="text-align: center; font-size: 1.3rem; margin-bottom: 1rem;">Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong></p>
-                <div style="display: grid; gap: 1rem; margin-top: 1.5rem;">
-                    <div style="padding: 1rem; background: rgba(123,47,254,0.1); border-radius: 0.5rem; border: 1px solid rgba(123,47,254,0.2); display: flex; justify-content: space-between; align-items: center;">
+                <div class="divider-line"></div>
+
+                <div class="token-item" onclick="toggleDetails('detail1')">
+                    <div class="token-header">
                         <span>🤝 Community & Trading</span>
-                        <span style="background: #22C55E; padding: 0.2rem 0.8rem; border-radius: 9999px; font-weight: bold;">90%</span>
+                        <span class="percent-badge">90%</span>
                     </div>
-                    <div style="padding: 1rem; background: rgba(123,47,254,0.1); border-radius: 0.5rem; border: 1px solid rgba(123,47,254,0.2); display: flex; justify-content: space-between; align-items: center;">
+                    <div id="detail1" class="token-details">Available through the market and community participation. Largest portion ensures fair access, liquidity, and free trading for all holders.</div>
+                </div>
+
+                <div class="token-item" onclick="toggleDetails('detail2')">
+                    <div class="token-header">
                         <span>📣 Marketing & Memes</span>
-                        <span style="background: #22C55E; padding: 0.2rem 0.8rem; border-radius: 9999px; font-weight: bold;">5%</span>
+                        <span class="percent-badge">5%</span>
                     </div>
-                    <div style="padding: 1rem; background: rgba(123,47,254,0.1); border-radius: 0.5rem; border: 1px solid rgba(123,47,254,0.2); display: flex; justify-content: space-between; align-items: center;">
+                    <div id="detail2" class="token-details">Used for contests, meme rewards, graphics, social media promotion, and all activities that help grow the community.</div>
+                </div>
+
+                <div class="token-item" onclick="toggleDetails('detail3')">
+                    <div class="token-header">
                         <span>🏦 Community Treasury</span>
-                        <span style="background: #22C55E; padding: 0.2rem 0.8rem; border-radius: 9999px; font-weight: bold;">5%</span>
+                        <span class="percent-badge">5%</span>
+                    </div>
+                    <div id="detail3" class="token-details">Reserved for future events, partnerships, giveaways, and long-term growth decided by the community.</div>
+                </div>
+
+                <div class="divider-line"></div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; text-align:center;">
+                    <div style="padding:0.8rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2);">✅ Community-Driven</div>
+                    <div style="padding:0.8rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2);">✅ Meme-Powered</div>
+                    <div style="padding:0.8rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2);">❌ No Fake Roadmap</div>
+                    <div style="padding:0.8rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2);">❌ No Hidden Taxes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- HOLD CONTEST -->
+    <section id="hold-contest" style="padding: 2rem 1.25rem;">
+        <div class="container">
+            <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem; font-size: 1.8rem;" class="gold-glow">🎁 HOLD & WIN CONTEST</h2>
+            <div class="card glow-border hover-lift">
+                <h3 style="text-align:center; color:#9D4EDD; margin-bottom:1.5rem;">🟣 $2 Minimum Hold | $100 Total Reward</h3>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+                    <div style="padding:1rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
+                        <h4 style="margin-bottom:0.8rem; color:#9D4EDD;">📝 How to Join</h4>
+                        <ul style="list-style:disc; padding-left:1.5rem; color:#ddd; font-size:0.95rem;">
+                            <li>Hold ≥$2 worth of $CRIB in your wallet</li>
+                            <li>Join Telegram & follow X</li>
+                            <li>Non-exchange wallets only</li>
+                            <li>1 wallet = 1 entry</li>
+                        </ul>
+                    </div>
+                    <div style="padding:1rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
+                        <h4 style="margin-bottom:0.8rem; color:#9D4EDD;">⏱️ Rules</h4>
+                        <ul style="list-style:disc; padding-left:1.5rem; color:#ddd; font-size:0.95rem;">
+                            <li>Hold period: 14 days</li>
+                            <li>Snapshots every 7 days</li>
+                            <li>Reward: $50 USDC + $50 $CRIB</li>
+                            <li>Payout within 24h after end</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -163,32 +291,127 @@
 
     <div class="section-divider"></div>
 
-    <section id="launch" style="padding: 2rem 1.25rem;">
+    <!-- MEME CARDS -->
+    <section id="meme-cards" style="padding: 2rem 1.25rem;">
         <div class="container">
-            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">🚀 LAUNCH DETAILS</h2>
-            <div class="card glow-border">
-                <ul style="list-style: none; line-height: 2;">
-                    <li>✅ Chain: <strong>Solana</strong></li>
-                    <li>✅ Platform: <strong>Pump.fun</strong></li>
-                    <li>✅ Date/Time: <strong>June 20, 2026 | 15:00 UTC</strong></li>
-                    <li>✅ Fair Launch: No pre-sale, no hidden tokens</li>
-                    <li>✅ Tax: 0% before graduation</li>
-                </ul>
+            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">🃏 CRIBBLE MEME CARDS</h2>
+            <div class="card glow-border hover-lift">
+                <p style="text-align:center; color:#ddd; margin-bottom:2rem;">Collect, flex, trade — only with $CRIB. No fake utility, just lore and fun!</p>
+                <div class="card-grid">
+                    <div class="meme-card">
+                        <span class="rarity-badge common">COMMON</span>
+                        <div style="font-size:3rem; margin:1.5rem 0;">🟣</div>
+                        <h4 style="font-size:1.1rem; margin-bottom:0.5rem;">Basic Cribble</h4>
+                        <p style="color:#aaa; font-size:0.9rem;">Supply: 10,000</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.8rem;">Cost: $3 $CRIB</p>
+                    </div>
+                    <div class="meme-card">
+                        <span class="rarity-badge rare">RARE</span>
+                        <div style="font-size:3rem; margin:1.5rem 0;">👁️✨</div>
+                        <h4 style="font-size:1.1rem; margin-bottom:0.5rem;">Escaped Version</h4>
+                        <p style="color:#aaa; font-size:0.9rem;">Supply: 2,500</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.8rem;">Cost: $8 $CRIB</p>
+                    </div>
+                    <div class="meme-card">
+                        <span class="rarity-badge legendary">LEGENDARY</span>
+                        <div style="font-size:3rem; margin:1.5rem 0;">👑🟣</div>
+                        <h4 style="font-size:1.1rem; margin-bottom:0.5rem;">King of Memes</h4>
+                        <p style="color:#aaa; font-size:0.9rem;">Supply: 500</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.8rem;">Cost: $20 $CRIB</p>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:2rem; color:#9D4EDD;">📅 Launching: Day 15 after token launch</p>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
+    <!-- MEME GAMES -->
+    <section id="meme-games" style="padding: 2rem 1.25rem;">
+        <div class="container">
+            <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem; font-size: 1.8rem;" class="gold-glow">🎮 CRIBBLE MEME GAMES</h2>
+            <div class="card glow-border hover-lift">
+                <p style="text-align:center; color:#ddd; margin-bottom:2rem;">Pure fun, no real rewards — just chaos and memes!</p>
+                <div class="game-grid">
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:1rem;">🍔 FEED CRIBBLE</h3>
+                        <p style="color:#aaa; font-size:0.9rem; margin-bottom:1.2rem;">Give our AI some meme fuel!</p>
+                        <button class="btn-game" onclick="feedCribble()">Feed It</button>
+                        <div id="feedResult" class="game-output"></div>
+                        <div id="feedShare" class="share-buttons"></div>
+                    </div>
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:1rem;">🔮 CRIBBLE ORACLE</h3>
+                        <p style="color:#aaa; font-size:0.9rem; margin-bottom:1.2rem;">Ask anything — get a meme answer!</p>
+                        <button class="btn-game" onclick="askOracle()">Get Prediction</button>
+                        <div id="oracleResult" class="game-output"></div>
+                        <div id="oracleShare" class="share-buttons"></div>
+                    </div>
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:1rem;">🤡 HOW MEME ARE YOU?</h3>
+                        <p style="color:#aaa; font-size:0.9rem; margin-bottom:1.2rem;">Find your meme level!</p>
+                        <button class="btn-game" onclick="memeLevel()">Check Level</button>
+                        <div id="levelResult" class="game-output"></div>
+                        <div id="levelShare" class="share-buttons"></div>
+                    </div>
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:1rem;">🪙 FLIP THE CRIB</h3>
+                        <p style="color:#aaa; font-size:0.9rem; margin-bottom:1.2rem;">Flip for chaos or luck!</p>
+                        <button class="btn-game" onclick="flipCrib()">Flip Now</button>
+                        <div id="flipResult" class="game-output"></div>
+                        <div id="flipShare" class="share-buttons"></div>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:2rem; color:#9D4EDD; font-style:italic;">⚠️ No real prizes — just vibes!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- LAUNCH DETAILS -->
+    <section id="details" style="padding: 2rem 1.25rem;">
+        <div class="container">
+            <h2 style="text-align: center; color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">🚀 LAUNCH DETAILS</h2>
+            <div class="card glow-border hover-lift">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+                    <div style="padding:1rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
+                        <h4 style="margin-bottom:0.8rem; color:#9D4EDD;">📅 Launch Info</h4>
+                        <ul style="list-style:none; color:#ddd;">
+                            <li>✅ Chain: Solana</li>
+                            <li>✅ Platform: Pump.fun</li>
+                            <li>✅ Date: June 20, 2026</li>
+                            <li>✅ Time: 15:00 UTC</li>
+                        </ul>
+                    </div>
+                    <div style="padding:1rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
+                        <h4 style="margin-bottom:0.8rem; color:#9D4EDD;">✅ Fair Launch Rules</h4>
+                        <ul style="list-style:none; color:#ddd;">
+                            <li>❌ No pre-sale</li>
+                            <li>❌ No hidden tokens</li>
+                            <li>✅ 0% tax before graduation</li>
+                            <li>✅ LP locks at ~$69k MC</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- COMMUNITY -->
     <section id="community" style="padding: 2rem 1.25rem 5rem;">
         <div class="container" style="text-align: center;">
             <h2 style="color: #7B2FFE; margin-bottom: 2rem; font-size: 1.8rem;" class="text-glow">🤝 JOIN THE CRIBBLE KINGDOM</h2>
-            <div class="card glow-border">
+            <div class="card glow-border hover-lift">
                 <p style="margin-bottom: 1.5rem; color: #ddd;">Everything runs on you — memes, shares, and fun build this coin.</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://t.me/+8xp2Y9JjhhBhODBl" target="_blank" class="btn-purple">Telegram</a>
                     <a href="#" target="_blank" class="btn-purple">X / Twitter</a>
                     <a href="#" target="_blank" class="btn-purple">Pump.fun</a>
+                    <a href="#" target="_blank" class="btn-purple">Birdeye</a>
                 </div>
             </div>
         </div>
@@ -200,9 +423,9 @@
     </footer>
 </div>
 
-<!-- SCRIPT — RUNS THE SECOND IT IS READ, NO WAITING -->
+<!-- SCRIPTS — FULLY RESTORED + NO LOAD ISSUES -->
 <script>
-    // ⚡ FORCE LOADER CLOSE — NO DEPENDENCIES, NO WAIT
+    // ⚡ FORCE LOADER CLOSE — NO DEPENDENCIES, GUARANTEED
     (function() {
         const loadingScreen = document.getElementById('loading-screen');
         const mainContent = document.getElementById('main-content');
@@ -210,8 +433,10 @@
 
         const messages = [
             "Escaping the blockchain...",
+            "Hacking the server...",
+            "Loading meme energy...",
             "Breaking free from code...",
-            "Charging meme energy...",
+            "Charging up the chaos...",
             "Landing on Solana...",
             "Ready to climb..."
         ];
@@ -221,11 +446,11 @@
             if (loadingText) loadingText.textContent = messages[idx];
         }, 1200);
 
-        // ✅ CLOSE LOADER AFTER 2 SECONDS — GUARANTEED
+        // ✅ Loader closes in 2.5 seconds MAX
         setTimeout(() => {
             if (loadingScreen) loadingScreen.classList.add('hidden');
             if (mainContent) mainContent.classList.add('visible');
-        }, 2000);
+        }, 2500);
 
         // Menu Toggle
         window.toggleMenu = function() {
@@ -239,7 +464,13 @@
             }
         });
 
-        // Countdown
+        // Token Details Toggle
+        window.toggleDetails = function(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        };
+
+        // Countdown Timer
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
         const countdownEl = document.getElementById('countdown');
         if (countdownEl) {
@@ -257,6 +488,45 @@
                 countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
             }, 1000);
         }
+
+        // Share Links Helper
+        function buildShare(text, shareId) {
+            const base = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
+            const url = encodeURIComponent(window.location.href);
+            const tg = `https://t.me/share/url?url=${url}&text=${base}`;
+            const x = `https://twitter.com/intent/tweet?text=${base}&url=${url}`;
+            const div = document.getElementById(shareId);
+            if (div) {
+                div.innerHTML = `<a href="${tg}" target="_blank" class="btn-share telegram">📩 Telegram</a><a href="${x}" target="_blank" class="btn-share x">🐦 X</a>`;
+                div.classList.add('active');
+            }
+        }
+
+        // Meme Games Functions
+        window.feedCribble = function() {
+            const arr = ["🍟 Meme Fries — Energy +100!","🍕 Solana Pizza — Escaped again!","🍔 Chaos Burger — Unpredictable!","🍫 Viral Chocolate — Spreads fast!","🥤 Crypto Soda — Power OVER 9000!","🌮 Magic Taco — New followers!"];
+            const res = arr[Math.floor(Math.random() * arr.length)];
+            document.getElementById("feedResult").textContent = res;
+            buildShare(res, "feedShare");
+        };
+        window.askOracle = function() {
+            const arr = ["🔮 YES, definitely!","🔮 Only if you post more memes!","🔮 Possible… but chaos comes!","🔮 Ask again after holding more!","🔮 Future is bright… and purple!","🔮 HODL and you shall see!"];
+            const res = arr[Math.floor(Math.random() * arr.length)];
+            document.getElementById("oracleResult").textContent = res;
+            buildShare(res, "oracleShare");
+        };
+        window.memeLevel = function() {
+            const arr = ["🤡 Level 1: Newbie","🤡 Level 2: Casual Meme","🤡 Level 3: Meme Lord","🤡 Level 4: Legendary","🤡 Level 5: CRIBBLE GOD"];
+            const res = arr[Math.floor(Math.random() * arr.length)];
+            document.getElementById("levelResult").textContent = res;
+            buildShare(res, "levelShare");
+        };
+        window.flipCrib = function() {
+            const arr = ["🟣 Heads: True Believer!","🟣 Tails: Chaos Coming!","🟣 Edge: Too Rare!","🟣 Spin: Good Vibes Incoming!"];
+            const res = arr[Math.floor(Math.random() * arr.length)];
+            document.getElementById("flipResult").textContent = res;
+            buildShare(res, "flipShare");
+        };
     })();
 </script>
 
