@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meme Cards | CRIBBLE ($CRIB)</title>
+    <meta name="description" content="Collect, flex and trade CRIBBLE Meme Cards — powered by $CRIB.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+
+        /* Background Grid */
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.4; z-index: -1;
+            animation: gridShift 60s linear infinite;
+        }
+        @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
+
+        /* Glow Orbs */
+        .glow-orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
+        .orb-1 { width:300px; height:300px; background:#7B2FFE; top:10%; left:15%; }
+        .orb-2 { width:250px; height:250px; background:#9D4EDD; bottom:20%; right:10%; animation-delay:-5s; }
+        .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
+        @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed; inset: 0; background: #05020F;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 99999; transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
+        }
+        #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .loading-spinner {
+            width: 65px; height: 65px; border-radius: 50%;
+            background: conic-gradient(#7B2FFE 0%, #7B2FFE 25%, transparent 25%, transparent 100%);
+            mask: radial-gradient(transparent 55%, black 55%);
+            -webkit-mask: radial-gradient(transparent 55%, black 55%);
+            animation: spin 1s linear infinite; margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 12px rgba(123,47,254,0.5));
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .loading-text { 
+            font-size: 1.1rem; color: #D8B4FE; margin-bottom: 1rem; 
+            animation: pulse 1.4s ease-in-out infinite alternate; 
+            text-align: center; max-width: 300px;
+        }
+        @keyframes pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+        .loading-brand { font-size: 1rem; color: #FFD700; display: flex; align-items: center; gap: 0.5rem; }
+        .loading-dot { width:12px; height:12px; border-radius:50%; background:#7B2FFE; box-shadow:0 0 8px rgba(123,47,254,0.6); }
+
+        /* Main Content */
+        #main-content { opacity: 0; transition: opacity 0.4s ease; background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%); }
+        #main-content.visible { opacity: 1; }
+
+        /* Base Components */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
+        .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
+        .glow-border { border:1px solid rgba(123,47,254,0.25); box-shadow:0 0 12px rgba(123,47,254,0.18); }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow:0 6px 18px rgba(123,47,254,0.25); border-color:rgba(123,47,254,0.4); }
+        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.2rem; position:relative; overflow:hidden; }
+        .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
+        .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.7rem 1.2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; text-align: center; }
+        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
+        .btn-back { background: rgba(255,215,0,0.15); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.9rem; margin-bottom: 1rem; display: inline-block; transition: all 0.2s ease; }
+        .btn-back:hover { background: rgba(255,215,0,0.25); box-shadow: 0 0 10px rgba(255,215,0,0.3); }
+        .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
+        .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
+
+        /* Navbar */
+        nav { position: fixed; width:100%; top:0; left:0; z-index:50; background:rgba(18,5,32,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
+        .nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; max-width:1200px; margin:0 auto; }
+        .nav-brand { font-size:1.3rem; font-weight:bold; color:#9D4EDD; }
+        .menu-btn { background:transparent; border:none; color:#9D4EDD; font-size:1.4rem; cursor:pointer; padding:0.4rem; }
+        .dropdown { position:absolute; right:1rem; top:3.2rem; background:#120520; border:1px solid rgba(123,47,254,0.25); border-radius:0.5rem; min-width:200px; display:none; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
+        .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
+
+        /* Meme Cards Style */
+        .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-top:2rem; }
+        .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1.5rem 1rem; text-align:center; transition:all 0.3s ease; min-height:260px; display:flex; flex-direction:column; justify-content:center; }
+        .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 20px rgba(123,47,254,0.4); transform:translateY(-4px); }
+        .rarity-badge { position:absolute; top:0.8rem; right:0.8rem; font-size:0.75rem; font-weight:bold; padding:0.25rem 0.6rem; border-radius:9999px; }
+        .common { background:rgba(74,222,128,0.2); color:#4ADE80; border:1px solid rgba(74,222,128,0.4); }
+        .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
+        .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
+        .card-icon { font-size:3rem; margin:1.2rem 0; }
+        .card-name { font-size:1.1rem; margin-bottom:0.6rem; color:#E9D5FF; }
+        .card-supply { font-size:0.9rem; color:#aaa; margin-bottom:0.8rem; }
+        .card-cost { font-weight:bold; color:#FFD700; font-size:1rem; }
+
+        /* Responsive */
+        section { padding: 2rem 1rem !important; }
+        section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
+        h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
+        h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; text-align: center; color: #7B2FFE; text-shadow: 0 0 12px rgba(123,47,254,0.55); }
+        p { font-size: 0.95rem !important; line-height: 1.6; }
+
+        @media(min-width:768px) {
+            .container { padding: 0 1.5rem; }
+            .card { padding: 1.5rem; }
+            section { padding: 3rem 1.5rem !important; }
+            section:first-of-type { padding-top: 8rem !important; padding-bottom: 4rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loading-text">Loading CRIBBLE Collection...</div>
+    <div class="loading-brand"><span class="loading-dot"></span>CRIBBLE $CRIB</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-wrap">
+            <div class="nav-brand">🟣 CRIBBLE</div>
+            <div style="position:relative;">
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+                <div id="menu-dropdown" class="dropdown">
+                    <a href="index.html#what-is-cribble">🔍 What is CRIBBLE</a>
+                    <a href="index.html#how-to-start">🚀 How to Get Started</a>
+                    <a href="index.html#story">📖 The Real Story</a>
+                    <a href="index.html#tokenomics">🟣 Tokenomics</a>
+                    <a href="index.html#hold-contest">🎁 Hold Contest</a>
+                    <a href="meme-cards.html" style="color:#FFD700;">🃏 Meme Cards</a>
+                    <a href="gift-hub.html">🎮 Gift Hub & Games</a>
+                    <a href="index.html#details">🚀 Launch Details</a>
+                    <a href="index.html#community">🤝 Community</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section>
+        <div class="container">
+            <a href="index.html" class="btn-back">← Back to Main Page</a>
+            
+            <h1 style="color: #FFD700; margin-bottom: 1rem; text-align: center;" class="gold-glow">🃏 CRIBBLE MEME CARDS</h1>
+            <p style="max-width: 700px; margin: 0 auto 2rem; color: #ddd; text-align: center;">
+                Collect, flex, and trade exclusive CRIBBLE Meme Cards. No fake utility — just lore, rarity, and pure meme energy!
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CARDS COLLECTION -->
+    <section>
+        <div class="container">
+            <div class="card glow-border hover-lift">
+                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Available after launch — use $CRIB to collect!</p>
+                
+                <div class="card-grid">
+                    <div class="meme-card">
+                        <span class="rarity-badge common">COMMON</span>
+                        <div class="card-icon">🟣</div>
+                        <h3 class="card-name">Basic Cribble</h3>
+                        <p class="card-supply">Total Supply: 10,000</p>
+                        <p class="card-cost">Cost: 3 $CRIB</p>
+                    </div>
+
+                    <div class="meme-card">
+                        <span class="rarity-badge rare">RARE</span>
+                        <div class="card-icon">👁️✨</div>
+                        <h3 class="card-name">Escaped Version</h3>
+                        <p class="card-supply">Total Supply: 2,500</p>
+                        <p class="card-cost">Cost: 8 $CRIB</p>
+                    </div>
+
+                    <div class="meme-card">
+                        <span class="rarity-badge legendary">LEGENDARY</span>
+                        <div class="card-icon">👑🟣</div>
+                        <h3 class="card-name">King of Memes</h3>
+                        <p class="card-supply">Total Supply: 500</p>
+                        <p class="card-cost">Cost: 20 $CRIB</p>
+                    </div>
+                </div>
+
+                <p style="text-align:center; margin-top:2rem; color:#9D4EDD; font-style:italic; font-size:0.95rem;">
+                    📅 Launching: Day 15 after token launch<br>
+                    ⚠️ For collection & fun only — not financial assets
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <footer style="text-align: center; padding: 1.5rem 1rem; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(123,47,254,0.15);">
+        © 2026 CRIBBLE | $CRIB — Pure Memes, No Lies<br>
+        Not financial advice. Just for fun 🟣
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+    (function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        const loadingText = document.getElementById('loading-text');
+
+        const loadingMessages = [
+            "Loading collection... 🃏",
+            "Sorting rarities... ✨",
+            "Counting supplies... 📊",
+            "Charging meme power... ⚡",
+            "Preparing your cards... 🟣",
+            "No fake utility — just vibes... 🚀"
+        ];
+
+        let idx = 0;
+        setInterval(() => {
+            idx = (idx + 1) % loadingMessages.length;
+            if (loadingText) loadingText.textContent = loadingMessages[idx];
+        }, 1200);
+
+        setTimeout(() => {
+            if (loadingScreen) loadingScreen.classList.add('hidden');
+            if (mainContent) mainContent.classList.add('visible');
+        }, 2500);
+
+        // Menu Toggle
+        window.toggleMenu = function() {
+            const menu = document.getElementById('menu-dropdown');
+            if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        };
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-btn') && !e.target.closest('.dropdown')) {
+                const menu = document.getElementById('menu-dropdown');
+                if (menu) menu.style.display = 'none';
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>
