@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gift Hub | CRIBBLE ($CRIB)</title>
+    <meta name="description" content="Play fun meme games and earn vibes in the CRIBBLE Gift Hub.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+
+        /* Background Grid */
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.4; z-index: -1;
+            animation: gridShift 60s linear infinite;
+        }
+        @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
+
+        /* Glow Orbs */
+        .glow-orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
+        .orb-1 { width:300px; height:300px; background:#7B2FFE; top:10%; left:15%; }
+        .orb-2 { width:250px; height:250px; background:#9D4EDD; bottom:20%; right:10%; animation-delay:-5s; }
+        .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
+        @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
+
+        /* Main Content */
+        #main-content { background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%); }
+
+        /* Base Components */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
+        .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
+        .glow-border { border:1px solid rgba(123,47,254,0.25); box-shadow:0 0 12px rgba(123,47,254,0.18); }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow:0 6px 18px rgba(123,47,254,0.25); border-color:rgba(123,47,254,0.4); }
+        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.2rem; position:relative; overflow:hidden; }
+        .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
+        .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.7rem 1.2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; text-align: center; }
+        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
+        .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4
