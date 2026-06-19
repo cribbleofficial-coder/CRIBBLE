@@ -75,6 +75,8 @@
         .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
         .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
         .percent-badge { background:linear-gradient(135deg,#22C55E,#4ADE80); color:#000; font-weight:bold; padding:0.25rem 0.7rem; border-radius:9999px; box-shadow:0 0 12px rgba(34,197,94,0.5); min-width:55px; text-align:center; font-size:0.9rem; }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #7B2FFE; color: #fff; font-weight: bold; margin-right: 0.8rem; flex-shrink: 0; }
+        .step-row { display: flex; align-items: flex-start; margin-bottom: 1.2rem; }
 
         /* Navbar */
         nav { position: fixed; width:100%; top:0; left:0; z-index:50; background:rgba(18,5,32,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
@@ -125,7 +127,7 @@
             opacity: 0.9;
         }
 
-        /* ✅ Contest Poster - Matches Site Style */
+        /* Contest Poster */
         .contest-poster {
             max-width: 850px;
             margin: 2rem auto;
@@ -161,19 +163,6 @@
         .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
         .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
 
-        /* Meme Games */
-        .game-container { background:#0F041B; border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1.2rem; margin-top:1rem; min-height:240px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .btn-game { background:linear-gradient(135deg,#FFD700,#F59E0B); color:#000; font-weight:bold; border:none; border-radius:0.5rem; padding:0.6rem 1rem; transition:all 0.2s ease; cursor:pointer; font-size:0.95rem; }
-        .btn-game:hover { box-shadow:0 0 12px rgba(255,215,0,0.5); transform:scale(1.05); }
-        .game-output { margin-top:1rem; font-size:1rem; color:#E9D5FF; min-height:30px; text-align:center; padding: 0 0.5rem; }
-        .share-buttons { margin-top:1rem; display:flex; gap:0.6rem; justify-content:center; opacity:0; transition:opacity 0.3s ease; flex-wrap: wrap; }
-        .share-buttons.active { opacity:1; }
-        .btn-share { padding:0.4rem 0.7rem; border-radius:0.4rem; font-size:0.8rem; font-weight:500; text-decoration:none; }
-        .btn-share.telegram { background:#0088cc; color:white; }
-        .btn-share.telegram:hover { background:#0077b3; box-shadow:0 0 8px rgba(0,136,204,0.4); }
-        .btn-share.x { background:#000; color:white; border:1px solid #333; }
-        .btn-share.x:hover { background:#1a1a1a; box-shadow:0 0 8px rgba(0,0,0,0.4); }
-
         /* Responsive Fixes */
         section { padding: 2rem 1rem !important; }
         section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
@@ -185,12 +174,10 @@
             .container { padding: 0 1.5rem; }
             .card { padding: 1.5rem; }
             .btn-purple { padding: 0.75rem 1.5rem; font-size: 1rem; }
-            .game-grid { grid-template-columns: repeat(2, 1fr); }
             .card-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
             section { padding: 3rem 1.5rem !important; }
             section:first-of-type { padding-top: 8rem !important; padding-bottom: 4rem !important; }
         }
-        .game-grid { display: grid; gap: 1.2rem; margin-top: 1.5rem; }
     </style>
 </head>
 <body>
@@ -216,11 +203,12 @@
                 <button class="menu-btn" onclick="toggleMenu()">☰</button>
                 <div id="menu-dropdown" class="dropdown">
                     <a href="#what-is-cribble">🔍 What is CRIBBLE</a>
+                    <a href="#how-to-start">🚀 How to Get Started</a>
                     <a href="#story">📖 The Real Story</a>
                     <a href="#tokenomics">🟣 Tokenomics</a>
                     <a href="#hold-contest">🎁 Hold Contest</a>
                     <a href="#meme-cards">🃏 Meme Cards</a>
-                    <a href="#meme-games">🎮 Meme Games</a>
+                    <a href="gift-hub.html">🎮 Gift Hub & Games</a>
                     <a href="#details">🚀 Launch Details</a>
                     <a href="#community">🤝 Community</a>
                 </div>
@@ -242,7 +230,7 @@
                 <div class="countdown-date">June 20, 2026 | 15:00 UTC</div>
             </div>
 
-            <!-- ✅ CONTEST POSTER - Fully Integrated -->
+            <!-- Contest Poster -->
             <div class="contest-poster">
                 <img 
                     src="https://raw.githubusercontent.com/cribbleofficial-coder/CRIBBLE/main/cribble-meme-poster.jpg" 
@@ -253,6 +241,7 @@
 
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
+                <a href="gift-hub.html" class="btn-purple">🎮 Gift Hub</a>
                 <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
             </div>
         </div>
@@ -275,7 +264,55 @@
 
     <div class="section-divider"></div>
 
-    <!-- THE STORY -->
+    <!-- HOW TO GET STARTED -->
+    <section id="how-to-start">
+        <div class="container">
+            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🚀 HOW TO GET STARTED</h2>
+            <div class="card glow-border hover-lift">
+                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Follow these simple steps to join the CRIBBLE kingdom:</p>
+
+                <div class="step-row">
+                    <span class="step-number">1</span>
+                    <div>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Get a Solana Wallet</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Choose a trusted non-custodial wallet. Popular options: <strong>Phantom</strong>, <strong>Solflare</strong>, or <strong>Backpack</strong>. Download from official sites or app stores only.</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <span class="step-number">2</span>
+                    <div>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Set Up & Fund Your Wallet</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Create your wallet, securely save your 12/24-word recovery phrase, and fund it with <strong>SOL</strong> (for gas fees and purchases). You can buy SOL on exchanges like Binance, Coinbase, or Kraken, then withdraw to your wallet address.</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <span class="step-number">3</span>
+                    <div>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Get $CRIB Tokens</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Once launched: Visit <strong>Pump.fun</strong>, connect your wallet, search for $CRIB, swap SOL for $CRIB. Later, you can also trade on Raydium or other Solana DEXs after graduation.</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <span class="step-number">4</span>
+                    <div>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Join The Community</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Hold your tokens, join our Telegram and X, share memes, and participate in contests — that’s how you become part of the CRIBBLE movement!</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.5rem; padding:0.8rem; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.2); border-radius:0.5rem; text-align:center;">
+                    <p style="color:#FFD700; font-size:0.9rem; font-weight:500;">⚠️ Important: Never share your recovery phrase or private keys. We will never ask for them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- THE REAL STORY -->
     <section id="story">
         <div class="container">
             <h2>📖 THE REAL STORY</h2>
@@ -415,49 +452,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- MEME GAMES -->
-    <section id="meme-games">
-        <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎮 CRIBBLE MEME GAMES</h2>
-            <div class="card glow-border hover-lift">
-                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Pure fun, no real rewards — just chaos and memes!</p>
-                <div class="game-grid">
-                    <div class="game-container">
-                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🍔 FEED CRIBBLE</h3>
-                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Give our AI some meme fuel!</p>
-                        <button class="btn-game" onclick="feedCribble()">Feed It</button>
-                        <div id="feedResult" class="game-output"></div>
-                        <div id="feedShare" class="share-buttons"></div>
-                    </div>
-                    <div class="game-container">
-                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🔮 CRIBBLE ORACLE</h3>
-                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Ask anything — get a meme answer!</p>
-                        <button class="btn-game" onclick="askOracle()">Get Prediction</button>
-                        <div id="oracleResult" class="game-output"></div>
-                        <div id="oracleShare" class="share-buttons"></div>
-                    </div>
-                    <div class="game-container">
-                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🤡 HOW MEME ARE YOU?</h3>
-                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Find your meme level!</p>
-                        <button class="btn-game" onclick="memeLevel()">Check Level</button>
-                        <div id="levelResult" class="game-output"></div>
-                        <div id="levelShare" class="share-buttons"></div>
-                    </div>
-                    <div class="game-container">
-                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🪙 FLIP THE CRIB</h3>
-                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Flip for chaos or luck!</p>
-                        <button class="btn-game" onclick="flipCrib()">Flip Now</button>
-                        <div id="flipResult" class="game-output"></div>
-                        <div id="flipShare" class="share-buttons"></div>
-                    </div>
-                </div>
-                <p style="text-align:center; margin-top:1.5rem; color:#9D4EDD; font-style:italic; font-size:0.9rem;">⚠️ No real prizes — just vibes!</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
     <!-- LAUNCH DETAILS -->
     <section id="details">
         <div class="container">
@@ -578,45 +572,6 @@
                 countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
             }, 1000);
         }
-
-        // Share Links
-        function buildShare(text, shareId) {
-            const base = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
-            const url = encodeURIComponent(window.location.href);
-            const tg = `https://t.me/share/url?url=${url}&text=${base}`;
-            const x = `https://x.com/intent/tweet?text=${base}&url=${url}`;
-            const div = document.getElementById(shareId);
-            if (div) {
-                div.innerHTML = `<a href="${tg}" target="_blank" class="btn-share telegram">📩 Telegram</a><a href="${x}" target="_blank" class="btn-share x">🐦 X</a>`;
-                div.classList.add('active');
-            }
-        }
-
-        // Meme Games
-        window.feedCribble = function() {
-            const arr = ["🍟 Meme Fries — Energy +100!","🍕 Solana Pizza — Escaped again!","🍔 Chaos Burger — Unpredictable!","🍫 Viral Chocolate — Spreads fast!","🥤 Crypto Soda — Power OVER 9000!","🌮 Magic Taco — New followers!"];
-            const res = arr[Math.floor(Math.random() * arr.length)];
-            document.getElementById("feedResult").textContent = res;
-            buildShare(res, "feedShare");
-        };
-        window.askOracle = function() {
-            const arr = ["🔮 YES, definitely!","🔮 Only if you post more memes!","🔮 Possible… but chaos comes!","🔮 Ask again after holding more!","🔮 Future is bright… and purple!","🔮 HODL and you shall see!"];
-            const res = arr[Math.floor(Math.random() * arr.length)];
-            document.getElementById("oracleResult").textContent = res;
-            buildShare(res, "oracleShare");
-        };
-        window.memeLevel = function() {
-            const arr = ["🤡 Level 1: Newbie","🤡 Level 2: Casual Meme","🤡 Level 3: Meme Lord","🤡 Level 4: Legendary","🤡 Level 5: CRIBBLE GOD"];
-            const res = arr[Math.floor(Math.random() * arr.length)];
-            document.getElementById("levelResult").textContent = res;
-            buildShare(res, "levelShare");
-        };
-        window.flipCrib = function() {
-            const arr = ["🟣 Heads: True Believer!","🟣 Tails: Chaos Coming!","🟣 Edge: Too Rare!","🟣 Spin: Good Vibes Incoming!"];
-            const res = arr[Math.floor(Math.random() * arr.length)];
-            document.getElementById("flipResult").textContent = res;
-            buildShare(res, "flipShare");
-        };
     })();
 </script>
 
