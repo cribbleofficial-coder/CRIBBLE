@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gift Hub | CRIBBLE ($CRIB)</title>
+    <meta name="description" content="Play fun meme games and earn vibes in the CRIBBLE Gift Hub.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+
+        /* Background Grid */
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.4; z-index: -1;
+            animation: gridShift 60s linear infinite;
+        }
+        @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
+
+        /* Glow Orbs */
+        .glow-orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
+        .orb-1 { width:300px; height:300px; background:#7B2FFE; top:10%; left:15%; }
+        .orb-2 { width:250px; height:250px; background:#9D4EDD; bottom:20%; right:10%; animation-delay:-5s; }
+        .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
+        @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed; inset: 0; background: #05020F;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 99999; transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
+        }
+        #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .loading-spinner {
+            width: 65px; height: 65px; border-radius: 50%;
+            background: conic-gradient(#7B2FFE 0%, #7B2FFE 25%, transparent 25%, transparent 100%);
+            mask: radial-gradient(transparent 55%, black 55%);
+            -webkit-mask: radial-gradient(transparent 55%, black 55%);
+            animation: spin 1s linear infinite; margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 12px rgba(123,47,254,0.5));
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .loading-text { 
+            font-size: 1.1rem; color: #D8B4FE; margin-bottom: 1rem; 
+            animation: pulse 1.4s ease-in-out infinite alternate; 
+            text-align: center; max-width: 300px;
+        }
+        @keyframes pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+        .loading-brand { font-size: 1rem; color: #FFD700; display: flex; align-items: center; gap: 0.5rem; }
+        .loading-dot { width:12px; height:12px; border-radius:50%; background:#7B2FFE; box-shadow:0 0 8px rgba(123,47,254,0.6); }
+
+        /* Main Content */
+        #main-content { opacity: 0; transition: opacity 0.4s ease; background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%); }
+        #main-content.visible { opacity: 1; }
+
+        /* Base Components */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
+        .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
+        .glow-border { border:1px solid rgba(123,47,254,0.25); box-shadow:0 0 12px rgba(123,47,254,0.18); }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow:0 6px 18px rgba(123,47,254,0.25); border-color:rgba(123,47,254,0.4); }
+        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.2rem; position:relative; overflow:hidden; }
+        .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
+        .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.7rem 1.2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; text-align: center; }
+        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
+        .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
+        .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
+
+        /* Navbar */
+        nav { position: fixed; width:100%; top:0; left:0; z-index:50; background:rgba(18,5,32,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
+        .nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; max-width:1200px; margin:0 auto; }
+        .nav-brand { font-size:1.3rem; font-weight:bold; color:#9D4EDD; }
+        .menu-btn { background:transparent; border:none; color:#9D4EDD; font-size:1.4rem; cursor:pointer; padding:0.4rem; }
+        .dropdown { position:absolute; right:1rem; top:3.2rem; background:#120520; border:1px solid rgba(123,47,254,0.25); border-radius:0.5rem; min-width:200px; display:none; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
+        .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
+
+        /* Meme Games */
+        .game-container { background:#0F041B; border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1.2rem; margin-top:1rem; min-height:240px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .btn-game { background:linear-gradient(135deg,#FFD700,#F59E0B); color:#000; font-weight:bold; border:none; border-radius:0.5rem; padding:0.6rem 1rem; transition:all 0.2s ease; cursor:pointer; font-size:0.95rem; }
+        .btn-game:hover { box-shadow:0 0 12px rgba(255,215,0,0.5); transform:scale(1.05); }
+        .game-output { margin-top:1rem; font-size:1rem; color:#E9D5FF; min-height:30px; text-align:center; padding: 0 0.5rem; }
+        .share-buttons { margin-top:1rem; display:flex; gap:0.6rem; justify-content:center; opacity:0; transition:opacity 0.3s ease; flex-wrap: wrap; }
+        .share-buttons.active { opacity:1; }
+        .btn-share { padding:0.4rem 0.7rem; border-radius:0.4rem; font-size:0.8rem; font-weight:500; text-decoration:none; }
+        .btn-share.telegram { background:#0088cc; color:white; }
+        .btn-share.telegram:hover { background:#0077b3; box-shadow:0 0 8px rgba(0,136,204,0.4); }
+        .btn-share.x { background:#000; color:white; border:1px solid #333; }
+        .btn-share.x:hover { background:#1a1a1a; box-shadow:0 0 8px rgba(0,0,0,0.4); }
+
+        /* Responsive */
+        section { padding: 2rem 1rem !important; }
+        section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
+        h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
+        h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; text-align: center; color: #7B2FFE; text-shadow: 0 0 12px rgba(123,47,254,0.55); }
+        p { font-size: 0.95rem !important; line-height: 1.6; }
+        .game-grid { display: grid; gap: 1.2rem; margin-top: 1.5rem; }
+
+        @media(min-width:768px) {
+            .container { padding: 0 1.5rem; }
+            .card { padding: 1.5rem; }
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 3rem 1.5rem !important; }
+            section:first-of-type { padding-top: 8rem !important; padding-bottom: 4rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loading-text">Escaping the blockchain...</div>
+    <div class="loading-brand"><span class="loading-dot"></span>CRIBBLE $CRIB</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-wrap">
+            <div class="nav-brand">🟣 CRIBBLE</div>
+            <div style="position:relative;">
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+                <div id="menu-dropdown" class="dropdown">
+                    <a href="index.html#what-is-cribble">🔍 What is CRIBBLE</a>
+                    <a href="index.html#how-to-start">🚀 How to Get Started</a>
+                    <a href="index.html#story">📖 The Real Story</a>
+                    <a href="index.html#tokenomics">🟣 Tokenomics</a>
+                    <a href="index.html#hold-contest">🎁 Hold Contest</a>
+                    <a href="index.html#meme-cards">🃏 Meme Cards</a>
+                    <a href="gift-hub.html" style="color:#FFD700;">🎮 Gift Hub & Games</a>
+                    <a href="index.html#details">🚀 Launch Details</a>
+                    <a href="index.html#community">🤝 Community</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section>
+        <div class="container">
+            <h1 style="color: #FFD700; margin-bottom: 1rem; text-align: center;" class="gold-glow">🎁 GIFT HUB</h1>
+            <p style="max-width: 700px; margin: 0 auto 2rem; color: #ddd; text-align: center;">
+                Play fun meme games, share chaos, and earn your place in the kingdom. No real rewards — just vibes, memes, and pure fun!
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- MEME GAMES -->
+    <section>
+        <div class="container">
+            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎮 CRIBBLE MEME GAMES</h2>
+            <div class="card glow-border hover-lift">
+                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Pure fun, no hidden tricks — just chaos and memes!</p>
+                <div class="game-grid">
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🍔 FEED CRIBBLE</h3>
+                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Give our AI some meme fuel!</p>
+                        <button class="btn-game" onclick="feedCribble()">Feed It</button>
+                        <div id="feedResult" class="game-output"></div>
+                        <div id="feedShare" class="share-buttons"></div>
+                    </div>
+
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🔮 CRIBBLE ORACLE</h3>
+                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Ask anything — get a meme answer!</p>
+                        <button class="btn-game" onclick="askOracle()">Get Prediction</button>
+                        <div id="oracleResult" class="game-output"></div>
+                        <div id="oracleShare" class="share-buttons"></div>
+                    </div>
+
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🤡 HOW MEME ARE YOU?</h3>
+                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Find your meme level!</p>
+                        <button class="btn-game" onclick="memeLevel()">Check Level</button>
+                        <div id="levelResult" class="game-output"></div>
+                        <div id="levelShare" class="share-buttons"></div>
+                    </div>
+
+                    <div class="game-container">
+                        <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1rem;">🪙 FLIP THE CRIB</h3>
+                        <p style="color:#aaa; font-size:0.85rem; margin-bottom:1rem;">Flip for chaos or luck!</p>
+                        <button class="btn-game" onclick="flipCrib()">Flip Now</button>
+                        <div id="flipResult" class="game-output"></div>
+                        <div id="flipShare" class="share-buttons"></div>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:1.5rem; color:#9D4EDD; font-style:italic; font-size:0.9rem;">⚠️ No real prizes — just vibes!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <footer style="text-align: center; padding: 1.5rem 1rem; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(123,47,254,0.15);">
+        © 2026 CRIBBLE | $CRIB — Pure Memes, No Lies<br>
+        Not financial advice. Just for fun 🟣
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+    (function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        const loadingText = document.getElementById('loading-text');
+
+        const loadingMessages = [
+            "Escaping the blockchain... 🚀",
+            "Hacking the server... 👨‍💻",
+            "Charging meme energy... ⚡",
+            "Breaking free from code... 🔓",
+            "Landing on Solana... 🟣",
+            "Collecting memes... 📸",
+            "Avoiding dev traps... 🚫",
+            "Loading chaos mode... 🤪",
+            "Ready to play... 🎮",
+            "No roadmap, just vibes... ✨"
+        ];
+
+        let idx = 0;
+        setInterval(() => {
+            idx = (idx + 1) % loadingMessages.length;
+            if (loadingText) loadingText.textContent = loadingMessages[idx];
+        }, 1200);
+
+        setTimeout(() => {
+            if (loadingScreen) loadingScreen.classList.add('hidden');
+            if (mainContent) mainContent.classList.add('visible');
+        }, 2500);
+
+        // Menu Toggle
+        window.toggleMenu = function() {
+            const menu = document.getElementById('menu-dropdown');
+            if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        };
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-btn') && !e.target.closest('.dropdown')) {
+                const menu = document.getElementById('menu-dropdown');
+                if (menu) menu.style.display = 'none';
+            }
+        });
+
+        // Share Links Helper
+        function buildShare(text, shareId) {
+            const base = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
+            const url = encodeURIComponent(window.location.origin + '/gift-hub.html');
+            const tg = `https://t.me/share/url?url=${url}&text=${base}`;
+            const x = `https://x.com/intent/tweet?text=${base}&url=${url}`;
+            const div = document.getElementById(shareId);
+            if (div) {
+                div.innerHTML = `<a href="${tg}" target="_blank" class="btn-share telegram">Telegram</a>
+                                 <a href="${x}" target="_blank" class="btn-share x">X / Twitter</a>`;
+                div.classList.add('active');
+            }
+        }
+
+        // Game 1: Feed Cribble
+        window.feedCribble = function() {
+            const foods = ["🍕 Pizza", "🍔 Burger", "🌮 Taco", "🍟 Fries", "🍫 Chocolate", "🍦 Ice Cream", "🥤 Soda", "🍩 Donut"];
+            const pick = foods[Math.floor(Math.random() * foods.length)];
+            const msg = `CRIBBLE gobbled up ${pick}! Meme energy +999 ⚡`;
+            document.getElementById('feedResult').textContent = msg;
+            buildShare(msg, 'feedShare');
+        };
+
+        // Game 2: Oracle
+        window.askOracle = function() {
+            const answers = [
+                "The memes say YES 🟣",
+                "The blockchain says NO ❌",
+                "Only chaos knows... 🤔",
+                "Definitely — if you believe 🚀",
+                "Ask again after the pump 🔮",
+                "The future is memet
