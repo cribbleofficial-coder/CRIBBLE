@@ -74,7 +74,6 @@
         .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
         .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
         .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
-        .percent-badge { background:linear-gradient(135deg,#22C55E,#4ADE80); color:#000; font-weight:bold; padding:0.25rem 0.7rem; border-radius:9999px; box-shadow:0 0 12px rgba(34,197,94,0.5); min-width:55px; text-align:center; font-size:0.9rem; }
         .step-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #7B2FFE; color: #fff; font-weight: bold; margin-right: 0.8rem; flex-shrink: 0; }
         .step-row { display: flex; align-items: flex-start; margin-bottom: 1.2rem; }
 
@@ -146,13 +145,6 @@
             transform: scale(1.01);
             box-shadow: 0 0 30px rgba(123, 47, 254, 0.4);
         }
-
-        /* Tokenomics Toggle */
-        .token-item { cursor:pointer; transition:all 0.3s ease; padding:0.9rem; border-radius:0.5rem; background:rgba(123,47,254,0.1); border:1px solid rgba(123,47,254,0.2); margin-bottom:0.8rem; }
-        .token-item:hover { background:rgba(123,47,254,0.15); }
-        .token-header { display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 0.5rem; }
-        .token-details { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.4s ease; padding:0; margin-top:0; border-left:2px solid rgba(34,197,94,0.5); margin-left:0.3rem; color:#ddd; font-size:0.9rem; }
-        .token-details.open { max-height:200px; padding:0.7rem 0.8rem; margin-top:0.7rem; }
 
         /* Meme Cards */
         .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
@@ -339,44 +331,47 @@
 
     <div class="section-divider"></div>
 
-    <!-- TOKENOMICS -->
+    <!-- 🟣 UPDATED SIMPLIFIED TOKENOMICS -->
     <section id="tokenomics">
         <div class="container">
             <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🟣 $CRIB TOKENOMICS</h2>
             <div class="card glow-border hover-lift">
-                <p style="text-align: center; font-size: 1.15rem; margin-bottom: 1rem;">Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong></p>
+                <p style="text-align: center; font-size: 1.15rem; margin-bottom: 1.2rem;">
+                    Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong><br>
+                    <small style="color: #aaa;">Solana • Fair Launch • 0 Hidden Taxes</small>
+                </p>
                 <div class="divider-line"></div>
 
-                <div class="token-item" onclick="toggleDetails('detail1')">
-                    <div class="token-header">
-                        <span>🤝 Community & Trading</span>
-                        <span class="percent-badge">90%</span>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.5rem;">
+
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🤝 Community & Liquidity</h4>
+                        <div style="font-size: 1.6rem; font-weight: bold; color: #4ADE80; margin-bottom: 0.5rem;">90%</div>
+                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
+                            Goes straight to the market. Fair access for everyone — no locked team tokens, no pre-sale.
+                        </p>
                     </div>
-                    <div id="detail1" class="token-details">Available through the market and community participation. Largest portion ensures fair access, liquidity, and free trading for all holders.</div>
+
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">📣 Marketing & Memes</h4>
+                        <div style="font-size: 1.6rem; font-weight: bold; color: #FBBF24; margin-bottom: 0.5rem;">5%</div>
+                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
+                            For giveaways, contests, social media, and meme rewards — grows the community together.
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🏦 Community Treasury</h4>
+                        <div style="font-size: 1.6rem; font-weight: bold; color: #60A5FA; margin-bottom: 0.5rem;">5%</div>
+                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
+                            Saved for future events, partnerships, and long-term growth — decided by the community.
+                        </p>
+                    </div>
+
                 </div>
 
-                <div class="token-item" onclick="toggleDetails('detail2')">
-                    <div class="token-header">
-                        <span>📣 Marketing & Memes</span>
-                        <span class="percent-badge">5%</span>
-                    </div>
-                    <div id="detail2" class="token-details">Used for contests, meme rewards, graphics, social media promotion, and all activities that help grow the community.</div>
-                </div>
-
-                <div class="token-item" onclick="toggleDetails('detail3')">
-                    <div class="token-header">
-                        <span>🏦 Community Treasury</span>
-                        <span class="percent-badge">5%</span>
-                    </div>
-                    <div id="detail3" class="token-details">Reserved for future events, partnerships, giveaways, and long-term growth decided by the community.</div>
-                </div>
-
-                <div class="divider-line"></div>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0.8rem; margin-top:1.2rem; text-align:center;">
-                    <div style="padding:0.7rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2); font-size:0.9rem;">✅ Community-Driven</div>
-                    <div style="padding:0.7rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2); font-size:0.9rem;">✅ Meme-Powered</div>
-                    <div style="padding:0.7rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2); font-size:0.9rem;">❌ No Fake Roadmap</div>
-                    <div style="padding:0.7rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2); font-size:0.9rem;">❌ No Hidden Taxes</div>
+                <div style="margin-top: 1.8rem; padding: 1rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 0.6rem; text-align: center;">
+                    <p style="color: #4ADE80; font-weight: 500; margin: 0;">✅ No hidden fees • ✅ No dev dump • ✅ Fully community-run</p>
                 </div>
             </div>
         </div>
@@ -547,12 +542,6 @@
                 if (menu) menu.style.display = 'none';
             }
         });
-
-        // Token Details Toggle
-        window.toggleDetails = function(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('open');
-        };
 
         // Countdown Timer
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
