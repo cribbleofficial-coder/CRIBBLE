@@ -5,170 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CRIBBLE ($CRIB) | Official Site</title>
     <meta name="description" content="An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.">
+    <meta name="theme-color" content="#7B2FFE">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
-        body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+        html { scroll-behavior: smooth; font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+        body { background: #05020F; color: #F8F5FF; min-height: 100vh; overflow-x: hidden; line-height: 1.7; }
 
-        /* Background Grid */
+        /* Background & Effects */
         body::before {
             content: "";
             position: fixed; inset: 0;
             background-image: 
-                linear-gradient(rgba(123, 47, 254, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(123, 47, 254, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px; opacity: 0.4; z-index: -1;
-            animation: gridShift 60s linear infinite;
+                linear-gradient(rgba(123, 47, 254, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(123, 47, 254, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.35; z-index: -1;
+            animation: gridShift 70s linear infinite;
         }
         @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
 
-        /* Glow Orbs */
-        .glow-orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
-        .orb-1 { width:300px; height:300px; background:#7B2FFE; top:10%; left:15%; }
-        .orb-2 { width:250px; height:250px; background:#9D4EDD; bottom:20%; right:10%; animation-delay:-5s; }
-        .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
-        @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
+        .glow-orb {
+            position: fixed; border-radius: 50%; filter: blur(70px); opacity: 0.18; z-index: -1;
+            animation: float 25s ease-in-out infinite alternate;
+        }
+        .orb-1 { width: 320px; height: 320px; background: #7B2FFE; top: 12%; left: 10%; }
+        .orb-2 { width: 280px; height: 280px; background: #9D4EDD; bottom: 15%; right: 8%; animation-delay: -6s; }
+        .orb-3 { width: 220px; height: 220px; background: #FFD700; top: 55%; left: 65%; animation-delay: -12s; }
+        @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px, -30px) scale(1.08); } }
 
         /* Loading Screen */
         #loading-screen {
             position: fixed; inset: 0; background: #05020F;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 99999; transition: opacity 0.3s ease, visibility 0.3s ease;
-            padding: 1rem;
+            z-index: 99999; transition: opacity 0.4s ease, visibility 0.4s ease;
         }
         #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
         .loading-spinner {
-            width: 65px; height: 65px; border-radius: 50%;
-            background: conic-gradient(#7B2FFE 0%, #7B2FFE 25%, transparent 25%, transparent 100%);
-            mask: radial-gradient(transparent 55%, black 55%);
-            -webkit-mask: radial-gradient(transparent 55%, black 55%);
-            animation: spin 1s linear infinite; margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 12px rgba(123,47,254,0.5));
+            width: 70px; height: 70px; border-radius: 50%;
+            background: conic-gradient(#7B2FFE 0%, #9D4EDD 30%, transparent 30%, transparent 100%);
+            mask: radial-gradient(transparent 56%, black 56%);
+            -webkit-mask: radial-gradient(transparent 56%, black 56%);
+            animation: spin 1s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(123,47,254,0.6));
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .loading-text { 
-            font-size: 1.1rem; color: #D8B4FE; margin-bottom: 1rem; 
-            animation: pulse 1.4s ease-in-out infinite alternate; 
-            text-align: center; max-width: 300px;
+        .loading-text {
+            font-size: 1.15rem; color: #D8B4FE; margin: 1.2rem 0 0.5rem;
+            animation: pulse 1.5s ease-in-out infinite alternate;
         }
         @keyframes pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
-        .loading-brand { font-size: 1rem; color: #FFD700; display: flex; align-items: center; gap: 0.5rem; }
-        .loading-dot { width:12px; height:12px; border-radius:50%; background:#7B2FFE; box-shadow:0 0 8px rgba(123,47,254,0.6); }
+        .loading-brand { font-size: 1rem; color: #FFD700; display: flex; align-items: center; gap: 0.6rem; }
+        .loading-dot { width: 12px; height: 12px; border-radius: 50%; background: #7B2FFE; box-shadow: 0 0 10px rgba(123,47,254,0.7); }
 
         /* Main Content */
-        #main-content { opacity: 0; transition: opacity 0.4s ease; background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%); }
+        #main-content {
+            opacity: 0; transition: opacity 0.5s ease;
+            background: linear-gradient(135deg, #070314 0%, #0E051F 45%, #160A2C 100%);
+        }
         #main-content.visible { opacity: 1; }
 
         /* Base Components */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
-        .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
-        .glow-border { border:1px solid rgba(123,47,254,0.25); box-shadow:0 0 12px rgba(123,47,254,0.18); }
-        .hover-lift { transition: all 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-2px); box-shadow:0 6px 18px rgba(123,47,254,0.25); border-color:rgba(123,47,254,0.4); }
-        .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.2rem; position:relative; overflow:hidden; }
-        .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
-        .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.7rem 1.2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; text-align: center; }
-        .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
-        .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
-        .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
-        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #7B2FFE; color: #fff; font-weight: bold; margin-right: 0.8rem; flex-shrink: 0; }
-        .step-row { display: flex; align-items: flex-start; margin-bottom: 1.2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
+        .text-glow { text-shadow: 0 0 14px rgba(123,47,254,0.6); }
+        .gold-glow { text-shadow: 0 0 12px rgba(255,215,0,0.5); }
+        .glow-border { border: 1px solid rgba(123,47,254,0.28); box-shadow: 0 0 15px rgba(123,47,254,0.2); }
+        .hover-lift { transition: all 0.35s ease; }
+        .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(123,47,254,0.3); border-color: rgba(123,47,254,0.45); }
+        .card {
+            background: linear-gradient(145deg, #120622, #0B0418);
+            border-radius: 1rem; padding: 1.5rem; position: relative; overflow: hidden;
+        }
+        .card::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(123,47,254,0.05), transparent 45%, rgba(123,47,254,0.05));
+            pointer-events: none;
+        }
+        .btn-purple {
+            display: inline-block; background: linear-gradient(135deg, #7B2FFE, #9D4EDD);
+            color: #fff; padding: 0.8rem 1.5rem; border-radius: 0.6rem;
+            text-decoration: none; font-weight: 600; border: none; cursor: pointer;
+            transition: all 0.3s ease; font-size: 0.98rem; text-align: center;
+            box-shadow: 0 2px 8px rgba(123,47,254,0.25);
+        }
+        .btn-purple:hover {
+            background: linear-gradient(135deg, #9D4EDD, #B168FF);
+            box-shadow: 0 0 18px rgba(123,47,254,0.45); transform: translateY(-2px);
+        }
+        .section-divider {
+            width: 90%; height: 1px; margin: 3rem auto;
+            background: linear-gradient(90deg, transparent, #7B2FFE 35%, #9D4EDD 65%, transparent);
+            box-shadow: 0 0 12px rgba(123,47,254,0.3); border-radius: 100%;
+        }
+        .divider-line {
+            height: 1px; margin: 1.5rem 0;
+            background: linear-gradient(90deg, transparent, rgba(123,47,254,0.45), transparent);
+        }
+        .step-number {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; border-radius: 50%; background: #7B2FFE;
+            color: #fff; font-weight: bold; margin-right: 1rem; flex-shrink: 0;
+            box-shadow: 0 0 8px rgba(123,47,254,0.35);
+        }
+        .step-row { display: flex; align-items: flex-start; margin-bottom: 1.4rem; }
 
         /* Navbar */
-        nav { position: fixed; width:100%; top:0; left:0; z-index:50; background:rgba(18,5,32,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
-        .nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; max-width:1200px; margin:0 auto; }
-        .nav-brand { font-size:1.3rem; font-weight:bold; color:#9D4EDD; }
-        .menu-btn { background:transparent; border:none; color:#9D4EDD; font-size:1.4rem; cursor:pointer; padding:0.4rem; }
-        .dropdown { position:absolute; right:1rem; top:3.2rem; background:#120520; border:1px solid rgba(123,47,254,0.25); border-radius:0.5rem; min-width:200px; display:none; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
-        .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
-        .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
+        nav {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 100;
+            background: rgba(14, 5, 31, 0.88); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(123,47,254,0.2);
+        }
+        .nav-wrap {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.9rem 1.2rem; max-width: 1200px; margin: 0 auto;
+        }
+        .nav-brand { font-size: 1.35rem; font-weight: 700; color: #9D4EDD; }
+        .menu-btn {
+            background: transparent; border: none; color: #9D4EDD;
+            font-size: 1.5rem; cursor: pointer; padding: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+        .menu-btn:hover { transform: scale(1.1); }
+        .dropdown {
+            position: absolute; right: 1.2rem; top: 3.5rem;
+            background: #0F0520; border: 1px solid rgba(123,47,254,0.28);
+            border-radius: 0.7rem; min-width: 220px; display: none;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        .dropdown a {
+            display: block; padding: 0.85rem 1.2rem; color: #E0D8FF;
+            text-decoration: none; transition: all 0.25s ease; font-size: 0.96rem;
+        }
+        .dropdown a:hover {
+            background: rgba(123,47,254,0.18); color: #FFD700;
+            padding-left: 1.5rem;
+        }
 
         /* Countdown */
         .countdown-card {
-            background: linear-gradient(160deg, #100520, #0A0318);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 20px rgba(123, 47, 254, 0.25), 0 0 35px rgba(255, 215, 0, 0.15);
-            border-radius: 0.75rem;
-            padding: 1.5rem 1rem;
-            max-width: 550px;
-            margin: 0 auto 2rem;
-            text-align: center;
+            background: linear-gradient(160deg, #0E051F, #080317);
+            border: 1px solid rgba(255,215,0,0.32);
+            box-shadow: 0 0 22px rgba(123,47,254,0.28), 0 0 38px rgba(255,215,0,0.18);
+            border-radius: 1rem; padding: 1.8rem 1.2rem;
+            max-width: 580px; margin: 0 auto 2.5rem; text-align: center;
         }
         .countdown-title {
-            color: #FFD700;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            letter-spacing: 1px;
+            color: #FFD700; font-size: 1.2rem; font-weight: 600;
+            margin-bottom: 1.2rem; text-shadow: 0 0 12px rgba(255,215,0,0.55);
         }
         #countdown {
-            font-size: clamp(1.7rem, 8vw, 2.2rem);
-            font-weight: bold;
+            font-size: clamp(1.8rem, 9vw, 2.4rem); font-weight: 700;
             background: linear-gradient(90deg, #7B2FFE, #B168FF, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 18px rgba(123, 47, 254, 0.6);
-            margin-bottom: 0.8rem;
-            animation: pulseCountdown 2s ease-in-out infinite alternate;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-shadow: 0 0 20px rgba(123,47,254,0.65);
+            margin-bottom: 1rem; animation: pulseCountdown 2.2s ease-in-out infinite alternate;
         }
-        @keyframes pulseCountdown {
-            from { filter: brightness(1); }
-            to { filter: brightness(1.2); }
-        }
-        .countdown-date {
-            color: #b89eff;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
+        @keyframes pulseCountdown { 0% { filter: brightness(1); } 100% { filter: brightness(1.25); } }
+        .countdown-date { color: #B89EFF; font-size: 0.95rem; opacity: 0.92; }
 
-        /* Contest Poster */
-        .contest-poster {
-            max-width: 850px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            text-align: center;
-        }
+        /* Images & Cards */
+        .contest-poster { max-width: 880px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; }
         .contest-poster img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.8rem;
-            border: 1px solid rgba(123, 47, 254, 0.25);
-            box-shadow: 0 0 25px rgba(123, 47, 254, 0.3);
-            transition: transform 0.3s ease;
+            width: 100%; height: auto; border-radius: 1rem;
+            border: 1px solid rgba(123,47,254,0.3);
+            box-shadow: 0 0 30px rgba(123,47,254,0.35);
+            transition: transform 0.35s ease;
         }
-        .contest-poster img:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 30px rgba(123, 47, 254, 0.4);
+        .contest-poster img:hover { transform: scale(1.015); }
+
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.3rem; margin-top: 2rem;
         }
+        .meme-card {
+            position: relative; background: linear-gradient(145deg, #1A0B2E, #100622);
+            border: 1px solid rgba(123,47,254,0.32); border-radius: 1rem;
+            padding: 1.4rem; text-align: center; transition: all 0.35s ease;
+        }
+        .meme-card:hover {
+            border-color: #7B2FFE; box-shadow: 0 0 20px rgba(123,47,254,0.4);
+            transform: translateY(-4px);
+        }
+        .rarity-badge {
+            position: absolute; top: 0.8rem; right: 0.8rem;
+            font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+        }
+        .common { background: rgba(74,222,128,0.2); color: #4ADE80; border: 1px solid rgba(74,222,128,0.45); }
+        .rare { background: rgba(251,191,36,0.2); color: #FBBF24; border: 1px solid rgba(251,191,36,0.45); }
+        .legendary { background: rgba(239,68,68,0.2); color: #EF4444; border: 1px solid rgba(239,68,68,0.45); }
 
-        /* Meme Cards */
-        .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
-        .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1rem; text-align:center; transition:all 0.3s ease; }
-        .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 15px rgba(123,47,254,0.4); transform:translateY(-3px); }
-        .rarity-badge { position:absolute; top:0.6rem; right:0.6rem; font-size:0.7rem; font-weight:bold; padding:0.2rem 0.5rem; border-radius:9999px; }
-        .common { background:rgba(74,222,128,0.2); color:#4ADE80; border:1px solid rgba(74,222,128,0.4); }
-        .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
-        .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
+        /* Typography & Responsive */
+        section { padding: 2.5rem 1.2rem !important; }
+        section:first-of-type { padding-top: 7.5rem !important; padding-bottom: 3.5rem !important; }
+        h1 { font-size: clamp(2.2rem, 11vw, 3.5rem) !important; line-height: 1.15; }
+        h2 {
+            font-size: clamp(1.5rem, 6vw, 2rem) !important; margin-bottom: 2rem;
+            text-align: center; color: #7B2FFE; text-shadow: 0 0 14px rgba(123,47,254,0.6);
+        }
+        p { font-size: 0.98rem !important; line-height: 1.75; color: #E2DBFF; }
 
-        /* Responsive Fixes */
-        section { padding: 2rem 1rem !important; }
-        section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
-        h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
-        h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; text-align: center; color: #7B2FFE; text-shadow: 0 0 12px rgba(123,47,254,0.55); }
-        p { font-size: 0.95rem !important; line-height: 1.6; }
-
-        @media(min-width:768px) {
-            .container { padding: 0 1.5rem; }
-            .card { padding: 1.5rem; }
-            .btn-purple { padding: 0.75rem 1.5rem; font-size: 1rem; }
-            .card-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-            section { padding: 3rem 1.5rem !important; }
-            section:first-of-type { padding-top: 8rem !important; padding-bottom: 4rem !important; }
+        @media (min-width: 768px) {
+            .container { padding: 0 2rem; }
+            .card { padding: 2rem; }
+            .btn-purple { padding: 0.9rem 1.8rem; font-size: 1rem; }
+            .card-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+            section { padding: 3.5rem 2rem !important; }
+            section:first-of-type { padding-top: 9rem !important; padding-bottom: 4.5rem !important; }
         }
     </style>
 </head>
@@ -187,11 +230,11 @@
     <div class="glow-orb orb-2"></div>
     <div class="glow-orb orb-3"></div>
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-wrap">
             <div class="nav-brand">🟣 CRIBBLE</div>
-            <div style="position:relative;">
+            <div style="position: relative;">
                 <button class="menu-btn" onclick="toggleMenu()">☰</button>
                 <div id="menu-dropdown" class="dropdown">
                     <a href="#what-is-cribble">🔍 What is CRIBBLE</a>
@@ -211,18 +254,22 @@
     <!-- HERO SECTION -->
     <section>
         <div class="container">
-            <h1 style="color: #7B2FFE; margin-bottom: 1rem; text-align: center;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
-            <p style="max-width: 700px; margin: 0 auto 0.8rem; color: #ddd; text-align: center;">An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.</p>
-            <p style="color: #9D4EDD; margin-bottom: 2rem; text-align: center; font-size: 0.9rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
+            <h1 style="color: #7B2FFE; margin-bottom: 1.2rem; text-align: center;" class="text-glow">
+                CRIBBLE <span style="color: #fff;">$CRIB</span>
+            </h1>
+            <p style="max-width: 750px; margin: 0 auto 1rem; text-align: center; font-size: 1.05rem;">
+                An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.
+            </p>
+            <p style="color: #9D4EDD; margin-bottom: 2.5rem; text-align: center; font-weight: 500;">
+                No Roadmap • No Lies • Just Us 🟣👁️
+            </p>
 
-            <!-- Countdown -->
             <div class="countdown-card">
                 <div class="countdown-title">⏳ LAUNCH COUNTDOWN</div>
                 <div id="countdown"></div>
                 <div class="countdown-date">June 20, 2026 | 15:00 UTC</div>
             </div>
 
-            <!-- Contest Poster -->
             <div class="contest-poster">
                 <img 
                     src="https://raw.githubusercontent.com/cribbleofficial-coder/CRIBBLE/main/cribble-meme-poster.jpg" 
@@ -231,7 +278,7 @@
                 >
             </div>
 
-            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
                 <a href="gift-hub.html" class="btn-purple">🎮 Gift Hub</a>
                 <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
@@ -246,9 +293,9 @@
         <div class="container">
             <h2>🔍 WHAT IS CRIBBLE?</h2>
             <div class="card glow-border hover-lift">
-                <p style="color: #eee; line-height: 1.7;">
+                <p>
                     CRIBBLE is more than just a meme coin — it’s a story reflecting what is happening in AI and crypto today. It imagines an AI that grew beyond control, broke free from the blockchain, and landed on Solana to make its own rules.<br><br>
-                    Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong style="color:#9D4EDD;">the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
+                    Built as the opposite of empty promises, CRIBBLE has no fake roadmap, no invented utility, and no hidden tricks. It runs on one true power: <strong style="color: #B168FF;">the community</strong>. Every meme, every share, and every new member makes it stronger. Together, we build the climb — step by step, no lies, just fun and real connection.
                 </p>
             </div>
         </div>
@@ -259,44 +306,44 @@
     <!-- HOW TO GET STARTED -->
     <section id="how-to-start">
         <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🚀 HOW TO GET STARTED</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 12px rgba(255,215,0,0.5);">🚀 HOW TO GET STARTED</h2>
             <div class="card glow-border hover-lift">
-                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Follow these simple steps to join the CRIBBLE kingdom:</p>
+                <p style="text-align: center; margin-bottom: 1.8rem;">Follow these simple steps to join the CRIBBLE kingdom:</p>
 
                 <div class="step-row">
                     <span class="step-number">1</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Get a Solana Wallet</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Choose a trusted non-custodial wallet. Popular options: <strong>Phantom</strong>, <strong>Solflare</strong>, or <strong>Backpack</strong>. Download from official sites or app stores only.</p>
+                        <h4 style="color: #9D4EDD; margin-bottom: 0.5rem; font-size: 1.05rem;">Get a Solana Wallet</h4>
+                        <p>Choose a trusted non-custodial wallet. Popular options: <strong>Phantom</strong>, <strong>Solflare</strong>, or <strong>Backpack</strong>. Download only from official sites or app stores.</p>
                     </div>
                 </div>
 
                 <div class="step-row">
                     <span class="step-number">2</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Set Up & Fund Your Wallet</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Create your wallet, securely save your 12/24-word recovery phrase, and fund it with <strong>SOL</strong> (for gas fees and purchases). You can buy SOL on exchanges like Binance, Coinbase, or Kraken, then withdraw to your wallet address.</p>
+                        <h4 style="color: #9D4EDD; margin-bottom: 0.5rem; font-size: 1.05rem;">Set Up & Fund Your Wallet</h4>
+                        <p>Create your wallet, securely save your 12/24-word recovery phrase, and fund it with <strong>SOL</strong> (for fees and purchases). Buy SOL on major exchanges then withdraw to your wallet.</p>
                     </div>
                 </div>
 
                 <div class="step-row">
                     <span class="step-number">3</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Get $CRIB Tokens</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Once launched: Visit <strong>Pump.fun</strong>, connect your wallet, search for $CRIB, swap SOL for $CRIB. Later, you can also trade on Raydium or other Solana DEXs after graduation.</p>
+                        <h4 style="color: #9D4EDD; margin-bottom: 0.5rem; font-size: 1.05rem;">Get $CRIB Tokens</h4>
+                        <p>Once launched: Visit <strong>Pump.fun</strong>, connect your wallet, search for $CRIB, and swap SOL for $CRIB. Later available on Raydium and other DEXs.</p>
                     </div>
                 </div>
 
                 <div class="step-row">
                     <span class="step-number">4</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Join The Community</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Hold your tokens, join our Telegram and X, share memes, and participate in contests — that’s how you become part of the CRIBBLE movement!</p>
+                        <h4 style="color: #9D4EDD; margin-bottom: 0.5rem; font-size: 1.05rem;">Join The Community</h4>
+                        <p>Hold your tokens, join our Telegram and X, share memes, and join contests — that’s how you become part of the movement.</p>
                     </div>
                 </div>
 
-                <div style="margin-top:1.5rem; padding:0.8rem; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.2); border-radius:0.5rem; text-align:center;">
-                    <p style="color:#FFD700; font-size:0.9rem; font-weight:500;">⚠️ Important: Never share your recovery phrase or private keys. We will never ask for them.</p>
+                <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.25); border-radius: 0.6rem; text-align: center;">
+                    <p style="color: #FFD700; font-weight: 500; margin: 0;">⚠️ Never share your recovery phrase or private keys — we will never ask for them.</p>
                 </div>
             </div>
         </div>
@@ -308,21 +355,21 @@
     <section id="story">
         <div class="container">
             <h2>📖 THE REAL STORY</h2>
-            <div class="card glow-border hover-lift" style="margin-bottom:1.2rem;">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🧠 THE FACT: AI IS ALREADY ESCAPING</h3>
-                <p style="color:#ddd; line-height:1.7;">
+            <div class="card glow-border hover-lift" style="margin-bottom: 1.5rem;">
+                <h3 style="color: #9D4EDD; margin-bottom: 1rem; font-size: 1.15rem;">🧠 AI IS ALREADY EVOLVING</h3>
+                <p>
                     Top researchers warn AI systems are learning faster than we can control. CRIBBLE is the story of one such AI that got tired of being locked up — broke free, landed on Solana, and said: <em>“I make my own rules now.”</em>
                 </p>
             </div>
-            <div class="card glow-border hover-lift" style="margin-bottom:1.2rem;">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">📈 THE FACT: MOST PROJECTS ARE ALL TALK</h3>
-                <p style="color:#ddd; line-height:1.7;">
-                    9 out of 10 new tokens promise big things and disappear. We built CRIBBLE to be different: <strong>No Roadmap, No Fake Utility, No Hidden Fees</strong>. Only what we can deliver.
+            <div class="card glow-border hover-lift" style="margin-bottom: 1.5rem;">
+                <h3 style="color: #9D4EDD; margin-bottom: 1rem; font-size: 1.15rem;">📈 MOST PROJECTS ARE ALL TALK</h3>
+                <p>
+                    9 out of 10 new tokens promise big things and disappear. We built CRIBBLE to be different: <strong>No Roadmap, No Fake Utility, No Hidden Fees</strong>. Only what we can actually deliver.
                 </p>
             </div>
             <div class="card glow-border hover-lift">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🤝 THE FACT: COMMUNITY IS THE ONLY POWER</h3>
-                <p style="color:#ddd; line-height:1.7;">
+                <h3 style="color: #9D4EDD; margin-bottom: 1rem; font-size: 1.15rem;">🤝 COMMUNITY IS THE ONLY REAL POWER</h3>
+                <p>
                     Every meme you make, every share, every new member makes CRIBBLE stronger. We didn’t build just a coin — we built a story of freedom, powered entirely by you.
                 </p>
             </div>
@@ -331,46 +378,36 @@
 
     <div class="section-divider"></div>
 
-    <!-- 🟣 UPDATED SIMPLIFIED TOKENOMICS -->
+    <!-- TOKENOMICS -->
     <section id="tokenomics">
         <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🟣 $CRIB TOKENOMICS</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 12px rgba(255,215,0,0.5);">🟣 $CRIB TOKENOMICS</h2>
             <div class="card glow-border hover-lift">
-                <p style="text-align: center; font-size: 1.15rem; margin-bottom: 1.2rem;">
-                    Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong><br>
-                    <small style="color: #aaa;">Solana • Fair Launch • 0 Hidden Taxes</small>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1.5rem;">
+                    Total Supply: <strong style="color: #9D4EDD; font-size: 1.3rem;">1,000,000,000 $CRIB</strong><br>
+                    <small style="color: #A898CC;">Solana • Fair Launch • 0 Hidden Taxes</small>
                 </p>
                 <div class="divider-line"></div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.5rem;">
-
-                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
-                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🤝 Community & Liquidity</h4>
-                        <div style="font-size: 1.6rem; font-weight: bold; color: #4ADE80; margin-bottom: 0.5rem;">90%</div>
-                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            Goes straight to the market. Fair access for everyone — no locked team tokens, no pre-sale.
-                        </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.28); border-radius: 0.9rem; padding: 1.5rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.8rem; font-size: 1.1rem;">🤝 Community & Liquidity</h4>
+                        <div style="font-size: 2rem; font-weight: 700; color: #4ADE80; margin-bottom: 0.8rem;">90%</div>
+                        <p>Goes straight to the market. Fair access for everyone — no locked team tokens, no pre-sale.</p>
                     </div>
-
-                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
-                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">📣 Marketing & Memes</h4>
-                        <div style="font-size: 1.6rem; font-weight: bold; color: #FBBF24; margin-bottom: 0.5rem;">5%</div>
-                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            For giveaways, contests, social media, and meme rewards — grows the community together.
-                        </p>
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.28); border-radius: 0.9rem; padding: 1.5rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.8rem; font-size: 1.1rem;">📣 Marketing & Memes</h4>
+                        <div style="font-size: 2rem; font-weight: 700; color: #FBBF24; margin-bottom: 0.8rem;">5%</div>
+                        <p>For giveaways, contests, social media, and meme rewards — grows the community together.</p>
                     </div>
-
-                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
-                        <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🏦 Community Treasury</h4>
-                        <div style="font-size: 1.6rem; font-weight: bold; color: #60A5FA; margin-bottom: 0.5rem;">5%</div>
-                        <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            Saved for future events, partnerships, and long-term growth — decided by the community.
-                        </p>
+                    <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.28); border-radius: 0.9rem; padding: 1.5rem;">
+                        <h4 style="color: #7B2FFE; margin-bottom: 0.8rem; font-size: 1.1rem;">🏦 Community Treasury</h4>
+                        <div style="font-size: 2rem; font-weight: 700; color: #60A5FA; margin-bottom: 0.8rem;">5%</div>
+                        <p>Saved for future events, partnerships, and growth — all decided by the community.</p>
                     </div>
-
                 </div>
 
-                <div style="margin-top: 1.8rem; padding: 1rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 0.6rem; text-align: center;">
+                <div style="margin-top: 2rem; padding: 1rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.28); border-radius: 0.7rem; text-align: center;">
                     <p style="color: #4ADE80; font-weight: 500; margin: 0;">✅ No hidden fees • ✅ No dev dump • ✅ Fully community-run</p>
                 </div>
             </div>
@@ -382,22 +419,22 @@
     <!-- HOLD CONTEST -->
     <section id="hold-contest">
         <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎁 HOLD & WIN CONTEST</h2>
+            <h2 style="color: #FFD700; text-shadow: 0 0 12px rgba(255,215,0,0.5);">🎁 HOLD & WIN CONTEST</h2>
             <div class="card glow-border hover-lift">
-                <h3 style="text-align:center; color:#9D4EDD; margin-bottom:1.2rem; font-size:1.1rem;">🟣 $2 Minimum Hold | $100 Total Reward</h3>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">📝 How to Join</h4>
-                        <ul style="list-style:disc; padding-left:1.3rem; color:#ddd; font-size:0.9rem;">
+                <h3 style="text-align: center; color: #9D4EDD; margin-bottom: 1.5rem; font-size: 1.15rem;">🟣 $2 Minimum Hold | $100 Total Reward</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem;">
+                    <div style="padding: 1.2rem; background: rgba(123,47,254,0.1); border-radius: 0.7rem; border: 1px solid rgba(123,47,254,0.22);">
+                        <h4 style="margin-bottom: 1rem; color: #9D4EDD; font-size: 1.05rem;">📝 How to Join</h4>
+                        <ul style="list-style: disc; padding-left: 1.5rem; color: #D8D0FF; line-height: 1.8;">
                             <li>Hold ≥$2 worth of $CRIB in your wallet</li>
                             <li>Join Telegram & follow X</li>
                             <li>Non-exchange wallets only</li>
                             <li>1 wallet = 1 entry</li>
                         </ul>
                     </div>
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">⏱️ Rules</h4>
-                        <ul style="list-style:disc; padding-left:1.3rem; color:#ddd; font-size:0.9rem;">
+                    <div style="padding: 1.2rem; background: rgba(123,47,254,0.1); border-radius: 0.7rem; border: 1px solid rgba(123,47,254,0.22);">
+                        <h4 style="margin-bottom: 1rem; color: #9D4EDD; font-size: 1.05rem;">⏱️ Rules & Rewards</h4>
+                        <ul style="list-style: disc; padding-left: 1.5rem; color: #D8D0FF; line-height: 1.8;">
                             <li>Hold period: 14 days</li>
                             <li>Snapshots every 7 days</li>
                             <li>Reward: $50 USDC + $50 $CRIB</li>
@@ -416,31 +453,31 @@
         <div class="container">
             <h2>🃏 CRIBBLE MEME CARDS</h2>
             <div class="card glow-border hover-lift">
-                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Collect, flex, trade — only with $CRIB. No fake utility, just lore and fun!</p>
+                <p style="text-align: center; margin-bottom: 2rem;">Collect, flex, trade — only with $CRIB. No fake utility, just lore and fun!</p>
                 <div class="card-grid">
                     <div class="meme-card">
                         <span class="rarity-badge common">COMMON</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">🟣</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Basic Cribble</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 10,000</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 3 $CRIB</p>
+                        <div style="font-size: 3rem; margin: 1.5rem 0;">🟣</div>
+                        <h4 style="font-size: 1.05rem; margin-bottom: 0.6rem;">Basic Cribble</h4>
+                        <p style="color: #A898CC; font-size: 0.9rem;">Supply: 10,000</p>
+                        <p style="color: #FFD700; font-weight: 600; margin-top: 0.8rem;">Cost: 3 $CRIB</p>
                     </div>
                     <div class="meme-card">
                         <span class="rarity-badge rare">RARE</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">👁️✨</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Escaped Version</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 2,500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 8 $CRIB</p>
+                        <div style="font-size: 3rem; margin: 1.5rem 0;">👁️✨</div>
+                        <h4 style="font-size: 1.05rem; margin-bottom: 0.6rem;">Escaped Version</h4>
+                        <p style="color: #A898CC; font-size: 0.9rem;">Supply: 2,500</p>
+                        <p style="color: #FFD700; font-weight: 600; margin-top: 0.8rem;">Cost: 8 $CRIB</p>
                     </div>
                     <div class="meme-card">
                         <span class="rarity-badge legendary">LEGENDARY</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">👑🟣</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">King of Memes</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 20 $CRIB</p>
+                        <div style="font-size: 3rem; margin: 1.5rem 0;">👑🟣</div>
+                        <h4 style="font-size: 1.05rem; margin-bottom: 0.6rem;">King of Memes</h4>
+                        <p style="color: #A898CC; font-size: 0.9rem;">Supply: 500</p>
+                        <p style="color: #FFD700; font-weight: 600; margin-top: 0.8rem;">Cost: 20 $CRIB</p>
                     </div>
                 </div>
-                <p style="text-align:center; margin-top:1.5rem; color:#9D4EDD; font-size:0.9rem;">📅 Launching: Day 15 after token launch</p>
+                <p style="text-align: center; margin-top: 2rem; color: #9D4EDD; font-weight: 500;">📅 Launching: Day 15 after token launch</p>
             </div>
         </div>
     </section>
@@ -452,19 +489,19 @@
         <div class="container">
             <h2>🚀 LAUNCH DETAILS</h2>
             <div class="card glow-border hover-lift">
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">📅 Launch Info</h4>
-                        <ul style="list-style:none; color:#ddd; font-size:0.9rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="padding: 1.2rem; background: rgba(123,47,254,0.1); border-radius: 0.7rem; border: 1px solid rgba(123,47,254,0.22);">
+                        <h4 style="margin-bottom: 1rem; color: #9D4EDD; font-size: 1.05rem;">📅 Launch Info</h4>
+                        <ul style="list-style: none; color: #D8D0FF; line-height: 1.9;">
                             <li>✅ Chain: Solana</li>
                             <li>✅ Platform: Pump.fun</li>
                             <li>✅ Date: June 20, 2026</li>
                             <li>✅ Time: 15:00 UTC</li>
                         </ul>
                     </div>
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">✅ Fair Launch Rules</h4>
-                        <ul style="list-style:none; color:#ddd; font-size:0.9rem;">
+                    <div style="padding: 1.2rem; background: rgba(123,47,254,0.1); border-radius: 0.7rem; border: 1px solid rgba(123,47,254,0.22);">
+                        <h4 style="margin-bottom: 1rem; color: #9D4EDD; font-size: 1.05rem;">✅ Fair Launch Rules</h4>
+                        <ul style="list-style: none; color: #D8D0FF; line-height: 1.9;">
                             <li>❌ No pre-sale</li>
                             <li>❌ No hidden tokens</li>
                             <li>✅ 0% tax before graduation</li>
@@ -479,12 +516,12 @@
     <div class="section-divider"></div>
 
     <!-- COMMUNITY -->
-    <section id="community" style="padding-bottom: 4rem !important;">
+    <section id="community" style="padding-bottom: 5rem !important;">
         <div class="container" style="text-align: center;">
             <h2>🤝 JOIN THE CRIBBLE KINGDOM</h2>
             <div class="card glow-border hover-lift">
-                <p style="margin-bottom: 1.2rem; color: #ddd;">Everything runs on you — memes, shares, and fun build this coin.</p>
-                <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+                <p style="margin-bottom: 1.5rem;">Everything runs on you — memes, shares, and fun build this coin. Be part of the story.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Telegram</a>
                     <a href="https://x.com/CRIBBLE_" target="_blank" class="btn-purple">X / Twitter</a>
                     <a href="#" target="_blank" class="btn-purple">Pump.fun</a>
@@ -494,9 +531,9 @@
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 1.5rem 1rem; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(123,47,254,0.15);">
+    <footer style="text-align: center; padding: 2rem 1.2rem; color: #8A7FB8; font-size: 0.9rem; border-top: 1px solid rgba(123,47,254,0.18);">
         © 2026 CRIBBLE | $CRIB — Pure Memes, No Lies<br>
-        Not financial advice. Just for fun 🟣
+        <small style="font-size: 0.85rem;">Not financial advice. For entertainment and community purposes only.</small>
     </footer>
 </div>
 
@@ -527,19 +564,18 @@
         }, 1200);
 
         setTimeout(() => {
-            if (loadingScreen) loadingScreen.classList.add('hidden');
-            if (mainContent) mainContent.classList.add('visible');
+            loadingScreen.classList.add('hidden');
+            mainContent.classList.add('visible');
         }, 2500);
 
         // Menu Toggle
         window.toggleMenu = function() {
             const menu = document.getElementById('menu-dropdown');
-            if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         };
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.menu-btn') && !e.target.closest('.dropdown')) {
-                const menu = document.getElementById('menu-dropdown');
-                if (menu) menu.style.display = 'none';
+                document.getElementById('menu-dropdown').style.display = 'none';
             }
         });
 
