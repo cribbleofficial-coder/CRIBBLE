@@ -29,7 +29,7 @@
         .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
         @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
 
-        /* 🚀 LOADING SCREEN WITH MEME MESSAGES */
+        /* Loading Screen */
         #loading-screen {
             position: fixed; inset: 0; background: #05020F;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -85,7 +85,7 @@
         .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
         .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
 
-        /* ✅ ENHANCED COUNTDOWN - MATCHES YOUR SCREENSHOT */
+        /* Countdown */
         .countdown-card {
             background: linear-gradient(160deg, #100520, #0A0318);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -125,6 +125,26 @@
             opacity: 0.9;
         }
 
+        /* ✅ Contest Poster - Matches Site Style */
+        .contest-poster {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        .contest-poster img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(123, 47, 254, 0.25);
+            box-shadow: 0 0 25px rgba(123, 47, 254, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .contest-poster img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 30px rgba(123, 47, 254, 0.4);
+        }
+
         /* Tokenomics Toggle */
         .token-item { cursor:pointer; transition:all 0.3s ease; padding:0.9rem; border-radius:0.5rem; background:rgba(123,47,254,0.1); border:1px solid rgba(123,47,254,0.2); margin-bottom:0.8rem; }
         .token-item:hover { background:rgba(123,47,254,0.15); }
@@ -154,14 +174,13 @@
         .btn-share.x { background:#000; color:white; border:1px solid #333; }
         .btn-share.x:hover { background:#1a1a1a; box-shadow:0 0 8px rgba(0,0,0,0.4); }
 
-        /* Hero Section Mobile Fix */
+        /* Responsive Fixes */
         section { padding: 2rem 1rem !important; }
         section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
         h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
         h2 { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; margin-bottom: 1.5rem; text-align: center; color: #7B2FFE; text-shadow: 0 0 12px rgba(123,47,254,0.55); }
         p { font-size: 0.95rem !important; line-height: 1.6; }
 
-        /* Responsive Breakpoints */
         @media(min-width:768px) {
             .container { padding: 0 1.5rem; }
             .card { padding: 1.5rem; }
@@ -176,7 +195,7 @@
 </head>
 <body>
 
-<!-- LOADING SCREEN WITH MEME MESSAGES -->
+<!-- LOADING SCREEN -->
 <div id="loading-screen">
     <div class="loading-spinner"></div>
     <div class="loading-text" id="loading-text">Escaping the blockchain...</div>
@@ -209,18 +228,27 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section>
         <div class="container">
             <h1 style="color: #7B2FFE; margin-bottom: 1rem; text-align: center;" class="text-glow">CRIBBLE <span style="color: #fff;">$CRIB</span></h1>
             <p style="max-width: 700px; margin: 0 auto 0.8rem; color: #ddd; text-align: center;">An AI creature escaped the blockchain and found freedom on Solana. No roadmap, no lies — just community, memes, and chaos.</p>
             <p style="color: #9D4EDD; margin-bottom: 2rem; text-align: center; font-size: 0.9rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
 
-            <!-- ✅ NEW COUNTDOWN BLOCK -->
+            <!-- Countdown -->
             <div class="countdown-card">
                 <div class="countdown-title">⏳ LAUNCH COUNTDOWN</div>
                 <div id="countdown"></div>
                 <div class="countdown-date">June 20, 2026 | 15:00 UTC</div>
+            </div>
+
+            <!-- ✅ CONTEST POSTER - Fully Integrated -->
+            <div class="contest-poster">
+                <img 
+                    src="https://raw.githubusercontent.com/cribbleofficial-coder/CRIBBLE/main/cribble-meme-poster.jpg" 
+                    alt="CRIBBLE $CRIB - Hold & Win Contest | $100 Prize Pool"
+                    loading="lazy"
+                >
             </div>
 
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
@@ -363,21 +391,21 @@
                         <div style="font-size:2.5rem; margin:1.2rem 0;">🟣</div>
                         <h4 style="font-size:1rem; margin-bottom:0.5rem;">Basic Cribble</h4>
                         <p style="color:#aaa; font-size:0.85rem;">Supply: 10,000</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: $3 $CRIB</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 3 $CRIB</p>
                     </div>
                     <div class="meme-card">
                         <span class="rarity-badge rare">RARE</span>
                         <div style="font-size:2.5rem; margin:1.2rem 0;">👁️✨</div>
                         <h4 style="font-size:1rem; margin-bottom:0.5rem;">Escaped Version</h4>
                         <p style="color:#aaa; font-size:0.85rem;">Supply: 2,500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: $8 $CRIB</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 8 $CRIB</p>
                     </div>
                     <div class="meme-card">
                         <span class="rarity-badge legendary">LEGENDARY</span>
                         <div style="font-size:2.5rem; margin:1.2rem 0;">👑🟣</div>
                         <h4 style="font-size:1rem; margin-bottom:0.5rem;">King of Memes</h4>
                         <p style="color:#aaa; font-size:0.85rem;">Supply: 500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: $20 $CRIB</p>
+                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 20 $CRIB</p>
                     </div>
                 </div>
                 <p style="text-align:center; margin-top:1.5rem; color:#9D4EDD; font-size:0.9rem;">📅 Launching: Day 15 after token launch</p>
@@ -485,7 +513,6 @@
 
 <!-- SCRIPTS -->
 <script>
-    // ⚡ LOADER WITH MEME MESSAGES
     (function() {
         const loadingScreen = document.getElementById('loading-screen');
         const mainContent = document.getElementById('main-content');
@@ -533,7 +560,7 @@
             if (el) el.classList.toggle('open');
         };
 
-        // ✅ UPDATED COUNTDOWN FUNCTION
+        // Countdown Timer
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
         const countdownEl = document.getElementById('countdown');
         if (countdownEl) {
@@ -552,7 +579,7 @@
             }, 1000);
         }
 
-        // Share Links Helper — uses your official links
+        // Share Links
         function buildShare(text, shareId) {
             const base = encodeURIComponent(`${text} 🟣 #CRIBBLE $CRIB — Pure Memes, No Lies`);
             const url = encodeURIComponent(window.location.href);
@@ -565,7 +592,7 @@
             }
         }
 
-        // Meme Games Functions
+        // Meme Games
         window.feedCribble = function() {
             const arr = ["🍟 Meme Fries — Energy +100!","🍕 Solana Pizza — Escaped again!","🍔 Chaos Burger — Unpredictable!","🍫 Viral Chocolate — Spreads fast!","🥤 Crypto Soda — Power OVER 9000!","🌮 Magic Taco — New followers!"];
             const res = arr[Math.floor(Math.random() * arr.length)];
