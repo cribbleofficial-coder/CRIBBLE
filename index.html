@@ -154,7 +154,7 @@
         .token-details { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.4s ease; padding:0; margin-top:0; border-left:2px solid rgba(34,197,94,0.5); margin-left:0.3rem; color:#ddd; font-size:0.9rem; }
         .token-details.open { max-height:200px; padding:0.7rem 0.8rem; margin-top:0.7rem; }
 
-        /* Meme Cards */
+        /* Meme Cards Preview */
         .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
         .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1rem; text-align:center; transition:all 0.3s ease; }
         .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 15px rgba(123,47,254,0.4); transform:translateY(-3px); }
@@ -207,7 +207,7 @@
                     <a href="#story">📖 The Real Story</a>
                     <a href="#tokenomics">🟣 Tokenomics</a>
                     <a href="#hold-contest">🎁 Hold Contest</a>
-                    <a href="#meme-cards">🃏 Meme Cards</a>
+                    <a href="meme-cards.html">🃏 Meme Cards</a>
                     <a href="gift-hub.html">🎮 Gift Hub & Games</a>
                     <a href="#details">🚀 Launch Details</a>
                     <a href="#community">🤝 Community</a>
@@ -239,9 +239,9 @@
                 >
             </div>
 
+            <!-- ✅ UPDATED: Gift Hub button REMOVED, only 2 buttons here -->
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
-                <a href="gift-hub.html" class="btn-purple">🎮 Gift Hub</a>
                 <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
             </div>
         </div>
@@ -331,7 +331,7 @@
             <div class="card glow-border hover-lift">
                 <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🤝 THE FACT: COMMUNITY IS THE ONLY POWER</h3>
                 <p style="color:#ddd; line-height:1.7;">
-                    Every meme you make, every share, every new member makes CRIBBLE stronger. We didn’t build just a coin — we built a story of freedom, powered entirely by you.
+                    Every meme you make, every share, every new member makes CRIBBLE stronger. We grow together, no empty promises — just real people and real vibes.
                 </p>
             </div>
         </div>
@@ -342,41 +342,52 @@
     <!-- TOKENOMICS -->
     <section id="tokenomics">
         <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🟣 $CRIB TOKENOMICS</h2>
+            <h2>🟣 TOKENOMICS</h2>
             <div class="card glow-border hover-lift">
-                <p style="text-align: center; font-size: 1.15rem; margin-bottom: 1rem;">Total Supply: <strong style="color: #9D4EDD;">1,000,000,000 $CRIB</strong></p>
-                <div class="divider-line"></div>
-
-                <div class="token-item" onclick="toggleDetails('detail1')">
+                <div class="token-item" onclick="toggleDetails('details1')">
                     <div class="token-header">
-                        <span>🤝 Community & Trading</span>
-                        <span class="percent-badge">90%</span>
+                        <span>Total Supply</span>
+                        <span class="percent-badge">100%</span>
                     </div>
-                    <div id="detail1" class="token-details">Available through the market and community participation. Largest portion ensures fair access, liquidity, and free trading for all holders.</div>
+                    <div id="details1" class="token-details">
+                        1,000,000,000 $CRIB — fixed supply, no future minting.
+                    </div>
                 </div>
-
-                <div class="token-item" onclick="toggleDetails('detail2')">
+                <div class="token-item" onclick="toggleDetails('details2')">
                     <div class="token-header">
-                        <span>📣 Marketing & Memes</span>
+                        <span>Blockchain</span>
+                        <span class="percent-badge">Solana</span>
+                    </div>
+                    <div id="details2" class="token-details">
+                        Fast, low-fee, and built for meme culture.
+                    </div>
+                </div>
+                <div class="token-item" onclick="toggleDetails('details3')">
+                    <div class="token-header">
+                        <span>Transaction Tax</span>
+                        <span class="percent-badge">0% / 0%</span>
+                    </div>
+                    <div id="details3" class="token-details">
+                        0% Buy • 0% Sell — no hidden fees, 100% yours.
+                    </div>
+                </div>
+                <div class="token-item" onclick="toggleDetails('details4')">
+                    <div class="token-header">
+                        <span>Liquidity</span>
+                        <span class="percent-badge">LOCKED</span>
+                    </div>
+                    <div id="details4" class="token-details">
+                        Liquidity will be locked and burned at launch for safety.
+                    </div>
+                </div>
+                <div class="token-item" onclick="toggleDetails('details5')">
+                    <div class="token-header">
+                        <span>Team & Dev</span>
                         <span class="percent-badge">5%</span>
                     </div>
-                    <div id="detail2" class="token-details">Used for contests, meme rewards, graphics, social media promotion, and all activities that help grow the community.</div>
-                </div>
-
-                <div class="token-item" onclick="toggleDetails('detail3')">
-                    <div class="token-header">
-                        <span>🏦 Community Treasury</span>
-                        <span class="percent-badge">5%</span>
+                    <div id="details5" class="token-details">
+                        Minimal allocation, vested over time — no dumps.
                     </div>
-                    <div id="detail3" class="token-details">Reserved for future events, partnerships, giveaways, and long-term growth decided by the community.</div>
-                </div>
-
-                <div class="divider-line"></div>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0.8rem; margin-top:1.2rem; text-align:center;">
-                    <div style="padding:0.7rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2); font-size:0.9rem;">✅ Community-Driven</div>
-                    <div style="padding:0.7rem; background:rgba(34,197,94,0.1); border-radius:0.5rem; border:1px solid rgba(34,197,94,0.2); font-size:0.9rem;">✅ Meme-Powered</div>
-                    <div style="padding:0.7rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2); font-size:0.9rem;">❌ No Fake Roadmap</div>
-                    <div style="padding:0.7rem; background:rgba(239,68,68,0.1); border-radius:0.5rem; border:1px solid rgba(239,68,68,0.2); font-size:0.9rem;">❌ No Hidden Taxes</div>
                 </div>
             </div>
         </div>
@@ -387,65 +398,30 @@
     <!-- HOLD CONTEST -->
     <section id="hold-contest">
         <div class="container">
-            <h2 style="color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.45);">🎁 HOLD & WIN CONTEST</h2>
+            <h2>🎁 HOLD & WIN CONTEST</h2>
             <div class="card glow-border hover-lift">
-                <h3 style="text-align:center; color:#9D4EDD; margin-bottom:1.2rem; font-size:1.1rem;">🟣 $2 Minimum Hold | $100 Total Reward</h3>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">📝 How to Join</h4>
-                        <ul style="list-style:disc; padding-left:1.3rem; color:#ddd; font-size:0.9rem;">
-                            <li>Hold ≥$2 worth of $CRIB in your wallet</li>
-                            <li>Join Telegram & follow X</li>
-                            <li>Non-exchange wallets only</li>
-                            <li>1 wallet = 1 entry</li>
-                        </ul>
-                    </div>
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">⏱️ Rules</h4>
-                        <ul style="list-style:disc; padding-left:1.3rem; color:#ddd; font-size:0.9rem;">
-                            <li>Hold period: 14 days</li>
-                            <li>Snapshots every 7 days</li>
-                            <li>Reward: $50 USDC + $50 $CRIB</li>
-                            <li>Payout within 24h after end</li>
-                        </ul>
-                    </div>
-                </div>
+                <p style="color:#ddd; margin-bottom:1rem;">To reward our earliest and most loyal holders, we are launching a holding contest right after launch.</p>
+                <p style="color:#ccc; font-size:0.95rem;">
+                    🏆 <strong>Prize Pool:</strong> $100 + exclusive roles & meme cards<br>
+                    📅 <strong>Duration:</strong> 7 days from launch<br>
+                    🎯 <strong>How to join:</strong> Just hold $CRIB in your wallet — the longer and larger your hold, the higher your chance.
+                </p>
+                <p style="color:#9D4EDD; margin-top:1rem; font-style:italic;">Full rules and tracking will be posted in our Telegram channel on launch day.</p>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <!-- MEME CARDS -->
+    <!-- MEME CARDS PREVIEW -->
     <section id="meme-cards">
         <div class="container">
             <h2>🃏 CRIBBLE MEME CARDS</h2>
-            <div class="card glow-border hover-lift">
-                <p style="text-align:center; color:#ddd; margin-bottom:1.5rem;">Collect, flex, trade — only with $CRIB. No fake utility, just lore and fun!</p>
-                <div class="card-grid">
-                    <div class="meme-card">
-                        <span class="rarity-badge common">COMMON</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">🟣</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Basic Cribble</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 10,000</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 3 $CRIB</p>
-                    </div>
-                    <div class="meme-card">
-                        <span class="rarity-badge rare">RARE</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">👁️✨</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">Escaped Version</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 2,500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 8 $CRIB</p>
-                    </div>
-                    <div class="meme-card">
-                        <span class="rarity-badge legendary">LEGENDARY</span>
-                        <div style="font-size:2.5rem; margin:1.2rem 0;">👑🟣</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.5rem;">King of Memes</h4>
-                        <p style="color:#aaa; font-size:0.85rem;">Supply: 500</p>
-                        <p style="color:#FFD700; font-weight:bold; margin-top:0.7rem;">Cost: 20 $CRIB</p>
-                    </div>
-                </div>
-                <p style="text-align:center; margin-top:1.5rem; color:#9D4EDD; font-size:0.9rem;">📅 Launching: Day 15 after token launch</p>
+            <div class="card glow-border hover-lift" style="text-align: center; padding: 2rem;">
+                <p style="color: #ddd; margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Collect, flex, and trade exclusive CRIBBLE Meme Cards. Powered by $CRIB — no fake utility, just rarity, lore, and pure meme energy!
+                </p>
+                <a href="meme-cards.html" class="btn-purple">View Full Collection</a>
             </div>
         </div>
     </section>
@@ -457,26 +433,15 @@
         <div class="container">
             <h2>🚀 LAUNCH DETAILS</h2>
             <div class="card glow-border hover-lift">
-                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem;">
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">📅 Launch Info</h4>
-                        <ul style="list-style:none; color:#ddd; font-size:0.9rem;">
-                            <li>✅ Chain: Solana</li>
-                            <li>✅ Platform: Pump.fun</li>
-                            <li>✅ Date: June 20, 2026</li>
-                            <li>✅ Time: 15:00 UTC</li>
-                        </ul>
-                    </div>
-                    <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
-                        <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">✅ Fair Launch Rules</h4>
-                        <ul style="list-style:none; color:#ddd; font-size:0.9rem;">
-                            <li>❌ No pre-sale</li>
-                            <li>❌ No hidden tokens</li>
-                            <li>✅ 0% tax before graduation</li>
-                            <li>✅ LP locks at ~$69k MC</li>
-                        </ul>
-                    </div>
-                </div>
+                <p style="color:#eee;">
+                    <strong>📅 Date:</strong> June 20, 2026<br>
+                    <strong>⏰ Time:</strong> 15:00 UTC<br>
+                    <strong>🚀 Platform:</strong> Pump.fun<br>
+                    <strong>🔒 Model:</strong> Fair Launch — no presale, no private allocation, everyone gets equal chance.
+                </p>
+                <p style="color:#ccc; margin-top:1rem;">
+                    Contract address and direct link will be posted here and in our Telegram channel 10 minutes before launch.
+                </p>
             </div>
         </div>
     </section>
@@ -484,24 +449,23 @@
     <div class="section-divider"></div>
 
     <!-- COMMUNITY -->
-    <section id="community" style="padding-bottom: 4rem !important;">
-        <div class="container" style="text-align: center;">
-            <h2>🤝 JOIN THE CRIBBLE KINGDOM</h2>
-            <div class="card glow-border hover-lift">
-                <p style="margin-bottom: 1.2rem; color: #ddd;">Everything runs on you — memes, shares, and fun build this coin.</p>
-                <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+    <section id="community">
+        <div class="container">
+            <h2>🤝 JOIN THE KINGDOM</h2>
+            <div class="card glow-border hover-lift" style="text-align: center;">
+                <p style="color:#ddd; margin-bottom:1.5rem;">Stay updated, share memes, and be part of the chaos!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Telegram</a>
-                    <a href="https://x.com/CRIBBLE_" target="_blank" class="btn-purple">X / Twitter</a>
-                    <a href="#" target="_blank" class="btn-purple">Pump.fun</a>
-                    <a href="#" target="_blank" class="btn-purple">Birdeye</a>
+                    <a href="#" target="_blank" class="btn-purple">X / Twitter</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 1.5rem 1rem; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(123,47,254,0.15);">
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 2rem 1rem; color: #888; font-size: 0.9rem; border-top: 1px solid rgba(123,47,254,0.15);">
         © 2026 CRIBBLE | $CRIB — Pure Memes, No Lies<br>
-        Not financial advice. Just for fun 🟣
+        <small>Not financial advice. For entertainment and community purposes only.</small>
     </footer>
 </div>
 
@@ -514,14 +478,10 @@
 
         const loadingMessages = [
             "Escaping the blockchain... 🚀",
-            "Hacking the server... 👨‍💻",
             "Charging meme energy... ⚡",
+            "Gathering the crew... 🤝",
             "Breaking free from code... 🔓",
             "Landing on Solana... 🟣",
-            "Collecting memes... 📸",
-            "Avoiding dev traps... 🚫",
-            "Loading chaos mode... 🤪",
-            "Ready to take over... 👑",
             "No roadmap, just vibes... ✨"
         ];
 
@@ -557,21 +517,21 @@
         // Countdown Timer
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
         const countdownEl = document.getElementById('countdown');
-        if (countdownEl) {
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = launchDate - now;
-                if (diff <= 0) {
-                    countdownEl.textContent = "LAUNCHED 🚀";
-                    return;
-                }
-                const d = Math.floor(diff / 86400000);
-                const h = Math.floor((diff % 86400000) / 3600000);
-                const m = Math.floor((diff % 3600000) / 60000);
-                const s = Math.floor((diff % 60000) / 1000);
-                countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-            }, 1000);
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            if (distance <= 0) {
+                countdownEl.textContent = "LAUNCHED 🚀";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     })();
 </script>
 
