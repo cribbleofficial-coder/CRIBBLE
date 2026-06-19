@@ -74,7 +74,6 @@
         .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
         .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
         .divider-line { height:1px; background:linear-gradient(90deg,transparent,rgba(123,47,254,0.4),transparent); margin:1.2rem 0; }
-        .percent-badge { background:linear-gradient(135deg,#22C55E,#4ADE80); color:#000; font-weight:bold; padding:0.25rem 0.7rem; border-radius:9999px; box-shadow:0 0 12px rgba(34,197,94,0.5); min-width:55px; text-align:center; font-size:0.9rem; }
         .step-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #7B2FFE; color: #fff; font-weight: bold; margin-right: 0.8rem; flex-shrink: 0; }
         .step-row { display: flex; align-items: flex-start; margin-bottom: 1.2rem; }
 
@@ -147,22 +146,6 @@
             box-shadow: 0 0 30px rgba(123, 47, 254, 0.4);
         }
 
-        /* Tokenomics Toggle */
-        .token-item { cursor:pointer; transition:all 0.3s ease; padding:0.9rem; border-radius:0.5rem; background:rgba(123,47,254,0.1); border:1px solid rgba(123,47,254,0.2); margin-bottom:0.8rem; }
-        .token-item:hover { background:rgba(123,47,254,0.15); }
-        .token-header { display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 0.5rem; }
-        .token-details { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.4s ease; padding:0; margin-top:0; border-left:2px solid rgba(34,197,94,0.5); margin-left:0.3rem; color:#ddd; font-size:0.9rem; }
-        .token-details.open { max-height:200px; padding:0.7rem 0.8rem; margin-top:0.7rem; }
-
-        /* Meme Cards Preview */
-        .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
-        .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1rem; text-align:center; transition:all 0.3s ease; }
-        .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 15px rgba(123,47,254,0.4); transform:translateY(-3px); }
-        .rarity-badge { position:absolute; top:0.6rem; right:0.6rem; font-size:0.7rem; font-weight:bold; padding:0.2rem 0.5rem; border-radius:9999px; }
-        .common { background:rgba(74,222,128,0.2); color:#4ADE80; border:1px solid rgba(74,222,128,0.4); }
-        .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
-        .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
-
         /* Responsive Fixes */
         section { padding: 2rem 1rem !important; }
         section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
@@ -174,7 +157,6 @@
             .container { padding: 0 1.5rem; }
             .card { padding: 1.5rem; }
             .btn-purple { padding: 0.75rem 1.5rem; font-size: 1rem; }
-            .card-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
             section { padding: 3rem 1.5rem !important; }
             section:first-of-type { padding-top: 8rem !important; padding-bottom: 4rem !important; }
         }
@@ -239,7 +221,7 @@
                 >
             </div>
 
-            <!-- ✅ UPDATED: Gift Hub button REMOVED, only 2 buttons here -->
+            <!-- ✅ Gift Hub button removed, only 2 buttons here -->
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#details" class="btn-purple">Launch Details</a>
                 <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
@@ -339,56 +321,16 @@
 
     <div class="section-divider"></div>
 
-    <!-- TOKENOMICS -->
+    <!-- ✅ TOKENOMICS - RESTORED TO YOUR ORIGINAL SETTINGS -->
     <section id="tokenomics">
         <div class="container">
-            <h2>🟣 TOKENOMICS</h2>
+            <h2>🟣 Tokenomics</h2>
             <div class="card glow-border hover-lift">
-                <div class="token-item" onclick="toggleDetails('details1')">
-                    <div class="token-header">
-                        <span>Total Supply</span>
-                        <span class="percent-badge">100%</span>
-                    </div>
-                    <div id="details1" class="token-details">
-                        1,000,000,000 $CRIB — fixed supply, no future minting.
-                    </div>
-                </div>
-                <div class="token-item" onclick="toggleDetails('details2')">
-                    <div class="token-header">
-                        <span>Blockchain</span>
-                        <span class="percent-badge">Solana</span>
-                    </div>
-                    <div id="details2" class="token-details">
-                        Fast, low-fee, and built for meme culture.
-                    </div>
-                </div>
-                <div class="token-item" onclick="toggleDetails('details3')">
-                    <div class="token-header">
-                        <span>Transaction Tax</span>
-                        <span class="percent-badge">0% / 0%</span>
-                    </div>
-                    <div id="details3" class="token-details">
-                        0% Buy • 0% Sell — no hidden fees, 100% yours.
-                    </div>
-                </div>
-                <div class="token-item" onclick="toggleDetails('details4')">
-                    <div class="token-header">
-                        <span>Liquidity</span>
-                        <span class="percent-badge">LOCKED</span>
-                    </div>
-                    <div id="details4" class="token-details">
-                        Liquidity will be locked and burned at launch for safety.
-                    </div>
-                </div>
-                <div class="token-item" onclick="toggleDetails('details5')">
-                    <div class="token-header">
-                        <span>Team & Dev</span>
-                        <span class="percent-badge">5%</span>
-                    </div>
-                    <div id="details5" class="token-details">
-                        Minimal allocation, vested over time — no dumps.
-                    </div>
-                </div>
+                <p><strong>Total Supply:</strong> 1,000,000,000 $CRIB</p>
+                <p><strong>Blockchain:</strong> Solana</p>
+                <p><strong>Tax:</strong> 0% Buy / 0% Sell</p>
+                <p><strong>Liquidity:</strong> Locked & Burnt</p>
+                <p><strong>Team Allocation:</strong> Minimal — community first</p>
             </div>
         </div>
     </section>
@@ -398,15 +340,11 @@
     <!-- HOLD CONTEST -->
     <section id="hold-contest">
         <div class="container">
-            <h2>🎁 HOLD & WIN CONTEST</h2>
+            <h2>🎁 Hold Contest</h2>
             <div class="card glow-border hover-lift">
-                <p style="color:#ddd; margin-bottom:1rem;">To reward our earliest and most loyal holders, we are launching a holding contest right after launch.</p>
-                <p style="color:#ccc; font-size:0.95rem;">
-                    🏆 <strong>Prize Pool:</strong> $100 + exclusive roles & meme cards<br>
-                    📅 <strong>Duration:</strong> 7 days from launch<br>
-                    🎯 <strong>How to join:</strong> Just hold $CRIB in your wallet — the longer and larger your hold, the higher your chance.
-                </p>
-                <p style="color:#9D4EDD; margin-top:1rem; font-style:italic;">Full rules and tracking will be posted in our Telegram channel on launch day.</p>
+                <p>To reward our earliest supporters, we are running a holding contest after launch:</p>
+                <p>🏆 Top holders win exclusive roles, meme cards, and special community perks.</p>
+                <p>📅 Details announced on our Telegram and X accounts.</p>
             </div>
         </div>
     </section>
@@ -431,17 +369,11 @@
     <!-- LAUNCH DETAILS -->
     <section id="details">
         <div class="container">
-            <h2>🚀 LAUNCH DETAILS</h2>
+            <h2>🚀 Launch Details</h2>
             <div class="card glow-border hover-lift">
-                <p style="color:#eee;">
-                    <strong>📅 Date:</strong> June 20, 2026<br>
-                    <strong>⏰ Time:</strong> 15:00 UTC<br>
-                    <strong>🚀 Platform:</strong> Pump.fun<br>
-                    <strong>🔒 Model:</strong> Fair Launch — no presale, no private allocation, everyone gets equal chance.
-                </p>
-                <p style="color:#ccc; margin-top:1rem;">
-                    Contract address and direct link will be posted here and in our Telegram channel 10 minutes before launch.
-                </p>
+                <p><strong>Platform:</strong> Pump.fun</p>
+                <p><strong>Date:</strong> Coming Soon — follow our channels</p>
+                <p><strong>Goal:</strong> Fair launch, no presale, no insider dumps</p>
             </div>
         </div>
     </section>
@@ -451,10 +383,10 @@
     <!-- COMMUNITY -->
     <section id="community">
         <div class="container">
-            <h2>🤝 JOIN THE KINGDOM</h2>
+            <h2>🤝 Join Our Community</h2>
             <div class="card glow-border hover-lift" style="text-align: center;">
-                <p style="color:#ddd; margin-bottom:1.5rem;">Stay updated, share memes, and be part of the chaos!</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <p>Stay updated, share memes, and be part of the chaos!</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Telegram</a>
                     <a href="#" target="_blank" class="btn-purple">X / Twitter</a>
                 </div>
@@ -507,12 +439,6 @@
                 if (menu) menu.style.display = 'none';
             }
         });
-
-        // Token Details Toggle
-        window.toggleDetails = function(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('open');
-        };
 
         // Countdown Timer
         const launchDate = new Date("June 20, 2026 15:00:00 UTC").getTime();
