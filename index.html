@@ -10,7 +10,6 @@
         html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
         body { background: #05020F; color: #fff; min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
 
-        /* Background Grid */
         body::before {
             content: "";
             position: fixed; inset: 0;
@@ -22,19 +21,18 @@
         }
         @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
 
-        /* Glow Orbs */
         .glow-orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.2; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
         .orb-1 { width:300px; height:300px; background:#7B2FFE; top:10%; left:15%; }
         .orb-2 { width:250px; height:250px; background:#9D4EDD; bottom:20%; right:10%; animation-delay:-5s; }
         .orb-3 { width:200px; height:200px; background:#FFD700; top:50%; left:60%; animation-delay:-10s; }
         @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(30px,-30px) scale(1.1); } }
 
-        /* ✅ FIXED LOADING SCREEN - Higher z-index & proper hide */
+        /* ✅ Fixed Loading Screen */
         #loading-screen {
             position: fixed; inset: 0;
             background: #05020F;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 99999; /* Highest possible */
+            z-index: 99999;
             transition: opacity 0.4s ease, visibility 0.4s ease;
             padding: 1rem;
         }
@@ -63,17 +61,15 @@
         .loading-brand { font-size: 1rem; color: #FFD700; display: flex; align-items: center; gap: 0.5rem; }
         .loading-dot { width:12px; height:12px; border-radius:50%; background:#7B2FFE; box-shadow:0 0 8px rgba(123,47,254,0.6); }
 
-        /* Main Content */
         #main-content {
             opacity: 0;
             transition: opacity 0.5s ease;
             background: linear-gradient(135deg, #0A0418 0%, #120520 40%, #1A0B2E 100%);
             position: relative;
-            z-index: 1; /* Lower than loading screen */
+            z-index: 1;
         }
         #main-content.visible { opacity: 1; }
 
-        /* Base Components */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
         .text-glow { text-shadow: 0 0 12px rgba(123,47,254,0.55); }
         .gold-glow { text-shadow: 0 0 10px rgba(255,215,0,0.45); }
@@ -89,7 +85,6 @@
         .step-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #7B2FFE; color: #fff; font-weight: bold; margin-right: 0.8rem; flex-shrink: 0; }
         .step-row { display: flex; align-items: flex-start; margin-bottom: 1.2rem; }
 
-        /* Navbar */
         nav { position: fixed; width:100%; top:0; left:0; z-index: 50; background:rgba(18,5,32,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(123,47,254,0.15); }
         .nav-wrap { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; max-width:1200px; margin:0 auto; }
         .nav-brand { font-size:1.3rem; font-weight:bold; color:#9D4EDD; }
@@ -98,7 +93,6 @@
         .dropdown a { display:block; padding:0.7rem 1rem; color:#fff; text-decoration:none; transition:0.2s; font-size:0.95rem; }
         .dropdown a:hover { background:rgba(123,47,254,0.15); color:#FFD700; padding-left:1.2rem; }
 
-        /* Countdown */
         .countdown-card {
             background: linear-gradient(160deg, #100520, #0A0318);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -138,7 +132,6 @@
             opacity: 0.9;
         }
 
-        /* Video */
         .hero-video {
             max-width: 750px;
             margin: 0 auto 2rem;
@@ -152,7 +145,6 @@
             box-shadow: 0 0 25px rgba(123,47,254,0.3);
         }
 
-        /* Meme Cards */
         .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
         .meme-card { position:relative; background:linear-gradient(145deg,#1A0B2E,#120520); border:1px solid rgba(123,47,254,0.3); border-radius:0.8rem; padding:1rem; text-align:center; transition:all 0.3s ease; }
         .meme-card:hover { border-color:#7B2FFE; box-shadow:0 0 15px rgba(123,47,254,0.4); transform:translateY(-3px); }
@@ -161,7 +153,6 @@
         .rare { background:rgba(251,191,36,0.2); color:#FBBF24; border:1px solid rgba(251,191,36,0.4); }
         .legendary { background:rgba(239,68,68,0.2); color:#EF4444; border:1px solid rgba(239,68,68,0.4); }
 
-        /* Responsive */
         section { padding: 2rem 1rem !important; }
         section:first-of-type { padding-top: 6rem !important; padding-bottom: 3rem !important; }
         h1 { font-size: clamp(2rem, 10vw, 3.2rem) !important; line-height: 1.2; }
@@ -228,17 +219,18 @@
                 <div class="countdown-date">June 20, 2026 | 15:00 UTC</div>
             </div>
 
-            <!-- Video -->
+            <!-- ✅ WORKING VIDEO LINK -->
             <div class="hero-video">
                 <video 
-                    src="https://raw.githubusercontent.com/cribbleofficial-coder/CRIBBLE/main/cribble-intro.mp4" 
+                    src="https://raw.githubusercontent.com/cribbleofficial-coder/CRIBBLE/main/cribble_story_finalcompress.mp4"
                     controls 
                     muted 
                     autoplay 
                     loop 
                     playsinline
+                    preload="metadata"
                 >
-                    Your browser does not support the video tag.
+                    Your browser does not support HTML5 video.
                 </video>
             </div>
 
@@ -253,7 +245,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- REST OF SECTIONS SAME AS BEFORE -->
+    <!-- REST OF SECTIONS UNCHANGED -->
     <section id="what-is-cribble">
         <div class="container">
             <h2>🔍 WHAT IS CRIBBLE?</h2>
@@ -494,7 +486,7 @@
     </footer>
 </div>
 
-<!-- ✅ FIXED SCRIPT - Better timing & loading control -->
+<!-- ✅ FIXED SCRIPT -->
 <script>
     (function() {
         const loadingScreen = document.getElementById('loading-screen');
@@ -520,15 +512,15 @@
             if (loadingText) loadingText.textContent = loadingMessages[idx];
         }, 1200);
 
-        // Hide loading screen after content is ready
+        // Hide loading screen after page & assets are ready
         window.addEventListener('load', () => {
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
                 mainContent.classList.add('visible');
-            }, 2000); // Adjust if you want faster/slower
+            }, 2000);
         });
 
-        // Fallback in case load event takes too long
+        // Fallback timer
         setTimeout(() => {
             if (!loadingScreen.classList.contains('hidden')) {
                 loadingScreen.classList.add('hidden');
