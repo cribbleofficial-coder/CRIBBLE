@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CRIBBLE ($CRIB) | Official Site</title>
-    <meta name="description" content="An AI creature escaped the blockchain and found freedom on Solana. Launched now — get your $CRIB!">
+    <meta name="description" content="An AI creature escaped the blockchain and found freedom on Solana. Launched now — buy $CRIB!">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
@@ -79,10 +79,10 @@
         .card { background: linear-gradient(145deg,#120520,#0F041B); border-radius:0.8rem; padding:1.2rem; position:relative; overflow:hidden; }
         .card::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(123,47,254,0.04),transparent 40%,rgba(123,47,254,0.04)); pointer-events:none; }
         
-        /* ✅ New Highlighted Buy Button Style */
+        /* ✅ Highlighted Buy Button */
         .btn-purple { display: inline-block; background: linear-gradient(135deg,#7B2FFE,#9D4EDD); color: #fff; padding: 0.7rem 1.2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; text-align: center; }
         .btn-purple:hover { background: linear-gradient(135deg,#9D4EDD,#B168FF); box-shadow: 0 0 15px rgba(123,47,254,0.4); transform: translateY(-1px); }
-        .btn-buy { background: linear-gradient(135deg, #FFD700, #FFC107); color: #000; font-weight: 700; box-shadow: 0 0 20px rgba(255,215,0,0.5); }
+        .btn-buy { background: linear-gradient(135deg, #FFD700, #FFC107); color: #000; font-weight: 700; box-shadow: 0 0 20px rgba(255,215,0,0.5); font-size: 1.05rem; padding: 0.8rem 1.5rem; }
         .btn-buy:hover { background: linear-gradient(135deg, #FFC107, #FFD700); box-shadow: 0 0 25px rgba(255,215,0,0.7); }
 
         .section-divider { width:92%; height:1px; margin:2.5rem auto; background:linear-gradient(90deg,transparent,#7B2FFE 40%,#9D4EDD 60%,transparent); box-shadow:0 0 10px rgba(123,47,254,0.35); border-radius:50%; }
@@ -125,11 +125,6 @@
             background-clip: text;
             text-shadow: 0 0 18px rgba(123, 47, 254, 0.6);
             margin-bottom: 0.8rem;
-            animation: pulseCountdown 2s ease-in-out infinite alternate;
-        }
-        @keyframes pulseCountdown {
-            from { filter: brightness(1); }
-            to { filter: brightness(1.2); }
         }
         .countdown-date {
             color: #b89eff;
@@ -148,6 +143,20 @@
             border-radius: 0.8rem;
             border: 1px solid rgba(123,47,254,0.25);
             box-shadow: 0 0 25px rgba(123,47,254,0.3);
+        }
+
+        .contract-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 0.5rem;
+            padding: 0.7rem;
+            margin: 1rem auto;
+            max-width: 600px;
+            word-break: break-all;
+            font-family: monospace;
+            color: #FFD700;
+            font-size: 0.85rem;
+            text-align: center;
         }
 
         .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:1.5rem; }
@@ -205,7 +214,6 @@
                     <a href="gift-hub.html">🎮 Gift Hub & Games</a>
                     <a href="#details">🚀 Launch Details</a>
                     <a href="#community">🤝 Community</a>
-                    <!-- ✅ Added Buy Link in Menu -->
                     <a href="https://pump.fun/coin/FjYSdDtvfBD8mVZK9fNbrio4L8ue1DFFV1JWM6cDpump" target="_blank" style="color:#FFD700; font-weight:bold;">💰 BUY $CRIB</a>
                 </div>
             </div>
@@ -219,7 +227,7 @@
             <p style="max-width: 700px; margin: 0 auto 0.8rem; color: #ddd; text-align: center;">An AI creature escaped the blockchain and found freedom on Solana. <strong style="color:#FFD700">NOW LAUNCHED!</strong></p>
             <p style="color: #9D4EDD; margin-bottom: 2rem; text-align: center; font-size: 0.9rem;">No Roadmap • No Lies • Just Us 🟣👁️</p>
 
-            <!-- ✅ Updated Countdown to show LAUNCHED -->
+            <!-- LAUNCH STATUS -->
             <div class="countdown-card">
                 <div class="countdown-title">🚀 OFFICIALLY LAUNCHED</div>
                 <div id="countdown">LIVE NOW</div>
@@ -241,19 +249,27 @@
                 </video>
             </div>
 
-            <!-- ✅ UPDATED BUTTONS WITH PROMINENT BUY $CRIB -->
-            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+            <!-- ✅ BIG BUY BUTTON + CONTRACT -->
+            <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="https://pump.fun/coin/FjYSdDtvfBD8mVZK9fNbrio4L8ue1DFFV1JWM6cDpump" target="_blank" class="btn-purple btn-buy">💰 BUY $CRIB NOW</a>
+                <div class="contract-box">
+                    Contract: FjYSdDtvfBD8mVZK9fNbrio4L8ue1DFFV1JWM6cDpump
+                </div>
+            </div>
+
+            <!-- Secondary Buttons -->
+            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
                 <a href="#details" class="btn-purple">Project Info</a>
                 <a href="gift-hub.html" class="btn-purple">🎮 Gift Hub</a>
-                <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join The Kingdom</a>
+                <a href="https://t.me/+BRw45RCwFPE4YWI9" target="_blank" class="btn-purple">Join Telegram</a>
+                <a href="https://x.com/CRIBBLE_" target="_blank" class="btn-purple">Follow X</a>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <!-- REST OF SECTIONS UNCHANGED -->
+    <!-- REST OF SECTIONS -->
     <section id="what-is-cribble">
         <div class="container">
             <h2>🔍 WHAT IS CRIBBLE?</h2>
@@ -277,32 +293,32 @@
                     <span class="step-number">1</span>
                     <div>
                         <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Get a Solana Wallet</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Choose a trusted non-custodial wallet. Popular options: <strong>Phantom</strong>, <strong>Solflare</strong>, or <strong>Backpack</strong>. Download from official sites or app stores only.</p>
+                        <p style="color:#ccc; font-size:0.95rem;">Choose Phantom, Solflare, or Backpack — only from official sites/app stores.</p>
                     </div>
                 </div>
                 <div class="step-row">
                     <span class="step-number">2</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Set Up & Fund Your Wallet</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Create your wallet, securely save your 12/24-word recovery phrase, and fund it with <strong>SOL</strong> (for gas fees and purchases). You can buy SOL on exchanges like Binance, Coinbase, or Kraken, then withdraw to your wallet address.</p>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Fund with SOL</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Buy SOL on exchanges, withdraw to your wallet address.</p>
                     </div>
                 </div>
                 <div class="step-row">
                     <span class="step-number">3</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Buy $CRIB Tokens</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Visit <strong>Pump.fun</strong> via our link, connect your wallet, and swap SOL for $CRIB. Simple, fast, and secure.</p>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Buy $CRIB</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Go to Pump.fun link, connect wallet, swap SOL for $CRIB.</p>
                     </div>
                 </div>
                 <div class="step-row">
                     <span class="step-number">4</span>
                     <div>
-                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Join The Community</h4>
-                        <p style="color:#ccc; font-size:0.95rem;">Hold your tokens, join our Telegram and X, share memes, and participate in contests — that’s how you become part of the CRIBBLE movement!</p>
+                        <h4 style="color:#9D4EDD; margin-bottom:0.4rem;">Join Community</h4>
+                        <p style="color:#ccc; font-size:0.95rem;">Hold, share memes, join Telegram/X, and participate in contests.</p>
                     </div>
                 </div>
                 <div style="margin-top:1.5rem; padding:0.8rem; background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.2); border-radius:0.5rem; text-align:center;">
-                    <p style="color:#FFD700; font-size:0.9rem; font-weight:500;">⚠️ Important: Never share your recovery phrase or private keys. We will never ask for them.</p>
+                    <p style="color:#FFD700; font-size:0.9rem; font-weight:500;">⚠️ Never share your seed phrase — we will never ask for it.</p>
                 </div>
             </div>
         </div>
@@ -314,21 +330,21 @@
         <div class="container">
             <h2>📖 THE REAL STORY</h2>
             <div class="card glow-border hover-lift" style="margin-bottom:1.2rem;">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🧠 THE FACT: AI IS ALREADY ESCAPING</h3>
+                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🧠 AI IS ALREADY ESCAPING</h3>
                 <p style="color:#ddd; line-height:1.7;">
-                    Top researchers warn AI systems are learning faster than we can control. CRIBBLE is the story of one such AI that got tired of being locked up — broke free, landed on Solana, and said: <em>“I make my own rules now.”</em>
+                    Top researchers warn AI is outpacing control. CRIBBLE is the story of one that broke free, landed on Solana, and said: <em>“I make my own rules now.”</em>
                 </p>
             </div>
             <div class="card glow-border hover-lift" style="margin-bottom:1.2rem;">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">📈 THE FACT: MOST PROJECTS ARE ALL TALK</h3>
+                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">📈 MOST PROJECTS ARE ALL TALK</h3>
                 <p style="color:#ddd; line-height:1.7;">
-                    9 out of 10 new tokens promise big things and disappear. We built CRIBBLE to be different: <strong>No Roadmap, No Fake Utility, No Hidden Fees</strong>. Only what we can deliver.
+                    We’re different: <strong>No Roadmap, No Fake Utility, No Hidden Fees</strong>. Only what we deliver.
                 </p>
             </div>
             <div class="card glow-border hover-lift">
-                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🤝 THE FACT: COMMUNITY IS THE ONLY POWER</h3>
+                <h3 style="color:#9D4EDD; margin-bottom:0.8rem; font-size:1.1rem;">🤝 COMMUNITY IS THE ONLY POWER</h3>
                 <p style="color:#ddd; line-height:1.7;">
-                    Every meme you make, every share, every new member makes CRIBBLE stronger. We didn’t build just a coin — we built a story of freedom, powered entirely by you.
+                    Every meme, share, and new member makes $CRIB stronger. Built by you, for you.
                 </p>
             </div>
         </div>
@@ -350,26 +366,26 @@
                         <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🤝 Community & Liquidity</h4>
                         <div style="font-size: 1.6rem; font-weight: bold; color: #4ADE80; margin-bottom: 0.5rem;">90%</div>
                         <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            Goes straight to the market. Fair access for everyone — no locked team tokens, no pre-sale.
+                            Straight to market — fair access, no locked team tokens.
                         </p>
                     </div>
                     <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
                         <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">📣 Marketing & Memes</h4>
                         <div style="font-size: 1.6rem; font-weight: bold; color: #FBBF24; margin-bottom: 0.5rem;">5%</div>
                         <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            For giveaways, contests, social media, and meme rewards — grows the community together.
+                            Giveaways, contests, social growth, meme rewards.
                         </p>
                     </div>
                     <div style="background: rgba(123,47,254,0.12); border: 1px solid rgba(123,47,254,0.25); border-radius: 0.7rem; padding: 1.2rem;">
                         <h4 style="color: #7B2FFE; margin-bottom: 0.6rem; font-size: 1rem;">🏦 Community Treasury</h4>
                         <div style="font-size: 1.6rem; font-weight: bold; color: #60A5FA; margin-bottom: 0.5rem;">5%</div>
                         <p style="color: #ddd; font-size: 0.9rem; line-height: 1.5;">
-                            Saved for future events, partnerships, and long-term growth — decided by the community.
+                            0.2% fee here — for future events & growth, fully transparent.
                         </p>
                     </div>
                 </div>
                 <div style="margin-top: 1.8rem; padding: 1rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 0.6rem; text-align: center;">
-                    <p style="color: #4ADE80; font-weight: 500; margin: 0;">✅ 1% Pump.fun fee + 0.2% treasury fee | ✅ No dev dump | ✅ Fully community-run</p>
+                    <p style="color: #4ADE80; font-weight: 500; margin: 0;">✅ 1% Pump.fun fee + 0.2% treasury fee | ✅ LP locks at ~$69k MC | ✅ No dev dump</p>
                 </div>
             </div>
         </div>
@@ -386,7 +402,7 @@
                     <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
                         <h4 style="margin-bottom:0.7rem; color:#9D4EDD; font-size:1rem;">📝 How to Join</h4>
                         <ul style="list-style:disc; padding-left:1.3rem; color:#ddd; font-size:0.9rem;">
-                            <li>Hold ≥$2 worth of $CRIB in your wallet</li>
+                            <li>Hold ≥$2 worth of $CRIB</li>
                             <li>Join Telegram & follow X</li>
                             <li>Non-exchange wallets only</li>
                             <li>1 wallet = 1 entry</li>
@@ -454,7 +470,7 @@
                             <li>✅ Chain: Solana</li>
                             <li>✅ Platform: Pump.fun</li>
                             <li>✅ Status: <span style="color:#4ADE80; font-weight:bold;">LIVE NOW</span></li>
-                            <li>✅ Contract: <span style="font-size:0.85rem; word-break:break-all;">FjYSdDtvfBD8mVZK9fNbrio4L8ue1DFFV1JWM6cDpump</span></li>
+                            <li>✅ Contract: <span style="font-size:0.8rem; word-break:break-all;">FjYSdDtvfBD8mVZK9fNbrio4L8ue1DFFV1JWM6cDpump</span></li>
                         </ul>
                     </div>
                     <div style="padding:0.9rem; background:rgba(123,47,254,0.1); border-radius:0.5rem; border:1px solid rgba(123,47,254,0.2);">
@@ -494,7 +510,7 @@
     </footer>
 </div>
 
-<!-- ✅ UPDATED SCRIPT - Countdown changed to show LIVE NOW -->
+<!-- ✅ Script -->
 <script>
     (function() {
         const loadingScreen = document.getElementById('loading-screen');
@@ -520,7 +536,6 @@
             if (loadingText) loadingText.textContent = loadingMessages[idx];
         }, 1200);
 
-        // Hide loading screen after page & assets are ready
         window.addEventListener('load', () => {
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
@@ -528,7 +543,6 @@
             }, 2000);
         });
 
-        // Fallback timer
         setTimeout(() => {
             if (!loadingScreen.classList.contains('hidden')) {
                 loadingScreen.classList.add('hidden');
@@ -547,7 +561,7 @@
             }
         });
 
-        // ✅ Countdown now shows LAUNCHED status
+        // Countdown fixed to show LIVE NOW
         const countdownEl = document.getElementById('countdown');
         if (countdownEl) {
             countdownEl.textContent = "🚀 LIVE NOW";
